@@ -71,7 +71,7 @@ const BasicExample = () => (
       <Route exact path="/" component={Home}/>
       <Route path="/about" component={About}/>
       <Route path="/topics" component={Topics}/>
-      <Route path="/issues/1" component={issueShow}/>
+      <Route path="/issues/:id" component={issueShow}/>
     </div>
   </Router>
 )

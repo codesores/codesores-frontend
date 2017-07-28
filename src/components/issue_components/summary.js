@@ -1,8 +1,12 @@
 import React from 'react'
 
 class Summary extends React.Component {
+
   render() {
-    return <h1>summary</h1>;
+    return (
+      <h1>{this.props.issue.summary}</h1>
+    )
+
   }
 }
 
