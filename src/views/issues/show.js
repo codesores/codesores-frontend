@@ -11,7 +11,6 @@ class issueShow extends React.Component {
 
   constructor(args){
     super(args)
-
     this.state = {
       issueComments: [],
       issueMeta: [],
@@ -20,8 +19,9 @@ class issueShow extends React.Component {
 
     //Make API calls
     const thisComponent = this
-    axios.get('/').then(function (response) {
+    axios.get('http://localhost:3000/issues').then(function (response) {
       thisComponent.parseJSONAndSetState(response);
+      console.log(response.data)
       }
     );
 
