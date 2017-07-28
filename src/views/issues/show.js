@@ -4,7 +4,7 @@ import axios from 'axios'
 import Comments from '../../components/issue_components/comments.js'
 import Summary from '../../components/issue_components/summary.js'
 import Meta from '../../components/issue_components/meta.js'
-import Vote from '../../components/issue_components/vote.js'
+import Feedback from '../../components/issue_components/feedback.js'
 import ButtonContribute from '../../components/issue_components/button_contribute.js'
 
 class issueShow extends React.Component {
@@ -12,16 +12,14 @@ class issueShow extends React.Component {
   constructor(args){
     super(args)
     this.state = {
-      issueComments: [],
-      issueMeta: [],
+      issue: [],
       feedback: []
     };
 
     //Make API calls
     const thisComponent = this
-    axios.get('http://localhost:3000/issues').then(function (response) {
+    axios.get(`http://localhost:3000/issues/${this.props.match.params.id}`).then(function (response) {
       thisComponent.parseJSONAndSetState(response);
-      console.log(response.data)
       }
     );
 
@@ -32,14 +30,9 @@ class issueShow extends React.Component {
   // consume JSON from API call and update setState
   parseJSONAndSetState(json){
     this.setState({
-      issueComments: [json],
-      issueMeta: [json],
-      feedback: [json]
+      issue: [json.data.issue],
+      feedback: [json.data.feedback]
     })
-    console.log(json)
-    console.log(this.state.issueComments)
-    console.log(this.state.issueMeta)
-    console.log(this.state.feedback)
   }
 
   render(){
@@ -47,13 +40,13 @@ class issueShow extends React.Component {
       <div>
 
       <div id='issue_id'>
-      <Comments />
-      <Summary />
-      <Meta />
+      <Summary issue={this.state.issue}/>
+      <Comments comments={this.state.issue.comments}/>
+      <Meta meta={this.state.issue.meta}/>
       </div>
 
       <div id='feedback'>
-      <Vote />
+      <Feedback feedback={this.state.feedback}/>
       </div>
 
       <div id='contribute'>
