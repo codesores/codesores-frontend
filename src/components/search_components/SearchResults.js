@@ -3,15 +3,16 @@ import React, { Component } from 'react';
 class SearchResults extends Component {
   
   iterateResults(){
-    return Object.keys(this.props.results).map((key)=>{
+    return this.props.results.data.map((element)=>{
       return (
         <div>
-        <li>{key}</li> 
-        <p> {this.props.results[key]} </p>
+        <li>{element}</li> 
         </div>
         )
     })
   }
+
+
 
   render() {
     return (
