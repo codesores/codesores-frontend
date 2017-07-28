@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import issueShow from './views/issues/show.js';
-import Axios from 'axios'
+// eslint-disable-next-line
+import axios from 'axios'
 
 import {
   BrowserRouter as Router,

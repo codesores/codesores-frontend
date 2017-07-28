@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 
 import Comments from '../../components/issue_components/comments.js'
 import Summary from '../../components/issue_components/summary.js'
@@ -11,7 +12,34 @@ class issueShow extends React.Component {
   constructor(args){
     super(args)
 
-    // axios()
+    this.state = {
+      issueComments: [],
+      issueMeta: [],
+      feedback: []
+    };
+
+    //Make API calls
+    const thisComponent = this
+    axios.get('/').then(function (response) {
+      thisComponent.parseJSONAndSetState(response);
+      }
+    );
+
+    //Bind components to this
+    this.parseJSONAndSetState = this.parseJSONAndSetState.bind(this)
+  }
+
+  // consume JSON from API call and update setState
+  parseJSONAndSetState(json){
+    this.setState({
+      issueComments: [json],
+      issueMeta: [json],
+      feedback: [json]
+    })
+    console.log(json)
+    console.log(this.state.issueComments)
+    console.log(this.state.issueMeta)
+    console.log(this.state.feedback)
   }
 
   render(){
@@ -38,4 +66,4 @@ class issueShow extends React.Component {
 }
 
 
-export default issueShow;
+export default issueShow
