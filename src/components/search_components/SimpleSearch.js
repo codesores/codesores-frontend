@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import SearchBar  from './SearchBar';
 import SearchResults  from './SearchResults';
+import axios from 'axios';
 
 class SearchApp extends Component {
+
   constructor(props){
     super(props)
     this.state = {
@@ -24,11 +26,16 @@ class SearchApp extends Component {
   }
 
   callApi(query){
-    let app = this;
+    let searchApp = this;
 
-    fetch("http://localhost:3000/sample").then(data => data.json()).then(function(response){
-      app.setState({results: response})
-      console.log('received json!')
+    // fetch("http://localhost:3000/sample").then(data => data.json()).then(function(response){
+    //   searchApp.setState({results: response})
+    //   console.log('received json!')
+    // })
+
+    axios.get("http://localhost:3000/sample").then((response)=>{
+      searchApp.setState({results: response})
+      console.log(response)
     })
   }
 
