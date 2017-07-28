@@ -1,11 +1,13 @@
+// eslint-disable-next-line
 import React, { Component } from 'react';
 import './App.css';
+import issueShow from './views/issues/show.js';
+
 import {
   BrowserRouter as Router,
   Route,
   Link
 } from 'react-router-dom'
-
 
 const Home = () => (
   <div>
@@ -67,7 +69,10 @@ const BasicExample = () => (
       <Route exact path="/" component={Home}/>
       <Route path="/about" component={About}/>
       <Route path="/topics" component={Topics}/>
+      <Route path="/issue/1" component={issueShow}/>
     </div>
   </Router>
 )
+
+
 export default BasicExample
