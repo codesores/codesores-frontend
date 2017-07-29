@@ -15,13 +15,13 @@ class SearchResults extends Component {
   stubResults(){
     let SearchResults = this
     axios.get("http://localhost:3000/issues/search").then((response)=>{
-      console.log(response.data)
+      // console.log(response.data)
       SearchResults.setState({results: response.data})
     })
   }
 
   iterateResults(){
-    console.log(this.state.results)
+    // console.log(this.state.results)
     return this.state.results.map((element)=>{
       return (
         <div>
@@ -35,7 +35,7 @@ class SearchResults extends Component {
   }
 
   render() {
-    console.log(this.state)
+    // console.log(this.state)
     return (
       <div className="SearchResults">
       <ul> { this.iterateResults() } </ul>
