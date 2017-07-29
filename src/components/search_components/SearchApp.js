@@ -44,9 +44,7 @@ class SearchApp extends Component {
   //   this.callSearch()
   // }
 
-  stubResults(){
-    
-  }
+  
 
   setQuery(args){
     let language = this.state.query.language
