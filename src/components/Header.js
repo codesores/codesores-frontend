@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import LoginButton from './LoginButton'
 
 
 const Header = () => (
   <header>
     <nav>
-    <a href="https://github.com/login/oauth/authorize?scope=user:email&client_id=8515e9a1dcd00ca18123">Github Login</a>
       <ul>
+        <LoginButton />
         <li><Link to='/index'>Home</Link></li>
         <li><Link to='/issues'>Issues</Link></li>
       </ul>
