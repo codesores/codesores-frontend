@@ -26,22 +26,18 @@ class SearchApp extends Component {
     let searchApp = this;
 
     axios.get("http://localhost:3000/issues/start").then((response)=>{
-      console.log(response.data)
+      // console.log(response.data)
       searchApp.setState({languages: response.data})
     })
   }
 
-
-  changeSearchQuery(query){
-    this.setState({query: query})
-    this.handleSearch()
-  }
-
-
-  handleSearch(e){
+  callSearch(){
     //calls api to display issues from query
     let searchApp = this;
     let query = querystring.stringify(this.state.query)
+
+    console.log('state before search:', query)
+
 
     axios.post(`http://localhost:3000/issues/search`, query).then((response)=>{
       searchApp.props.updateResults(response)
@@ -52,14 +48,14 @@ class SearchApp extends Component {
   //   this.callSearch()
   // }
 
-  stubResults(){
-    
-  }
+  
 
   setQuery(args){
+    console.log(args)
     let language = this.state.query.language
 
-    this.setState({query: args})
+    this.setState({query: args}, this.callSearch)
+    
   }
 
 
