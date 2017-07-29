@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 
 class SearchResults extends Component {
+
   constructor(){
     super()
     this.state = {
@@ -32,8 +33,6 @@ class SearchResults extends Component {
         )
     })
   }
-
-
 
   render() {
     console.log(this.state)
