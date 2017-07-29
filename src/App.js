@@ -32,7 +32,7 @@ class App extends Component {
 
 export default App;
 
-
+{/* 
 // class App extends Component {
 //   constructor() {
 //     super();
@@ -76,3 +76,5 @@ export default App;
 // // )
 //
 // export default App
+  */}
+
