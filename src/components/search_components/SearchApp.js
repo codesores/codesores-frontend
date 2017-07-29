@@ -8,7 +8,7 @@ class SearchApp extends Component {
   constructor(props){
     super(props)
     this.state = {
-      query: ""
+      query: ''
     }
     this.changeSearchQuery = this.changeSearchQuery.bind(this);
   }
@@ -31,8 +31,8 @@ class SearchApp extends Component {
     this.handleSearch()
   }
 
-  
-  handleSearch(e){    
+
+  handleSearch(e){
     //calls api to display issues from query
     let searchApp = this;
     let query = this.state.query;

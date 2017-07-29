@@ -1,13 +1,8 @@
 import React from 'react'
 import axios from 'axios'
-
-// import Comments from '../../components/issue_components/comments.js'
 import Summary from '../../components/issue_components/summary.js'
-// import Meta from '../../components/issue_components/meta.js'
-import Feedback from '../../components/issue_components/feedback.js'
-import ButtonContribute from '../../components/issue_components/button_contribute.js'
 
-class issueShow extends React.Component {
+class IssuesIndex extends React.Component {
 
   constructor(args){
     super(args)
@@ -18,10 +13,7 @@ class issueShow extends React.Component {
 
     //Make API call
     const thisComponent = this
-
-    console.log('this.props.match.params.id')
-    console.log(this.props.match.params.id)
-    axios.get(`http://localhost:3000/issues/${this.props.match.params.id}`).then(function (response) {
+    axios.get(`http://localhost:3000/issues/`).then(function (response) {
       thisComponent.parseJSONAndSetState(response);
       }
     );
@@ -45,18 +37,10 @@ class issueShow extends React.Component {
       <Summary issue={this.state.issue}/>
       </div>
 
-      <div id='feedback'>
-      <Feedback/>
-      </div>
-
-      <div id='contribute'>
-      <ButtonContribute />
-      </div>
-
       </div>
     )
   }
 }
 
 
-export default issueShow
+export default IssuesIndex
