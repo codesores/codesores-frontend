@@ -1,30 +1,36 @@
 import React, { Component } from 'react';
 import SearchBar  from './SearchBar';
-import SearchResults  from './SearchResults';
 import axios from 'axios';
+import querystring from 'querystring';
 
 class SearchApp extends Component {
 
   constructor(props){
     super(props)
     this.state = {
-      query: ''
+
+      query: {
+        language: ""
+      },
+      languages: []
     }
-    this.changeSearchQuery = this.changeSearchQuery.bind(this);
+    this.setQuery = this.setQuery.bind(this);
   }
 
   componentDidMount(){
-    this.callApi()
+    this.callInitialize();
   }
 
-  callApi(){
-    //calls api to display all top issues
+  callInitialize(){
+    //calls api to recover languages
     let searchApp = this;
 
-    axios.get("http://localhost:3000/issues").then((response)=>{
-      searchApp.props.updateResults(response)
+    axios.get("http://localhost:3000/issues/start").then((response)=>{
+      console.log(response.data)
+      searchApp.setState({languages: response.data})
     })
   }
+
 
   changeSearchQuery(query){
     this.setState({query: query})
@@ -35,17 +41,32 @@ class SearchApp extends Component {
   handleSearch(e){
     //calls api to display issues from query
     let searchApp = this;
-    let query = this.state.query;
-    axios.post(`http://localhost:3000/issues/search?search=${query}`).then((response)=>{
+    let query = querystring.stringify(this.state.query)
+
+    axios.post(`http://localhost:3000/issues/search`, query).then((response)=>{
       searchApp.props.updateResults(response)
     })
   }
 
+  // componentWillUpdate(){
+  //   this.callSearch()
+  // }
+
+  stubResults(){
+    
+  }
+
+  setQuery(args){
+    let language = this.state.query.language
+
+    this.setState({query: args})
+  }
+
+
   render() {
     return (
       <div className="SearchApp">
-      <SearchBar changeSearchQuery={this.changeSearchQuery} value={this.state.query}  />
-      <SearchResults results={this.props.results}/>
+      <SearchBar languages={this.state.languages} setQuery={this.setQuery} value={this.state.query}  />
       </div>
       );
   }
