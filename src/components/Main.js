@@ -23,7 +23,7 @@ class Main extends Component {
     super(props);
 
     this.state = {
-      info: null
+      info: ""
     };
 
   }
@@ -33,16 +33,23 @@ class Main extends Component {
   }
 
   fetchUserDetails() {
-    utils.fetchUserDetails({ token: this.props.token })
-      .then(info => {
-        this.setState({ info })
-      });
+    // utils.fetchUserDetails({ token: this.props.token })
+    //   .then(info => {
+    //     this.setState({ info })
+    //   });
+    let app = this;
+    let userApiUrl = "http://localhost:3000/user?token=" + this.props.token
+    console.log(userApiUrl)
+    fetch(userApiUrl).then(data => data.json()).then(function(response){
+      console.log(response)
+      app.setState({info: response})
+    }).catch(error => {
+      console.error('Could not fetch user details', error);
+    });
   }
 
   render() {
-    const {
-      info
-    } = this.state;
+    const info = this.state.info
 
     return (
       <div className='Main'>

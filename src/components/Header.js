@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 // import Navigation from 'react-toolbox/lib/navigation/Navigation';
 // import Link from 'react-toolbox/lib/link/Link';
 // import Avatar from 'react-toolbox/lib/avatar/Avatar';
-import './Header.css';
+// import './Header.css';
 
 class Header extends Component {
   handleClickLogOut() {
@@ -12,17 +12,12 @@ class Header extends Component {
   }
 
   render() {
-    const { info } = this.props;
+    // const { info } = this.props;
     return(
       <div>
       <a
         href='#'
-        active
-        label='Log out'
-        icon='exit_to_app'
-        className='Header-link'
-        onClick={this.handleClickLogOut}
-      />
+        onClick={this.handleClickLogOut}>Log out</a>
       </div>
     )
   }
