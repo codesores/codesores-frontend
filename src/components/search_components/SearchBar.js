@@ -3,19 +3,30 @@ import React, { Component } from 'react';
 class SearchBar extends Component {
   constructor(props){
     super(props)
-    this.changeSearchQuery = this.changeSearchQuery.bind(this);
+    this.setQuery = this.setQuery.bind(this)
   }
 
-  changeSearchQuery(e){
-    this.props.changeSearchQuery(e.target.value);
+  setQuery(e){
+    this.props.setQuery({language: e.target.value})
+  }
+
+  languageDropDown(){
+    return this.props.languages.map((language)=>{
+      return <option value={language}>{language}</option>
+    })
+
+
   }
 
   render() {
+    // console.log(this.props)
     return (
       <div className="SearchBar">
-        <input type="text" className="search-query" onChange={this.changeSearchQuery} value={this.props.query}/>
+        <select name='language' onChange={this.setQuery} value={this.props.query}>
+          {this.languageDropDown()}
+        </select>
       </div>
-    );
+      );
   }
 }
 

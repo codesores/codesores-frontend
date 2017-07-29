@@ -4,7 +4,6 @@ import Header from './components/Header'
 import Main from './components/Main'
 import axios from 'axios'
 
-
 const App = () => (
   <div>
     <Header />

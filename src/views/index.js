@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 
 import SearchApp from '../components/search_components/SearchApp.js'
+import SearchResults from '../components/search_components/SearchResults.js'
 
 
 class Index extends React.Component {
@@ -21,7 +22,8 @@ class Index extends React.Component {
   render(){
     return(
       <div>
-      <SearchApp results={this.state.results} updateResults={this.updateResults}/>
+      <SearchApp updateResults={this.updateResults}/>
+      <SearchResults results={this.state.results} />
       </div>
       )
   }
