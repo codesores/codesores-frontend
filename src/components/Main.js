@@ -32,6 +32,13 @@ class Main extends Component {
     this.fetchUserDetails();
   }
 
+  fetchUserDetails() {
+    utils.fetchUserDetails({ token: this.props.token })
+      .then(info => {
+        this.setState({ info })
+      });
+  }
+
   render() {
     const {
       info
@@ -49,13 +56,6 @@ class Main extends Component {
         </div>
       </div>
     );
-  }
-
-  fetchUserDetails() {
-    utils.fetchUserDetails({ token: this.props.token })
-      .then(info => {
-        this.setState({ info })
-      });
   }
 
 }

@@ -12,7 +12,7 @@ const baseApiUrl = 'http://localhost:3000';
 
 export function fetchUserDetails(options) {
   const { token } = options;
-  const url = `${baseApiUrl}/user?token=${token}`;
+  const url = '${baseApiUrl}/user?token=${token}';
 
   return fetch(url, {
     headers: {
