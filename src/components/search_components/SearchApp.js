@@ -8,6 +8,7 @@ class SearchApp extends Component {
   constructor(props){
     super(props)
     this.state = {
+
       query: {
         language: ""
       },
@@ -30,7 +31,14 @@ class SearchApp extends Component {
     })
   }
 
-  callSearch(e){    
+
+  changeSearchQuery(query){
+    this.setState({query: query})
+    this.handleSearch()
+  }
+
+
+  handleSearch(e){
     //calls api to display issues from query
     let searchApp = this;
     let query = querystring.stringify(this.state.query)

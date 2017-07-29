@@ -1,6 +1,4 @@
 import React from 'react'
-import axios from 'axios'
-
 import SearchApp from '../components/search_components/SearchApp.js'
 import SearchResults from '../components/search_components/SearchResults.js'
 
@@ -12,7 +10,7 @@ class Index extends React.Component {
       results: {data: []}
     }
 
-    this.updateResults = this.updateResults.bind(this)    
+    this.updateResults = this.updateResults.bind(this)
   }
 
   updateResults(response){
