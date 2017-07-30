@@ -10,12 +10,11 @@ import { Link, Switch, Route } from 'react-router-dom'
 
 
 
-
 ReactDOM.render((
   <Router>
     <div>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css" />
-        <App exact path='/home' component={App}/>
+        <App exact path='/' component={App}/>
     </div>
   </Router>
 
