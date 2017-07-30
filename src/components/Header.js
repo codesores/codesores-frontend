@@ -33,7 +33,6 @@ class Header extends Component {
         { this.logInOrLogout() }
         </li>
         <li><Link to='/index'>Home</Link></li>
-        <li><Link to='/issues'>Issues</Link></li>
       </ul>
     </nav>
   </header>
