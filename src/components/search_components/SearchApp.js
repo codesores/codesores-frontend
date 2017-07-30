@@ -48,14 +48,14 @@ class SearchApp extends Component {
   //   this.callSearch()
   // }
 
-  
+
 
   setQuery(args){
     console.log(args)
     let language = this.state.query.language
 
     this.setState({query: args}, this.callSearch)
-    
+
   }
 
 

@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import axios from 'axios'
+import { Navbar, Jumbotron, Button, Grid, Row, Col } from 'react-bootstrap';
 
 class SearchResults extends Component {
 
@@ -20,28 +21,39 @@ class SearchResults extends Component {
     })
   }
 
-  iterateResults(){
-    // console.log(this.state.results)
-    return this.state.results.map((element)=>{
-      return (
-        <div>
-          <li> Title: {element.title} </li>
-          <li> Labels: {element.label} </li>
-          <li> Comment Count: {element.comment_count} </li>
-          <li> Url: {element.url} </li><br/>
-        </div> 
-        )
+  returnColumn(element){
+    console.log(element)
+    return(
+      <Col sm={6} md={3}>
+      <li> Title: {element.title} </li>
+      <li> Labels: {element.label} </li>
+      <li> Comment Count: {element.comment_count} </li>
+      <li> Url: {element.url} </li><br/>
+      </Col>
+    )
+  }
+
+  iterateResultsAsRows(){
+    let seesaw = 0
+    let thisFunction = this
+    return this.state.results.map( function(element, idx) {
+      if(idx % 4 === 0 && seesaw === 0){ seesaw = 1; return (this.returnColumn (element))}
+      else if(idx % 4 === 0 && seesaw === 1){ seesaw = 0; return (this.returnColumn(element))}
+      else{ thisFunction.returnColumn(element) }
     })
   }
 
   render() {
-    // console.log(this.state)
     return (
       <div className="SearchResults">
-      <ul> { this.iterateResults() } </ul>
+      <Grid className="show-grid">
+      { this.iterateResultsAsRows() }
+      </Grid>
       </div>
-      );
+
+    );
   }
+
 }
 
 export default SearchResults;
