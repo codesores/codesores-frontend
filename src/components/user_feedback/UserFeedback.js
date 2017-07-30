@@ -1,47 +1,55 @@
 import React, { Component } from 'react';
-import axios from 'axios'
+import axios from 'axios';
+import qs from 'qs';
+
 import Validity from './Validity.js'
 import Difficulty from './Difficulty.js'
 import RequestType from './RequestType.js'
 import Submit from './Submit.js'
 
-class UserFeedback extends Component {
+class UserFeedback extends Component { //missing user id from feedback params !!!
   constructor(){
     super()
     this.state = {
-      validity: 0,
-      difficulty: 0,
-      type: ""
+      feedback: {
+        validity: null,
+        difficulty: null,
+        request_type: "",
+        issue_id: null
+      }
     }
 
-    this.changeValidity     = this.changeValidity.bind(this)
-    this.changeDifficulty   = this.changeDifficulty.bind(this)
-    this.changeType         = this.changeType.bind(this)
-    this.submit             = this.submit.bind(this)
+    this.setFeedback = this.setFeedback.bind(this)
+    this.submit      = this.submit.bind(this)
   }
 
-  changeValidity(vali){
-    this.setState({validity: vali})
+  setId(){
+    var feedback = {...this.state.feedback}
+    feedback['issue_id'] = this.props.issueId;
+    this.setState({feedback})
+    this.state.feedback.issue_id = this.props.issueId
   }
 
-  changeDifficulty(diff){
-    this.setState({difficulty: diff})
-  }
-
-  changeType(type){
-    this.setState({type: type})
+  setFeedback(scope, value){
+    var feedback = {...this.state.feedback}
+    feedback[scope] = value;
+    this.setState({feedback})
   }
 
   submit(){
-    console.log(this.state)
+    this.setId()
+    let query = qs.stringify(this.state)
+    axios.post("http://localhost:3000/user_feedbacks",query).then((response)=>{
+      console.log(response)
+    })
   }
 
   render(){
     return (
       <div>
-      <Validity     validity={this.state.validity}      changeValidity={this.changeValidity}/> 
-      <Difficulty   difficulty={this.state.difficulty}  changeDifficulty={this.changeDifficulty}/> 
-      <RequestType  type={this.state.type}              changeType={this.changeType} />
+      <Validity     validity={this.state.validity}      setFeedback={this.setFeedback}/> 
+      <Difficulty   difficulty={this.state.difficulty}  setFeedback={this.setFeedback}/> 
+      <RequestType  request_type={this.state.type}      setFeedback={this.setFeedback} />
       <Submit       submit={this.submit}/>
       </div>
       )

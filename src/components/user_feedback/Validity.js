@@ -4,17 +4,17 @@ import axios from 'axios'
 class Validity extends Component {
   constructor(){
     super()
-    this.changeValidity = this.changeValidity.bind(this)
+    this.setFeedback = this.setFeedback.bind(this)
   }
 
-  changeValidity(e){
-    this.props.changeValidity(e.target.value)
+  setFeedback(e){
+    this.props.setFeedback('validity', e.target.value)
   }
 
   render(){
     return (
       <span> Validity: 
-      <select name='validity' onChange={this.changeValidity}>
+      <select name='validity' onChange={this.setFeedback}>
       <option value={''}>--</option>
       <option value={1}>1</option>
       <option value={2}>2</option>

@@ -4,7 +4,6 @@ import UserFeedback from '../user_feedback/UserFeedback.js'
 import { Link } from 'react-router-dom'
 
 class SearchResults extends Component {
-
   iterateResults(){
     return this.props.results.map((element)=>{
       return (
@@ -14,7 +13,7 @@ class SearchResults extends Component {
           <li> Comment Count: {element.comment_count} </li>
           <li> Url: {element.url} </li>
          <li> <Link to={'/issues/' + element.id}>See Issue</Link> </li> <br/>
-          <UserFeedback /> <br/><br/>
+          <UserFeedback issueId={element.id}/> <br/><br/>
         </div> 
         )
     })
