@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import UserFeedback from '../user_feedback/UserFeedback.js'
 
 class SearchResults extends Component {
 
@@ -11,6 +12,7 @@ class SearchResults extends Component {
           <li> Labels: {element.label} </li>
           <li> Comment Count: {element.comment_count} </li>
           <li> Url: {element.url} </li><br/>
+          <UserFeedback /> <br/><br/>
         </div> 
         )
     })
