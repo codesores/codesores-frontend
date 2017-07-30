@@ -43,11 +43,6 @@ class issueShow extends React.Component {
     return(
       <div>
 
-      <Header
-          loggedIn={ this.state.token ? true : false }
-          logout={ this.deleteToken }
-        />
-
       <div id='issue_id'>
       <Summary issue={this.state.issue}/>
       </div>

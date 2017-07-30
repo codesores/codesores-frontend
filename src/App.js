@@ -32,6 +32,7 @@ class App extends Component {
     return (
       <div>
         <Notice notice={ this.state.notice } deleteErrorsAfterView={ this.deleteErrorsAfterView }/>
+        <Header />
         <Main />
       </div>
     )

@@ -24,10 +24,6 @@ class Index extends React.Component {
   render(){
     return(
       <div>
-      <Header
-          loggedIn={ this.state.token ? true : false }
-          logout={ this.deleteToken }
-        />
       <SearchApp updateResults={this.updateResults}/>
       <SearchResults results={this.state.results} />
       </div>
