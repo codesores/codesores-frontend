@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import Header from '../../components/Header.js'
 
 // import Comments from '../../components/issue_components/comments.js'
 import Summary from '../../components/issue_components/summary.js'
@@ -10,6 +11,7 @@ import ButtonContribute from '../../components/issue_components/button_contribut
 class issueShow extends React.Component {
 
   constructor(args){
+    console.log('rendered')
     super(args)
     this.state = {
       issue: {},

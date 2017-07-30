@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Summary from '../../components/issue_components/summary.js'
+import Header from '../../components/Header.js'
 
 class IssuesIndex extends React.Component {
 
@@ -32,7 +33,7 @@ class IssuesIndex extends React.Component {
   render(){
     return(
       <div>
-
+  
       <div id='issue_id'>
       <Summary issue={this.state.issue}/>
       </div>
