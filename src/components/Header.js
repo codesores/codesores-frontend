@@ -28,6 +28,7 @@ class Header extends Component {
       </div>
     </div>
     <nav>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css" />
       <ul>
         <li>
         { this.logInOrLogout() }

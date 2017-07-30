@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import ReactBootstrap from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+import { ButtonGroup } from 'react-bootstrap';
+import { DropdownButton } from 'react-bootstrap';
+import { MenuItem } from 'react-bootstrap';
 import Validity from './Validity.js'
 import Difficulty from './Difficulty.js'
 import RequestType from './RequestType.js'
@@ -9,9 +14,9 @@ class UserFeedback extends Component {
   constructor(){
     super()
     this.state = {
-      validity: 0,
-      difficulty: 0,
-      type: ""
+      validity: "-",
+      difficulty: "-",
+      type: "-"
     }
 
     this.changeValidity     = this.changeValidity.bind(this)
@@ -39,10 +44,12 @@ class UserFeedback extends Component {
   render(){
     return (
       <div>
-      <Validity     validity={this.state.validity}      changeValidity={this.changeValidity}/> 
+      
+      <Validity     validity={`Validity: ${this.state.validity}`}      changeValidity={this.changeValidity}/> 
       <Difficulty   difficulty={this.state.difficulty}  changeDifficulty={this.changeDifficulty}/> 
       <RequestType  type={this.state.type}              changeType={this.changeType} />
       <Submit       submit={this.submit}/>
+
       </div>
       )
     
