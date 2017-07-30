@@ -13,6 +13,7 @@ class App extends Component {
     const params = getQueryParams();
     this.state = {
       token: params.token,
+      notice: []
     };
     
     this.deleteToken = this.deleteToken.bind(this)
