@@ -12,7 +12,6 @@ class Errors extends React.Component {
     return this.props.errors.map( function(error, idx){
       return( <div key={idx}> { error } </div> )
     })
-
   }
 
   shouldComponentUpdate(){
@@ -20,16 +19,13 @@ class Errors extends React.Component {
     return true
   }
 
-
   render(){
-
     return(
       <div>
       { this.returnErrors() }
       </div>
     )
   }
-
 }
 
 export default Errors
