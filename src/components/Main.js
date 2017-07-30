@@ -7,7 +7,7 @@ import IssuesIndex from '../views/issues/index.js'
 const Main = () => (
   <main>
     <Switch>
-      <Route exact path='/' component={Index}/>
+      <Route exact path='/home' component={Index}/>
       <Route path="/issues/:id" component={IssuesShow}/>
     </Switch>
   </main>

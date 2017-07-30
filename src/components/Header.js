@@ -4,6 +4,8 @@ import LogoutButton from './LogoutButton'
 import LoginButton from './LoginButton'
 
 
+
+
 class Header extends Component {
   logInOrLogout() {
     if(this.props.loggedIn) {
@@ -17,18 +19,7 @@ class Header extends Component {
   render() {
     return (
   <header>
-    <div className="Login">
-      <div className="Login-header">
-        <h2 className="Login-title">
-          CodeSores
-        </h2>
-        <p className="Login-intro">
-          An app to help you find the right opportunities to contribute to open source projects.
-        </p>
-      </div>
-    </div>
-    <nav>
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css" />
+  <nav>
       <ul>
         <li>
         { this.logInOrLogout() }
