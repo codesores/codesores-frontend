@@ -32,7 +32,7 @@ class Header extends Component {
         <li>
         { this.logInOrLogout() }
         </li>
-        <li><Link to='/index'>Home</Link></li>
+        <li><Link to='/'>Home</Link></li>
       </ul>
     </nav>
   </header>
