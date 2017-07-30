@@ -11,12 +11,11 @@ import { MenuItem } from 'react-bootstrap';
 class Validity extends Component {
   constructor(){
     super()
-    this.changeValidity = this.changeValidity.bind(this)
+    this.setFeedback = this.setFeedback.bind(this)
   }
 
-  changeValidity(e){
-    console.log(e)
-    this.props.changeValidity(e)
+  setFeedback(e){
+    this.props.setFeedback('validity', e.target.value)
   }
 
   // render(){

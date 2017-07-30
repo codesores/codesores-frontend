@@ -4,17 +4,17 @@ import axios from 'axios'
 class Difficulty extends Component {
   constructor(){
     super()
-    this.changeDifficulty = this.changeDifficulty.bind(this)
+    this.setFeedback = this.setFeedback.bind(this)
   }
 
-  changeDifficulty(e){
-    this.props.changeDifficulty(e.target.value)
+  setFeedback(e){
+    this.props.setFeedback('difficulty', e.target.value)
   }
 
   render(){
     return (
       <span> Difficulty:
-      <select name='difficulty' onChange={this.changeDifficulty}>
+      <select name='difficulty' onChange={this.setFeedback}>
       <option value={''}>--</option>
       <option value={1}>1</option>
       <option value={2}>2</option>
