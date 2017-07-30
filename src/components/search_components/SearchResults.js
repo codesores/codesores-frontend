@@ -16,13 +16,11 @@ class SearchResults extends Component {
   stubResults(){
     let SearchResults = this
     axios.get("http://localhost:3000/issues/search").then((response)=>{
-      // console.log(response.data)
       SearchResults.setState({results: response.data})
     })
   }
 
   returnColumn(element){
-    console.log(element)
     return(
       <Col sm={6} md={3}>
       <li> Title: {element.title} </li>
@@ -33,27 +31,37 @@ class SearchResults extends Component {
     )
   }
 
-  iterateResultsAsRows(){
-    let seesaw = 0
-    let thisFunction = this
-    return this.state.results.map( function(element, idx) {
-      if(idx % 4 === 0 && seesaw === 0){ seesaw = 1; return (this.returnColumn (element))}
-      else if(idx % 4 === 0 && seesaw === 1){ seesaw = 0; return (this.returnColumn(element))}
-      else{ thisFunction.returnColumn(element) }
-    })
+  mapResultsToFours() {
+    let results = this.state.results
+    let results_array = [];
+    for(let i = 0; i < results.length; i ++) {
+      if(i % 4 === 0){
+        results_array.push([])
+      }
+      results_array[results_array.length - 1].push(results[i])
+    }
+    return results_array
+  }
+
+  renderRow(row) {
+    return (
+      <Row>
+      {row.map(this.returnColumn)}
+      </Row>
+    )
   }
 
   render() {
     return (
       <div className="SearchResults">
       <Grid className="show-grid">
-      { this.iterateResultsAsRows() }
+      { this.mapResultsToFours().map(this.renderRow.bind(this)) }
+      </Grid>
+      <Grid className="test">
       </Grid>
       </div>
-
     );
   }
-
 }
 
 export default SearchResults;
