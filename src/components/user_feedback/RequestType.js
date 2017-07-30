@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import axios from 'axios'
+import ReactBootstrap from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+import { ButtonGroup } from 'react-bootstrap';
+import { DropdownButton } from 'react-bootstrap';
+import { SplitButton } from 'react-bootstrap';
+import { MenuItem } from 'react-bootstrap';
 
 class RequestType extends Component {
  constructor(){
@@ -8,20 +13,18 @@ class RequestType extends Component {
 }
 
 setFeedback(e){
-  this.props.setFeedback('request_type', e.target.value)
+  this.props.setFeedback('request_type', e)
 }
 
 render(){
   return (
-    <span>Scope: 
-    <select name='Scope' onChange={this.setFeedback}>
-    <option value={''}>----</option>
-    <option value='bug'>Bug</option>
-    <option value='docs'>Docs</option>
-    <option value='other'>Other</option>
-    </select>
-    </span>
-    )
+    <SplitButton title={`Type: ${this.props.type}`} id="bg-vertical-dropdown-3" onSelect={this.setFeedback} >
+   <MenuItem eventKey="bug">Bug</MenuItem>
+   <MenuItem eventKey="docs">Docs</MenuItem>
+   <MenuItem eventKey="other">Other</MenuItem>
+   
+   </SplitButton>
+   )
 }
 }
 
