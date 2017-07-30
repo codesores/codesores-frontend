@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import axios from 'axios'
+import ReactBootstrap from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+import { ButtonGroup } from 'react-bootstrap';
+import { DropdownButton } from 'react-bootstrap';
+import { SplitButton } from 'react-bootstrap';
+import { MenuItem } from 'react-bootstrap';
 
 class Difficulty extends Component {
   constructor(){
@@ -8,21 +13,18 @@ class Difficulty extends Component {
   }
 
   setFeedback(e){
-    this.props.setFeedback('difficulty', e.target.value)
+    this.props.setFeedback('difficulty', e)
   }
 
   render(){
     return (
-      <span> Difficulty:
-      <select name='difficulty' onChange={this.setFeedback}>
-      <option value={''}>--</option>
-      <option value={1}>1</option>
-      <option value={2}>2</option>
-      <option value={3}>3</option>
-      <option value={4}>4</option>
-      <option value={5}>5</option>
-      </select>
-      </span>
+      <SplitButton title={`Difficulty: ${this.props.difficulty}`} id="bg-vertical-dropdown-2" onSelect={this.setFeedback} >
+     <MenuItem eventKey="1">1</MenuItem>
+     <MenuItem eventKey="2">2</MenuItem>
+     <MenuItem eventKey="3">3</MenuItem>
+     <MenuItem eventKey="4">4</MenuItem>
+     <MenuItem eventKey="5">5</MenuItem>
+     </SplitButton>
       )
   }
 }

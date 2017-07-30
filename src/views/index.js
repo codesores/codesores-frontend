@@ -1,6 +1,9 @@
 import React from 'react'
 import SearchApp from '../components/search_components/SearchApp.js'
 import SearchResults from '../components/search_components/SearchResults.js'
+import Header from '../components/Header.js'
+
+import Jumbotron from 'react-bootstrap/lib/Jumbotron';
 
 
 class Index extends React.Component {
@@ -21,6 +24,10 @@ class Index extends React.Component {
   render(){
     return(
       <div>
+      <Header
+          loggedIn={ this.state.token ? true : false }
+          logout={ this.deleteToken }
+        />
       <SearchApp updateResults={this.updateResults}/>
       <SearchResults results={this.state.results} />
       </div>
