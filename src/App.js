@@ -11,11 +11,20 @@ class App extends Component {
 
     const params = getQueryParams();
     this.state = { token: params.token };
+    this.deleteToken = this.deleteToken.bind(this)
   }
+
+  deleteToken() {
+    this.setState({ token: null })
+  }
+
   render() {
     return (
       <div>
-        <Header />
+        <Header 
+          loggedIn={ this.state.token ? true : false }
+          logout={ this.deleteToken }
+        />
         <Main />
       </div>
     )
