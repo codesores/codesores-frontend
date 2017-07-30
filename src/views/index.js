@@ -7,11 +7,12 @@ class Index extends React.Component {
   constructor(args){
     super(args)
     this.state = {
-      results: {data: []}
+      results: []
     }
-
+    
     this.updateResults = this.updateResults.bind(this)
   }
+
 
   updateResults(response){
     this.setState({results: response})
