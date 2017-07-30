@@ -14,8 +14,8 @@ class App extends Component {
     this.state = {
       token: params.token,
       notice: ['Error #1', 'Error #2']
-
     };
+    
     this.deleteToken = this.deleteToken.bind(this)
     this.deleteErrorsAfterView = this.deleteErrorsAfterView.bind(this)
   }
@@ -26,7 +26,6 @@ class App extends Component {
 
   deleteErrorsAfterView(){
     this.setState({notice: []})
-
   }
 
   render() {
