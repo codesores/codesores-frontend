@@ -32,10 +32,6 @@ class App extends Component {
     return (
       <div>
         <Notice notice={ this.state.notice } deleteErrorsAfterView={ this.deleteErrorsAfterView }/>
-        <Header
-          loggedIn={ this.state.token ? true : false }
-          logout={ this.deleteToken }
-        />
         <Main />
       </div>
     )

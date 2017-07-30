@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import LogoutButton from './LogoutButton'
 import LoginButton from './LoginButton'
+import ReactBootstrap from 'react-bootstrap';
+import { PageHeader } from 'react-bootstrap';
 
 
 
@@ -19,6 +21,7 @@ class Header extends Component {
   render() {
     return (
   <header>
+      <PageHeader>CodeSores</PageHeader>
   <nav>
       <ul>
         <li>
