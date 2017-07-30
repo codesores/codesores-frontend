@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Link, Switch, Route } from 'react-router-dom'
 import Index from '../views/index.js'
 import IssuesShow from '../views/issues/show.js'
 import IssuesIndex from '../views/issues/index.js'
