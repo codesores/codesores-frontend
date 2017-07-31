@@ -5,6 +5,7 @@ import Header from './components/Header'
 import Main from './components/Main'
 import Notice from './components/error_handling/Notice'
 import axios from 'axios'
+import qs from 'qs';
 import { getQueryParams } from './utils';
 
 class App extends Component {
@@ -39,18 +40,15 @@ class App extends Component {
   fetchUserDetails() {
     let app = this;
     let userApiUrl = "http://localhost:3000/users?token=" + this.state.token
-    // console.log(userApiUrl)
-    fetch(userApiUrl).then(data => data.json()).then(function(response){
-      // console.log(response)
-      app.setState({info: response})
-    }).catch(error => {
-      // console.error('Could not fetch user details', error);
-    });
 
+    axios.get(userApiUrl).then((response)=>{
+      app.setState({info: response})
+    }).catch((error)=>{
+      app.setNotice(error.toString(), "User must be logged in")
+    })
   }
 
   setNotice(...errors){
-    // console.log(errors)
     this.setState({notice: errors})
   }
 
