@@ -13,7 +13,7 @@ import Difficulty from './Difficulty.js'
 import RequestType from './RequestType.js'
 import Submit from './Submit.js'
 
-class UserFeedback extends Component { 
+class UserFeedback extends Component {
 //missing user id from feedback params !!!
 //showForm is not tied to specific user !!!
   constructor(){
@@ -66,27 +66,27 @@ class UserFeedback extends Component {
     if (this.state.showForm){
       return (
         <ButtonGroup vertical>
-        <Validity     
-        validity={this.state.feedback.validity}      
+        <Validity
+        validity={this.state.feedback.validity}
         setFeedback={this.setFeedback}
 
-        /> 
-
-        <Difficulty   
-        difficulty={this.state.feedback.difficulty}  
-        setFeedback={this.setFeedback}
-        /> 
-        <RequestType  
-        type={this.state.feedback.request_type}               
-        setFeedback={this.setFeedback} 
         />
-        <Submit       
+
+        <Difficulty
+        difficulty={this.state.feedback.difficulty}
+        setFeedback={this.setFeedback}
+        />
+        <RequestType
+        type={this.state.feedback.request_type}
+        setFeedback={this.setFeedback}
+        />
+        <Submit
         submit={this.submit}
         />
         </ButtonGroup>
         )
     } else {
-      return (<div> Thank you! </div>)  
+      return (<div> Thank you! </div>)
 
     }
   }

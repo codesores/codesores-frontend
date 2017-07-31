@@ -8,16 +8,27 @@ class SearchApp extends Component {
   constructor(props){
     super(props)
     this.state = {
-      query: {
+      searchBarCurrentValue: {
         language: ""
       },
-      languages: []
-    }
+      languages: [],
+    },
+
     this.setQuery = this.setQuery.bind(this);
+    this.languageDropDown = this.languageDropDown.bind(this);
   }
 
   componentDidMount(){
     this.callInitialize();
+  }
+
+  languageDropDown(){
+    let languages = this.state.languages
+    return languages.map((language, idx)=>{
+      languages.push({value: language, label: language})
+      console.log(languages)
+      return languages
+    })
   }
 
   callInitialize(){
@@ -26,7 +37,7 @@ class SearchApp extends Component {
     let apiUrl = "http://localhost:3000/issues/start/?token=" + this.props.token
 
     axios.get(apiUrl).then((response)=>{
-      searchApp.setState({languages: response.data})
+      searchApp.setState({languages: this.languageDropDown()})
       searchApp.props.setNotice([])
     }).catch((error)=>{
       searchApp.props.setNotice(error.toString(), "Couldn't recover languages")
@@ -48,7 +59,7 @@ class SearchApp extends Component {
   }
 
   setQuery(args){
-    let language = this.state.query.language
+    let language = this.state.searchBarCurrentValue.language
     this.setState({query: args}, this.callSearch)
   }
 
@@ -56,7 +67,7 @@ class SearchApp extends Component {
   render() {
     return (
       <div className="SearchApp">
-      <SearchBar languages={this.state.languages} setQuery={this.setQuery} value={this.state.query} token={this.props.token} />
+      <SearchBar languages={this.state.languages} setQuery={this.setQuery} searchBarCurrentValue={this.state.searchBarCurrentValue} token={this.props.token}/>
       </div>
       );
   }
