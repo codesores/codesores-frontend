@@ -15,7 +15,7 @@ class App extends Component {
       token: params.token,
       notice: []
     };
-    
+
     this.deleteToken = this.deleteToken.bind(this)
     this.deleteErrorsAfterView = this.deleteErrorsAfterView.bind(this)
   }
