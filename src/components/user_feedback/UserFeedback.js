@@ -28,6 +28,8 @@ class UserFeedback extends Component {
       showForm: true
     }
 
+    // console.log(this.props)
+
     this.setFeedback = this.setFeedback.bind(this)
     this.submit      = this.submit.bind(this)
   }
@@ -53,9 +55,10 @@ class UserFeedback extends Component {
     this.setId()
     this.hideForm()
     let UserFeedback = this
-    let query = qs.stringify(this.state)
-    axios.post("http://localhost:3000/user_feedbacks",query).then((response)=>{
-      console.log(response)
+    let feedback = qs.stringify(this.state)
+    // console.log('feedback:', feedback)
+    let apiUrl = "http://localhost:3000/user_feedbacks/?token=" + this.props.token + "&" + feedback
+    axios.post(apiUrl).then((response)=>{
       UserFeedback.props.setNotice([])
     }).catch((error)=>{
       UserFeedback.props.setNotice(error.toString(), "Couldn't send feedback to server")

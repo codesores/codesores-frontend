@@ -47,7 +47,7 @@ class App extends Component {
   }
 
   setNotice(...errors){
-    console.log(errors)
+    // console.log(errors)
     this.setState({notice: errors})
   }
 
