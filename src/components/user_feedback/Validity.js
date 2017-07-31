@@ -19,13 +19,13 @@ class Validity extends Component {
 
   render(){
     return (
-     <SplitButton title={`Validity: ${this.props.validity}`} id="bg-vertical-dropdown-1" onSelect={this.setFeedback} >
+     <DropdownButton title={`Validity: ${this.props.validity}`} id="bg-vertical-dropdown-1" onSelect={this.setFeedback} >
      <MenuItem eventKey="1">1</MenuItem>
      <MenuItem eventKey="2">2</MenuItem>
      <MenuItem eventKey="3">3</MenuItem>
      <MenuItem eventKey="4">4</MenuItem>
      <MenuItem eventKey="5">5</MenuItem>
-     </SplitButton>
+     </DropdownButton>
 
 
      )
