@@ -18,21 +18,20 @@ class Header extends Component {
   }
 
   render() {
-      console.log(this.props)
     return (
-  <header>
-     <PageHeader>CodeSores</PageHeader>
-    <nav>
-    <a href="https://github.com/login/oauth/authorize?scope=user:email&client_id=8515e9a1dcd00ca18123">Github Login</a>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css" />
-      <ul>
-        <li>
-        { this.logInOrLogout() }
-        </li>
-        <li><Link to='/'>Home</Link></li>
-      </ul>
-    </nav>
-  </header>
+      <header>
+         <PageHeader>CodeSores</PageHeader>
+        <nav>
+        <a href="https://github.com/login/oauth/authorize?scope=user:email&client_id=8515e9a1dcd00ca18123">Github Login</a>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css" />
+          <ul>
+            <li>
+            { this.logInOrLogout() }
+            </li>
+            <li><Link to='/'>Home</Link></li>
+          </ul>
+        </nav>
+      </header>
     )
   }
 }
