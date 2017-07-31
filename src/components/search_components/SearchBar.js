@@ -11,8 +11,8 @@ class SearchBar extends Component {
   }
 
   languageDropDown(){
-    return this.props.languages.map((language)=>{
-      return <option value={language}>{language}</option>
+    return this.props.languages.map((language, idx)=>{
+      return (<option key={idx} value={language}>{language}</option>)
     })
 
 

@@ -21,8 +21,10 @@ class Header extends Component {
   render() {
     return (
   <header>
-      <PageHeader>CodeSores</PageHeader>
-  <nav>
+     <PageHeader>CodeSores</PageHeader>
+    <nav>
+    <a href="https://github.com/login/oauth/authorize?scope=user:email&client_id=8515e9a1dcd00ca18123">Github Login</a>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css" />
       <ul>
         <li>
         { this.logInOrLogout() }
