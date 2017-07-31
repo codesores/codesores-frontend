@@ -1,21 +1,33 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import UserFeedback from '../user_feedback/UserFeedback.js'
-import { Navbar, Jumbotron, Button, Grid, Row, Col  } from 'react-bootstrap';
-import { Link } from 'react-router-dom'
+import { Jumbotron, Grid, Row, Col  } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Card, CardMedia, CardTitle, CardText, CardActions } from 'react-toolbox/lib/card';
+import Button from 'react-toolbox/lib/button/Button';
+
 
 class SearchResults extends Component {
 
   returnColumn(element){
     return(
-      <Col sm={6} md={3}>
-        <ul>
-          <li> Title: {element.title} </li>
-          <li> Labels: {element.label} </li>
-          <li> Comment Count: {element.comment_count} </li>
-          <li> <Link to={'/issues/' + element.id}>See Issue</Link> </li>
-        </ul>
-      </Col>
+
+      <Card style={{width: '350px'}}>
+    <CardTitle
+      title={element.title}
+      subtitle={element.author}
+      subtitle={element.label}
+    />
+    <CardText>
+    <ul>
+      <li>Labels: {element.label} </li>
+      <li>Comment Count: {element.comment_count} </li>
+      </ul>
+    </CardText>
+    <CardActions>
+      <Link to={'/issues/' + element.id}> See issue</Link>
+    </CardActions>
+  </Card>
     )
   }
 
