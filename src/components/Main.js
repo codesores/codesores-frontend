@@ -12,7 +12,7 @@ class Main extends Component {
     <main>
         <Switch>
           <Route exact path='/' render={routeProps => <Index setNotice={this.props.setNotice}/>} />
-          <Route path="/issues/:id" component={IssuesShow}/>
+          <Route path="/issues/:id" render={routeProps => <IssuesShow router={routeProps} setNotice={this.props.setNotice}/>} />         
         </Switch>
     </main>
       )
@@ -22,6 +22,3 @@ class Main extends Component {
 export default Main
 
 
-
-
-// <Route path="/issues/:id" render={routeProps => <IssuesShow setNotice={this.props.setNotice}/>} />
