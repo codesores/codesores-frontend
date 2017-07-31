@@ -8,7 +8,7 @@ const UserLoggedIn = () => (
       <li>
         <p>Hello, { this.props.username }</p><br/>
         <span className="italics"> Not { this.props.username }?</span>
-        <LogoutButton />
+        <LogoutButton logout={this.props.logout} />
       </li>
     </ul>
   </div>
