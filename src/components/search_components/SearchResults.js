@@ -16,7 +16,6 @@ class SearchResults extends Component {
           <li> <Link to={element.url}>Repository</Link> </li><br/>
           <li> <Link to={'/issues/' + element.id}>See Issue</Link> </li>
         </ul>
-        <UserFeedback issueId={element.id}/> <br/><br/>
       </Col>
     )
   }

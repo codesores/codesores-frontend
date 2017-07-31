@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import { Button } from 'react-bootstrap';
 
 class Submit extends Component {
 
   render(){
     return (
-      <span>
-      <input type="submit" value="Rate" onClick={this.props.submit}/>
-      </span>
+      <Button onClick={this.props.submit}> Rate </Button>
       )
   }
 }

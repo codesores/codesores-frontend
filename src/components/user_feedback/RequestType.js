@@ -18,12 +18,11 @@ setFeedback(e){
 
 render(){
   return (
-    <SplitButton title={`Type: ${this.props.type}`} id="bg-vertical-dropdown-3" onSelect={this.setFeedback} >
+    <DropdownButton title={`Type: ${this.props.type}`} id="bg-vertical-dropdown-3" onSelect={this.setFeedback} >
    <MenuItem eventKey="bug">Bug</MenuItem>
    <MenuItem eventKey="docs">Docs</MenuItem>
    <MenuItem eventKey="other">Other</MenuItem>
-   
-   </SplitButton>
+   </DropdownButton>
    )
 }
 }

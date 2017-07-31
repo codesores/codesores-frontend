@@ -61,25 +61,25 @@ class UserFeedback extends Component {
   render(){
     if (this.state.showForm){
       return (
-        <div>
+        <ButtonGroup vertical>
         <Validity     
         validity={this.state.feedback.validity}      
         setFeedback={this.setFeedback}
 
-        /> <br/>
+        /> 
 
         <Difficulty   
         difficulty={this.state.feedback.difficulty}  
         setFeedback={this.setFeedback}
-        /> <br/>
+        /> 
         <RequestType  
         type={this.state.feedback.request_type}               
         setFeedback={this.setFeedback} 
-        /><br/>
+        />
         <Submit       
         submit={this.submit}
         />
-        </div>
+        </ButtonGroup>
         )
     } else {
       return (<div> Thank you! </div>)  
