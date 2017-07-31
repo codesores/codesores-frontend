@@ -11,17 +11,19 @@ class App extends Component {
     super();
 
     const params = getQueryParams();
+
     this.state = {
       token: params.token,
       notice: []
     };
-    
+
     this.deleteToken = this.deleteToken.bind(this)
     this.deleteErrorsAfterView = this.deleteErrorsAfterView.bind(this)
   }
 
   deleteToken() {
-    this.setState({ token: null })
+    this.setState({ token: null });
+    window.location.href = window.location.href.replace(/\?.*$/, '');
   }
 
   deleteErrorsAfterView(){
@@ -32,7 +34,7 @@ class App extends Component {
     return (
       <div>
         <Notice notice={ this.state.notice } deleteErrorsAfterView={ this.deleteErrorsAfterView }/>
-        <Header />
+        <Header loggedIn={this.state.token} logout={this.deleteToken}/>
         <Main />
       </div>
     )
