@@ -8,6 +8,8 @@ import Summary from '../../components/issue_components/summary.js'
 import Feedback from '../../components/issue_components/feedback.js'
 import ButtonContribute from '../../components/issue_components/button_contribute.js'
 
+import UserFeedback from '../../components/user_feedback/UserFeedback.js'
+
 class issueShow extends React.Component {
 
   constructor(args){
@@ -48,7 +50,7 @@ class issueShow extends React.Component {
       </div>
 
       <div id='feedback'>
-      <Feedback/>
+      <UserFeedback issueId={this.props.match.params.id}/>
       </div>
 
       <div id='contribute'>
