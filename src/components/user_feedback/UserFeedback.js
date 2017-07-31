@@ -65,7 +65,9 @@ class UserFeedback extends Component {
         <Validity     
         validity={this.state.feedback.validity}      
         setFeedback={this.setFeedback}
-        /><br/> 
+
+        /> <br/>
+
         <Difficulty   
         difficulty={this.state.feedback.difficulty}  
         setFeedback={this.setFeedback}
