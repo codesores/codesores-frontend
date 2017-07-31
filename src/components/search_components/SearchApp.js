@@ -27,6 +27,7 @@ class SearchApp extends Component {
 
     axios.get(apiUrl).then((response)=>{
       searchApp.setState({languages: response.data})
+      searchApp.props.setNotice([])
     }).catch((error)=>{
       searchApp.props.setNotice(error.toString(), "Couldn't recover languages")
     })
@@ -40,6 +41,7 @@ class SearchApp extends Component {
 
     axios.post(apiUrl).then((response)=>{
       searchApp.props.updateResults(response.data)
+      searchApp.props.setNotice([])
     }).catch((error)=>{
       searchApp.props.setNotice(error.toString(), "Couldn't recover issues")
     })
