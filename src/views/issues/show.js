@@ -22,7 +22,7 @@ class issueShow extends React.Component {
 
     //Make API call
     const thisComponent = this
-    let apiUrl = "http://localhost:3000/issues/:" + this.props.match.params.id + "/?token=" + this.props.token
+    let apiUrl = "http://localhost:3000/issues/" + this.props.router.match.params.id + "/?token=" + this.props.token
 
     axios.get(apiUrl).then(function (response) {
       thisComponent.parseJSONAndSetState(response);
@@ -41,7 +41,7 @@ class issueShow extends React.Component {
   }
 
   render(){
-    console.log(this.props.setNotice)
+
     return(
       <div>
         <Grid>
@@ -54,7 +54,7 @@ class issueShow extends React.Component {
             <Col xs={6} md={4}>
               <div id='feedback'>
                 <a href={this.state.issue.url}>Go to Repository</a><br/><br/>
-                <UserFeedback issueId={this.props.match.params.id}/>
+                <UserFeedback issueId={this.props.router.match.params.id}/>
               </div>
             </Col>
           </Row>
