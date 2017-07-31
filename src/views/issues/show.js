@@ -16,8 +16,7 @@ class issueShow extends React.Component {
   constructor(args){
     super(args)
     this.state = {
-      issue: {},
-      feedback: []
+      issue: {}
     };
 
     //Make API call
@@ -43,8 +42,27 @@ class issueShow extends React.Component {
     })
   }
 
-  render(){
+  feedbackConditional(){
+    const issueShow = this
 
+    if (this.state.issue.user_feedbacks && issueShow.props.info){
+      let display = true
+
+      this.state.issue.user_feedbacks.forEach((feedback)=>{
+        if (feedback.user_id === issueShow.props.info.id){
+          display = false 
+        }
+      })
+
+      if (display){
+        return (<UserFeedback issueId={this.props.router.match.params.id} setNotice={this.props.setNotice} token={this.props.token} />)
+      }
+
+      }
+    }
+
+
+  render(){
     return(
       <div>
         <Grid>
@@ -57,7 +75,7 @@ class issueShow extends React.Component {
             <Col xs={6} md={4}>
               <div id='feedback'>
                 <a href={this.state.issue.url}>Go to Repository</a><br/><br/>
-                <UserFeedback issueId={this.props.router.match.params.id} setNotice={this.props.setNotice} token={this.props.token} />
+                {this.feedbackConditional()}
               </div>
             </Col>
           </Row>
