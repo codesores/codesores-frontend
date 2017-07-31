@@ -11,23 +11,14 @@ class SearchResults extends Component {
 
   returnColumn(element){
     return(
-
-      <Card style={{width: '350px'}}>
-    <CardTitle
-      title={element.title}
-      subtitle={element.author}
-      subtitle={element.label}
-    />
-    <CardText>
-    <ul>
-      <li>Labels: {element.label} </li>
-      <li>Comment Count: {element.comment_count} </li>
-      </ul>
-    </CardText>
-    <CardActions>
-      <Link to={'/issues/' + element.id}> See issue</Link>
-    </CardActions>
-  </Card>
+      <Col className='column' sm={6} md={3}>
+        <ul>
+          <li> Title: {element.title} </li>
+          <li> Labels: {element.label} </li>
+          <li> Comment Count: {element.comment_count} </li>
+          <li> <Link to={'/issues/' + element.id}>See Issue</Link> </li>
+        </ul>
+      </Col>
     )
   }
 
