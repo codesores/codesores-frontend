@@ -42,7 +42,10 @@ class App extends Component {
     let userApiUrl = "http://localhost:3000/users?token=" + this.state.token
 
     axios.get(userApiUrl).then((response)=>{
-      app.setState({info: response})
+      console.log(response)
+      app.setState({info: response.data}, ()=>{
+        console.log(app.state.info)
+      })
     }).catch((error)=>{
       app.setNotice(error.toString(), "User must be logged in")
     })
