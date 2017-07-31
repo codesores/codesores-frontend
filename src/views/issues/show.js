@@ -22,8 +22,9 @@ class issueShow extends React.Component {
 
     //Make API call
     const thisComponent = this
-    
-    axios.get(`http://localhost:3000/issues/${this.props.match.params.id}`).then(function (response) {
+    let apiUrl = "http://localhost:3000/issues/:" + this.props.match.params.id + "/?token=" + this.props.token
+
+    axios.get(apiUrl).then(function (response) {
       thisComponent.parseJSONAndSetState(response);
     }
     );

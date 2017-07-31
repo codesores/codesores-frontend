@@ -11,8 +11,8 @@ class Main extends Component {
     return (
     <main>
         <Switch>
-          <Route exact path='/' render={routeProps => <Index setNotice={this.props.setNotice}/>} />
-          <Route path="/issues/:id" component={IssuesShow}/>
+          <Route exact path='/' render={routeProps => <Index setNotice={this.props.setNotice} token={this.props.token} />} />
+          <Route path="/issues/:id" component={IssuesShow} token={this.props.token} />
         </Switch>
     </main>
       )
