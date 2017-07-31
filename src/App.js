@@ -26,7 +26,6 @@ class App extends Component {
   }
 
   setNotice(...errors){
-    console.log(errors)
     this.setState({notice: errors})
   }
 
@@ -42,12 +41,12 @@ class App extends Component {
   fetchUserDetails() {
     let app = this;
     let userApiUrl = "http://localhost:3000/users?token=" + this.state.token
-    console.log(userApiUrl)
+    // console.log(userApiUrl)
     fetch(userApiUrl).then(data => data.json()).then(function(response){
-      console.log(response)
+      // console.log(response)
       app.setState({info: response})
     }).catch(error => {
-      console.error('Could not fetch user details', error);
+      // console.error('Could not fetch user details', error);
     });
   }
 
