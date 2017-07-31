@@ -55,8 +55,8 @@ class App extends Component {
     const info = this.state.info;
     return (
       <div>
-        <Notice notice={ this.state.notice } deleteErrorsAfterView={ this.deleteErrorsAfterView }/>
         <Header loggedIn={this.state.token} logout={this.deleteToken}  userInfo={this.fetchUserDetails} info={info} />
+        <Notice notice={ this.state.notice } deleteErrorsAfterView={ this.deleteErrorsAfterView }/>
         <Main setNotice={ this.setNotice }/>
       </div>
     )

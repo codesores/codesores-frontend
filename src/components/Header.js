@@ -18,18 +18,15 @@ class Header extends Component {
 
   render() {
     return (
-  <header>
-     <PageHeader>CodeSores</PageHeader>
-    <nav>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css" />
-      <ul>
-        <li>
-        { this.logInOrLogout() }
-        </li>
-        <li><Link to='/'>Home</Link></li>
-      </ul>
-    </nav>
-  </header>
+      <div className='nav'>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css" />
+      <div id='logo'><Link to="/">CodeSores</Link></div>
+      <div id='main-menu'>
+        <ul>
+          <li>{ this.logInOrLogout() }</li>
+        </ul>
+      </div>
+      </div>
     )
   }
 }
