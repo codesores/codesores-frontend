@@ -17,7 +17,11 @@ class Main extends Component {
     </main>
       )
   }
-
 }
 
 export default Main
+
+
+
+
+// <Route path="/issues/:id" render={routeProps => <IssuesShow setNotice={this.props.setNotice}/>} />

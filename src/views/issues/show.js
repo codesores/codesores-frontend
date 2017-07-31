@@ -40,6 +40,7 @@ class issueShow extends React.Component {
   }
 
   render(){
+    console.log(this.props.setNotice)
     return(
       <div>
         <Grid>
