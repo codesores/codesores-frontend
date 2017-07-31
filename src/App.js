@@ -22,7 +22,12 @@ class App extends Component {
 
     this.deleteToken = this.deleteToken.bind(this)
     this.deleteErrorsAfterView = this.deleteErrorsAfterView.bind(this)
+    this.setNotice = this.setNotice.bind(this)
+  }
 
+  setNotice(...errors){
+    console.log(errors)
+    this.setState({notice: errors})
   }
 
   deleteToken() {
@@ -52,7 +57,7 @@ class App extends Component {
       <div>
         <Notice notice={ this.state.notice } deleteErrorsAfterView={ this.deleteErrorsAfterView }/>
         <Header loggedIn={this.state.token} logout={this.deleteToken}  userInfo={this.fetchUserDetails} info={info} />
-        <Main />
+        <Main setNotice={ this.setNotice }/>
       </div>
     )
   }
