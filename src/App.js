@@ -14,11 +14,15 @@ class App extends Component {
 
     this.state = {
       token: params.token,
-      notice: []
+      notice: [],
+      info: ""
     };
+
+    this.fetchUserDetails();
 
     this.deleteToken = this.deleteToken.bind(this)
     this.deleteErrorsAfterView = this.deleteErrorsAfterView.bind(this)
+
   }
 
   deleteToken() {
@@ -30,11 +34,24 @@ class App extends Component {
     this.setState({notice: []})
   }
 
+  fetchUserDetails() {
+    let app = this;
+    let userApiUrl = "http://localhost:3000/users?token=" + this.state.token
+    console.log(userApiUrl)
+    fetch(userApiUrl).then(data => data.json()).then(function(response){
+      console.log(response)
+      app.setState({info: response})
+    }).catch(error => {
+      console.error('Could not fetch user details', error);
+    });
+  }
+
   render() {
+    const info = this.state.info;
     return (
       <div>
         <Notice notice={ this.state.notice } deleteErrorsAfterView={ this.deleteErrorsAfterView }/>
-        <Header loggedIn={this.state.token} logout={this.deleteToken}/>
+        <Header loggedIn={this.state.token} logout={this.deleteToken}  userInfo={this.fetchUserDetails} info={info} />
         <Main />
       </div>
     )

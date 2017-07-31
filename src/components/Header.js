@@ -9,8 +9,7 @@ import { PageHeader } from 'react-bootstrap';
 class Header extends Component {
   logInOrLogout() {
     if(this.props.loggedIn) {
-      console.log('logged in!')
-      return <LogoutButton logout={this.props.logout} />
+      return <LogoutButton logout={this.props.logout} info={this.props.info} />
     }
     else {
       return <LoginButton />
@@ -18,7 +17,6 @@ class Header extends Component {
   }
 
   render() {
-      console.log(this.props)
     return (
   <header>
      <PageHeader>CodeSores</PageHeader>
