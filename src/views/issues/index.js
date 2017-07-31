@@ -13,8 +13,9 @@ class IssuesIndex extends React.Component {
     };
 
     //Make API call
+    let apiUrl = "http://localhost:3000/issues/?token=" + this.props.token
     const thisComponent = this
-    axios.get(`http://localhost:3000/issues/`).then(function (response) {
+    axios.get(apiUrl).then(function (response) {
       thisComponent.parseJSONAndSetState(response);
       }
     );
@@ -33,7 +34,7 @@ class IssuesIndex extends React.Component {
   render(){
     return(
       <div>
-  
+
       <div id='issue_id'>
       <Summary issue={this.state.issue}/>
       </div>

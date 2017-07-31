@@ -9,16 +9,14 @@ class Main extends Component {
 
   render(){
     return (
-    <main>
-        <Switch>
-          <Route exact path='/' render={routeProps => <Index setNotice={this.props.setNotice}/>} />
-          <Route path="/issues/:id" render={routeProps => <IssuesShow router={routeProps} setNotice={this.props.setNotice}/>} />         
-        </Switch>
-    </main>
-      )
+      <main>
+      <Switch>
+        <Route exact path='/' render={routeProps => <Index setNotice={this.props.setNotice} token={this.props.token} />} />
+        <Route path="/issues/:id" render={routeProps => <IssuesShow router={routeProps} setNotice={this.props.setNotice} token={this.props.token} />} />
+      </Switch>
+      </main>
+    )
   }
 }
 
 export default Main
-
-

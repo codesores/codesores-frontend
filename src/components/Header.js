@@ -8,7 +8,7 @@ import { PageHeader } from 'react-bootstrap';
 
 class Header extends Component {
   logInOrLogout() {
-    if(this.props.loggedIn) {
+    if(this.props.token) {
       return <LogoutButton logout={this.props.logout} info={this.props.info} />
     }
     else {

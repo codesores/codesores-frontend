@@ -25,10 +25,6 @@ class App extends Component {
     this.setNotice = this.setNotice.bind(this)
   }
 
-  setNotice(...errors){
-    this.setState({notice: errors})
-  }
-
   deleteToken() {
     this.setState({ token: null });
     window.location.href = window.location.href.replace(/\?.*$/, '');
@@ -50,13 +46,18 @@ class App extends Component {
     });
   }
 
+  setNotice(...errors){
+    console.log(errors)
+    this.setState({notice: errors})
+  }
+
   render() {
     const info = this.state.info;
     return (
       <div>
         <Notice notice={ this.state.notice } deleteErrorsAfterView={ this.deleteErrorsAfterView }/>
-        <Header loggedIn={this.state.token} logout={this.deleteToken}  userInfo={this.fetchUserDetails} info={info} />
-        <Main setNotice={ this.setNotice }/>
+        <Header token={this.state.token} logout={this.deleteToken}  userInfo={this.fetchUserDetails} info={info} />
+        <Main setNotice={this.setNotice} token={this.state.token} info={info}/>
       </div>
     )
   }

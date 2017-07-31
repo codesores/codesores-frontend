@@ -24,8 +24,8 @@ class Index extends React.Component {
 
     return(
       <div>
-      <SearchApp updateResults={this.updateResults} setNotice={this.props.setNotice}/>
-      <SearchResults results={this.state.results} />
+      <SearchApp updateResults={this.updateResults} setNotice={this.props.setNotice} token={this.props.token} />
+      <SearchResults results={this.state.results} token={this.props.token} />
       </div>
       )
   }
