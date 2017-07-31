@@ -40,27 +40,6 @@ class SearchResults extends Component {
     )
   }
 
-
-  mapResultsToFours() {
-    let results = this.props.results
-    let results_array = [];
-    for(let i = 0; i < results.length; i ++) {
-      if(i % 4 === 0){
-        results_array.push([])
-      }
-      results_array[results_array.length - 1].push(results[i])
-    }
-    return results_array
-  }
-
-  renderRow(row) {
-    return (
-      <Row>
-      {row.map(this.returnColumn)}
-      </Row>
-    )
-  }
-
   render() {
     return (
       <div className="SearchResults">
