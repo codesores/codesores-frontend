@@ -2,34 +2,46 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import LogoutButton from './LogoutButton'
 import LoginButton from './LoginButton'
-import ReactBootstrap from 'react-bootstrap';
-import { PageHeader } from 'react-bootstrap';
-
+// import ReactBootstrap from 'react-bootstrap';
+// import { PageHeader } from 'react-bootstrap';
+import AppBar from 'react-toolbox/lib/app_bar/AppBar';
+import Navigation from 'react-toolbox/lib/navigation/Navigation';
+import Avatar from 'react-toolbox/lib/avatar/Avatar';
+import './Header.css';
 
 class Header extends Component {
   logInOrLogout() {
     if(this.props.token) {
-      return <LogoutButton logout={this.props.logout} info={this.props.info} />
-    }
-    else {
-      return <LoginButton />
+      const info = this.props.info;
+      return (
+        <Navigation type='horizontal'>
+            <span>
+              <Avatar className='Header-userAvatar'
+                image={info.avatar_url}
+              />
+              <span className='Header-userName'>
+                <a className='Header-link' href={info.html_url}>{info.name}</a>
+              </span>
+            </span>
+          <LogoutButton logout={this.props.logout} info={this.props.info} />
+          <Link to='/' className='Header-link'>Home</Link>
+        </Navigation>
+      )
+    } else {
+      return (
+        <Navigation type='horizontal'>
+            <LoginButton />
+        </Navigation>
+      )
     }
   }
 
   render() {
+    const info = this.props.info;
     return (
-  <header>
-     <PageHeader>CodeSores</PageHeader>
-    <nav>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css" />
-      <ul>
-        <li>
-        { this.logInOrLogout() }
-        </li>
-        <li><Link to='/'>Home</Link></li>
-      </ul>
-    </nav>
-  </header>
+      <AppBar title='CodeSores'>
+          { this.logInOrLogout() }
+      </AppBar>
     )
   }
 }

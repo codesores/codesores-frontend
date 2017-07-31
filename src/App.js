@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { Link, Switch, Route, Redirect } from 'react-router-dom'
 import './App.css'
 import Header from './components/Header'
 import Main from './components/Main'
@@ -18,6 +19,7 @@ class App extends Component {
       notice: [],
       info: ""
     };
+
 
     this.fetchUserDetails();
 
@@ -44,10 +46,6 @@ class App extends Component {
     }).catch((error)=>{
       app.setNotice(error.toString(), "User must be logged in")
     })
-
-
-
-
   }
 
   setNotice(...errors){
@@ -58,9 +56,9 @@ class App extends Component {
     const info = this.state.info;
     return (
       <div>
-        <Notice notice={ this.state.notice } deleteErrorsAfterView={ this.deleteErrorsAfterView }/>
         <Header token={this.state.token} logout={this.deleteToken}  userInfo={this.fetchUserDetails} info={info} />
         <Main setNotice={this.setNotice} token={this.state.token} info={info}/>
+        <Notice notice={ this.state.notice } deleteErrorsAfterView={ this.deleteErrorsAfterView }/>
       </div>
     )
   }
