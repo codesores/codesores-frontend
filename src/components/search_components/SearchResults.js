@@ -8,7 +8,7 @@ class SearchResults extends Component {
 
   returnColumn(element){
     return(
-      <Col sm={6} md={3}>
+      <Col className='column' sm={6} md={3}>
         <ul>
           <li> Title: {element.title} </li>
           <li> Labels: {element.label} </li>
