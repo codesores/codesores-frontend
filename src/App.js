@@ -18,6 +18,7 @@ class App extends Component {
       info: ""
     };
 
+
     this.fetchUserDetails();
 
     this.deleteToken = this.deleteToken.bind(this)
@@ -55,9 +56,9 @@ class App extends Component {
     const info = this.state.info;
     return (
       <div>
-        <Notice notice={ this.state.notice } deleteErrorsAfterView={ this.deleteErrorsAfterView }/>
         <Header token={this.state.token} logout={this.deleteToken}  userInfo={this.fetchUserDetails} info={info} />
         <Main setNotice={this.setNotice} token={this.state.token} info={info}/>
+        <Notice notice={ this.state.notice } deleteErrorsAfterView={ this.deleteErrorsAfterView }/>
       </div>
     )
   }
