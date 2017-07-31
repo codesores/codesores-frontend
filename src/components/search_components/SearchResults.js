@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Navbar, Jumbotron, Button, Grid, Row, Col } from 'react-bootstrap';
 import UserFeedback from '../user_feedback/UserFeedback.js'
 import { Navbar, Jumbotron, Button, Grid, Row, Col  } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
@@ -50,13 +49,13 @@ class SearchResults extends Component {
       <li> Url: {element.url} </li><br/>
       <li> <Link to={'/issues/' + element.id}>See Issue</Link> </li> <br/>
        <UserFeedback issueId={element.id}/> <br/><br/>
-      
+
       </Col>
     )
   }
 
   mapResultsToFours() {
-    let results = this.state.results
+    let results = this.props.results
     let results_array = [];
     for(let i = 0; i < results.length; i ++) {
       if(i % 4 === 0){
