@@ -40,19 +40,6 @@ class SearchResults extends Component {
     )
   }
 
-  returnColumn(element){
-    return(
-      <Col sm={6} md={3}>
-      <li> Title: {element.title} </li>
-      <li> Labels: {element.label} </li>
-      <li> Comment Count: {element.comment_count} </li>
-      <li> Url: {element.url} </li><br/>
-      <li> <Link to={'/issues/' + element.id}>See Issue</Link> </li> <br/>
-       <UserFeedback issueId={element.id}/> <br/><br/>
-
-      </Col>
-    )
-  }
 
   mapResultsToFours() {
     let results = this.props.results
@@ -77,7 +64,7 @@ class SearchResults extends Component {
   render() {
     return (
       <div className="SearchResults">
-      <Grid className="show-grid">=
+      <Grid className="show-grid">
         { this.mapResultsToFours().map(this.renderRow.bind(this)) }
       </Grid>
       </div>
