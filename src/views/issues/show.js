@@ -22,11 +22,15 @@ class issueShow extends React.Component {
 
     //Make API call
     const thisComponent = this
-    
-    axios.get(`http://localhost:3000/issues/${this.props.router.  match.params.id}`).then(function (response) {
+    let apiUrl = "http://localhost:3000/issues/" + this.props.router.match.params.id + "/?token=" + this.props.token
+
+    axios.get(apiUrl).then(function (response) {
       thisComponent.parseJSONAndSetState(response);
+      thisComponent.props.setNotice([])
     }
-    );
+    ).catch((error)=>{
+      thisComponent.props.setNotice(error.toString(), `Couldn't find the issue with id: ${this.props.router.  match.params.id} `)
+    })
 
     //Bind components to this
     this.parseJSONAndSetState = this.parseJSONAndSetState.bind(this)
@@ -40,7 +44,7 @@ class issueShow extends React.Component {
   }
 
   render(){
-    
+
     return(
       <div>
         <Grid>
@@ -53,7 +57,7 @@ class issueShow extends React.Component {
             <Col xs={6} md={4}>
               <div id='feedback'>
                 <a href={this.state.issue.url}>Go to Repository</a><br/><br/>
-                <UserFeedback issueId={this.props.router.match.params.id}/>
+                <UserFeedback issueId={this.props.router.match.params.id} setNotice={this.props.setNotice}/>
               </div>
             </Col>
           </Row>

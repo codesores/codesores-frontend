@@ -23,9 +23,11 @@ class SearchApp extends Component {
   callInitialize(){
     //calls api to recover languages
     let searchApp = this;
+    let apiUrl = "http://localhost:3000/issues/start/?token=" + this.props.token
 
-    axios.get("http://localhost:3000/issues/start").then((response)=>{
+    axios.get(apiUrl).then((response)=>{
       searchApp.setState({languages: response.data})
+      searchApp.props.setNotice([])
     }).catch((error)=>{
       searchApp.props.setNotice(error.toString(), "Couldn't recover languages")
     })
@@ -35,9 +37,11 @@ class SearchApp extends Component {
     //calls api to display issues from query
     let searchApp = this;
     let query = querystring.stringify(this.state.query)
+    let apiUrl = "http://localhost:3000/issues/search/?token=" + this.props.token + "&" + query
 
-    axios.post(`http://localhost:3000/issues/search`, query).then((response)=>{
+    axios.post(apiUrl).then((response)=>{
       searchApp.props.updateResults(response.data)
+      searchApp.props.setNotice([])
     }).catch((error)=>{
       searchApp.props.setNotice(error.toString(), "Couldn't recover issues")
     })
@@ -52,7 +56,7 @@ class SearchApp extends Component {
   render() {
     return (
       <div className="SearchApp">
-      <SearchBar languages={this.state.languages} setQuery={this.setQuery} value={this.state.query}  />
+      <SearchBar languages={this.state.languages} setQuery={this.setQuery} value={this.state.query} token={this.props.token} />
       </div>
       );
   }

@@ -20,9 +20,9 @@ class UserFeedback extends Component {
     super()
     this.state = {
       feedback: {
-        validity: '-',
-        difficulty: '-',
-        request_type: "-",
+        validity: '',
+        difficulty: '',
+        request_type: "",
         issue_id: null
       },
       showForm: true
@@ -52,9 +52,13 @@ class UserFeedback extends Component {
   submit(){
     this.setId()
     this.hideForm()
+    let UserFeedback = this
     let query = qs.stringify(this.state)
     axios.post("http://localhost:3000/user_feedbacks",query).then((response)=>{
       console.log(response)
+      UserFeedback.props.setNotice([])
+    }).catch((error)=>{
+      UserFeedback.props.setNotice(error.toString(), "Couldn't send feedback to server")
     })
   }
 
