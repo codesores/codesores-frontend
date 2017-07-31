@@ -24,6 +24,7 @@ class Header extends Component {
               </span>
             </span>
           <LogoutButton logout={this.props.logout} info={this.props.info} />
+          <Link to='/' className='Header-link'>Home</Link>
         </Navigation>
       )
     } else {
