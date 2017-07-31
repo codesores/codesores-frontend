@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import LogoutButton from './LogoutButton.js'
 
 const UserLoggedIn = () => (
   <div className="user-details-header">
     <ul>
       <li>
-        Hello, { this.props.username }<br>
-        <span class="italics">Not { this.props.usernam }?</span>
-        /*{ <LogoutButton /> }*/
+        <p>Hello, { this.props.username }</p><br/>
+        <span className="italics"> Not { this.props.username }?</span>
+        <LogoutButton logout={this.props.logout} />
       </li>
     </ul>
   </div>

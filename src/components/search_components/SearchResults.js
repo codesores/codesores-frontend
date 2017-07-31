@@ -13,7 +13,6 @@ class SearchResults extends Component {
           <li> Title: {element.title} </li>
           <li> Labels: {element.label} </li>
           <li> Comment Count: {element.comment_count} </li>
-          <li> <Link to={element.url}>Repository</Link> </li><br/>
           <li> <Link to={'/issues/' + element.id}>See Issue</Link> </li>
         </ul>
       </Col>

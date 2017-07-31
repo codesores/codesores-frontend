@@ -7,13 +7,13 @@ import Summary from '../../components/issue_components/summary.js'
 // import Meta from '../../components/issue_components/meta.js'
 import Feedback from '../../components/issue_components/feedback.js'
 import ButtonContribute from '../../components/issue_components/button_contribute.js'
+import {Grid, Row, Col} from 'react-bootstrap'
 
 import UserFeedback from '../../components/user_feedback/UserFeedback.js'
 
 class issueShow extends React.Component {
 
   constructor(args){
-    console.log('rendered')
     super(args)
     this.state = {
       issue: {},
@@ -22,12 +22,10 @@ class issueShow extends React.Component {
 
     //Make API call
     const thisComponent = this
-
-    console.log('this.props.match.params.id')
-    console.log(this.props.match.params.id)
-    axios.get(`http://localhost:3000/issues/${this.props.match.params.id}`).then(function (response) {
+    
+    axios.get(`http://localhost:3000/issues/${this.props.router.  match.params.id}`).then(function (response) {
       thisComponent.parseJSONAndSetState(response);
-      }
+    }
     );
 
     //Bind components to this
@@ -42,23 +40,26 @@ class issueShow extends React.Component {
   }
 
   render(){
+    
     return(
       <div>
-
-      <div id='issue_id'>
-      <Summary issue={this.state.issue}/>
+        <Grid>
+          <Row className="show-grid">
+            <Col xs={12} md={8}>
+              <div id='issue_id'>
+                <Summary issue={this.state.issue}/>
+              </div>
+            </Col>
+            <Col xs={6} md={4}>
+              <div id='feedback'>
+                <a href={this.state.issue.url}>Go to Repository</a><br/><br/>
+                <UserFeedback issueId={this.props.router.match.params.id}/>
+              </div>
+            </Col>
+          </Row>
+        </Grid>
       </div>
-
-      <div id='feedback'>
-      <UserFeedback issueId={this.props.match.params.id}/>
-      </div>
-
-      <div id='contribute'>
-      <ButtonContribute />
-      </div>
-
-      </div>
-    )
+      )
   }
 }
 

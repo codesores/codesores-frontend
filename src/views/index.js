@@ -12,7 +12,6 @@ class Index extends React.Component {
     this.state = {
       results: []
     }
-    
     this.updateResults = this.updateResults.bind(this)
   }
 
@@ -22,9 +21,10 @@ class Index extends React.Component {
   }
 
   render(){
+
     return(
       <div>
-      <SearchApp updateResults={this.updateResults}/>
+      <SearchApp updateResults={this.updateResults} setNotice={this.props.setNotice}/>
       <SearchResults results={this.state.results} />
       </div>
       )

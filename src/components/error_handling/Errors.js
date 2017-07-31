@@ -14,10 +14,10 @@ class Errors extends React.Component {
     })
   }
 
-  shouldComponentUpdate(){
-    this.props.deleteErrorsAfterView()
-    return true
-  }
+  // shouldComponentUpdate(){
+  //   this.props.deleteErrorsAfterView()
+  //   return true
+  // }
 
   render(){
     return(
