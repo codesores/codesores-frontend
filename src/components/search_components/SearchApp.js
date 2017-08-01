@@ -8,11 +8,10 @@ class SearchApp extends Component {
   constructor(props){
     super(props)
     this.state = {
-      searchBarCurrentValue: {
-        language: "All"
-      },
+      searchBarCurrentValue: { language: "All" },
       languages: [],
-    },
+    }
+    
     this.setQuery = this.setQuery.bind(this);
     this.languageDropDown = this.languageDropDown.bind(this);
   }
@@ -23,15 +22,13 @@ class SearchApp extends Component {
 
   languageDropDown(languages){
     let languages_array = []
-    languages.map((language, idx)=>{
-      languages_array.push({value: language, label: language})
-    })
+    languages.map((language)=> languages_array.push({value: language, label: language}))
     return languages_array
   }
 
   callInitialize(){
     //calls api to recover languages
-    let searchApp = this;
+    let searchApp = this
     let apiUrl = "http://localhost:3000/issues/start/?token=" + this.props.token
 
     axios.get(apiUrl).then((response)=>{
@@ -45,7 +42,7 @@ class SearchApp extends Component {
 
   callSearch(){
     //calls api to display issues from query
-    let searchApp = this;
+    let searchApp = this
     let query = querystring.stringify(this.state.searchBarCurrentValue)
     let apiUrl = "http://localhost:3000/issues/search/?token=" + this.props.token + "&" + query
 
