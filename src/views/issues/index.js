@@ -36,7 +36,12 @@ class IssuesIndex extends React.Component {
       <div>
 
       <div id='issue_id'>
-      <Summary issue={this.state.issue}/>
+      <Summary 
+        issue={this.state.issue} 
+        repo={this.state.issue.repo} 
+        language={this.state.issue.language.language}
+        
+      />
       </div>
 
       </div>
