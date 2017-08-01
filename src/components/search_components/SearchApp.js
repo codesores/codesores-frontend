@@ -9,7 +9,7 @@ class SearchApp extends Component {
     super(props)
     this.state = {
       searchBarCurrentValue: {
-        language: 'pick a language',
+        language: '',
         keywords: '',
         difficulty: 1,
         documentation: true,
@@ -20,6 +20,7 @@ class SearchApp extends Component {
 
     this.setQuery = this.setQuery.bind(this);
     this.languageDropDown = this.languageDropDown.bind(this);
+    this.search = this.search.bind(this);
   }
 
   componentDidMount(){
@@ -46,10 +47,10 @@ class SearchApp extends Component {
     })
   }
 
-  callSearch(){
+  search(){
     //calls api to display issues from query
     let searchApp = this
-    let query = querystring.stringify(this.state.searchBarCurrentValue)
+    let query = querystring.stringify(searchApp.state.searchBarCurrentValue)
     let apiUrl = "http://localhost:3000/issues/search/?token=" + this.props.token + "&" + query
 
     axios.post(apiUrl).then((response)=>{
@@ -63,14 +64,12 @@ class SearchApp extends Component {
   setQuery(key_hash, value){
     this.state.searchBarCurrentValue[key_hash] = value
     this.forceUpdate()
-    console.log(this.state.searchBarCurrentValue)
   }
-
 
   render() {
     return (
       <div className="SearchApp">
-      <SearchBar languages={this.state.languages} setQuery={this.setQuery} searchBarCurrentValue={this.state.searchBarCurrentValue} token={this.props.token}/>
+      <SearchBar languages={this.state.languages} setQuery={this.setQuery} searchBarCurrentValue={this.state.searchBarCurrentValue} token={this.props.token} search={this.search}/>
       </div>
       );
   }
