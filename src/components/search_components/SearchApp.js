@@ -8,22 +8,16 @@ class SearchApp extends Component {
   constructor(props){
     super(props)
     this.state = {
-<<<<<<< Updated upstream
-      searchBarCurrentValue: { language: "All" },
-=======
       searchBarCurrentValue: {
         language: 'pick a language',
         keywords: '',
         difficulty: 1,
-        type: {
-          documentation: true,
-          bugs: true
-        }
+        documentation: true,
+        bugs: true
       },
->>>>>>> Stashed changes
       languages: [],
     }
-    
+
     this.setQuery = this.setQuery.bind(this);
     this.languageDropDown = this.languageDropDown.bind(this);
   }
