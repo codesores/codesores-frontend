@@ -1,5 +1,5 @@
 .column {
-   border-radius: 10px;
+  border-radius: 10px;
   background-color: transparent;
   top: 0px;
   transition: top 300ms, background-color 800ms;
@@ -34,4 +34,10 @@
   display: flex;
   justify-content: center;
   padding: 4em;
+}
+
+#search-bar{
+
+  max-width: 400px;
+  margin: 0 auto 0;
 }
