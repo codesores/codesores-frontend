@@ -6,7 +6,6 @@ import registerServiceWorker from './registerServiceWorker';
 import {
   BrowserRouter as Router
 } from 'react-router-dom'
-import { Link, Switch, Route } from 'react-router-dom'
 import ThemeProvider from 'react-toolbox/lib/ThemeProvider';
 import theme from './toolbox/theme';
 

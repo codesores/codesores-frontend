@@ -3,10 +3,7 @@ import axios from 'axios'
 import Header from '../../components/Header.js'
 import {Grid, Row, Col} from 'react-bootstrap'
 
-
-import Summary from '../../components/issue_components/summary.js'
-import Feedback from '../../components/issue_components/feedback.js'
-import ButtonContribute from '../../components/issue_components/button_contribute.js'
+import PastFeedback from '../../components/profile_components/PastFeedback.js'
 
 class UsersShow extends React.Component {
 
@@ -25,6 +22,7 @@ class UsersShow extends React.Component {
             <Col xs={12} md={8}>
               <div id='issue_id'>
                 <h1> {info.name} </h1>
+                <PastFeedback feedbacks={info.user_feedbacks}/>
               </div>
             </Col>
             <Col xs={6} md={4}>

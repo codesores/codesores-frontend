@@ -1,11 +1,9 @@
 import React, {Component} from 'react'
-import { Link, Switch, Route, Redirect } from 'react-router-dom'
 import './App.css'
 import Header from './components/Header'
 import Main from './components/Main'
 import Notice from './components/error_handling/Notice'
 import axios from 'axios'
-import qs from 'qs';
 import { getQueryParams } from './utils';
 
 class App extends Component {
@@ -43,6 +41,7 @@ class App extends Component {
       let userApiUrl = "http://localhost:3000/users?token=" + this.state.token
 
       axios.get(userApiUrl).then((response)=>{
+        // console.log(response.data)
         app.setState({info: response.data}, ()=>{
         })
       }).catch((error)=>{
