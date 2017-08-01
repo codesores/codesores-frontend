@@ -8,7 +8,19 @@ class SearchApp extends Component {
   constructor(props){
     super(props)
     this.state = {
+<<<<<<< Updated upstream
       searchBarCurrentValue: { language: "All" },
+=======
+      searchBarCurrentValue: {
+        language: 'pick a language',
+        keywords: '',
+        difficulty: 1,
+        type: {
+          documentation: true,
+          bugs: true
+        }
+      },
+>>>>>>> Stashed changes
       languages: [],
     }
     
@@ -54,9 +66,10 @@ class SearchApp extends Component {
     })
   }
 
-  setQuery(args){
-    let language = this.state.searchBarCurrentValue.language
-    this.setState({searchBarCurrentValue: args}, this.callSearch)
+  setQuery(key_hash, value){
+    this.state.searchBarCurrentValue[key_hash] = value
+    this.forceUpdate()
+    console.log(this.state.searchBarCurrentValue)
   }
 
 
