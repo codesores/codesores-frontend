@@ -6,10 +6,13 @@ import Header from '../../components/Header.js'
 import Summary from '../../components/issue_components/summary.js'
 // import Meta from '../../components/issue_components/meta.js'
 import Feedback from '../../components/issue_components/feedback.js'
+import StarApp from '../../components/issue_components/StarApp.js'
+
 import ButtonContribute from '../../components/issue_components/button_contribute.js'
 import {Grid, Row, Col} from 'react-bootstrap'
 
 import UserFeedback from '../../components/user_feedback/UserFeedback.js'
+
 
 class issueShow extends React.Component {
 
@@ -55,14 +58,38 @@ class issueShow extends React.Component {
       })
 
       if (display){
-        return (<UserFeedback issueId={this.props.router.match.params.id} setNotice={this.props.setNotice} token={this.props.token} />)
+        return (
+          <UserFeedback issueId={this.props.router.match.params.id} setNotice={this.props.setNotice} token={this.props.token} />
+          )
       }
 
       }
     }
 
+    // starConditional(){
+    // const issueShow = this
+
+    // if (this.state.issue.user_feedbacks && issueShow.props.info){
+    //   let display = true
+
+    //   this.state.issue.user_feedbacks.forEach((feedback)=>{
+    //     if (feedback.user_id === issueShow.props.info.id){
+    //       display = false 
+    //     }
+    //   })
+
+    //   if (display){
+    //     return (
+    //       <UserFeedback issueId={this.props.router.match.params.id} setNotice={this.props.setNotice} token={this.props.token} />
+    //       )
+    //   }
+
+    //   }
+    // }
+
 
   render(){
+    console.log(this.state.issue)
     return(
       <div>
         <Grid>
@@ -74,6 +101,7 @@ class issueShow extends React.Component {
             </Col>
             <Col xs={6} md={4}>
               <div id='feedback'>
+                <StarApp />
                 <a href={this.state.issue.url}>Go to Repository</a><br/><br/>
                 {this.feedbackConditional()}
               </div>
