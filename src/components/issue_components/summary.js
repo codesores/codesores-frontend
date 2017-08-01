@@ -7,12 +7,13 @@ class Summary extends React.Component {
   }
 
   render() {
+    console.log("Props.issue: ", this.props.issue)
     return (
       <div>
-        <h1>{this.props.issue.repo_name}</h1>
-        <h5>{this.props.issue.repo_description}</h5>
-        <p>{this.props.issue.title}</p>
-        <p> {this.props.issue.repo_language} </p> <br/>
+        <h1>Repo: {this.props.issue.repo_name}</h1>
+        <h5>Desc: {this.props.issue.repo_description}</h5>
+        <p>Issue title: {this.props.issue.title}</p>
+        <p>Issue Lang {this.props.issue.repo_language} </p> <br/>
         <p> Issue by: {this.props.issue.author}</p>
       </div>
     )
