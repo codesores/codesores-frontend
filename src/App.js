@@ -38,15 +38,18 @@ class App extends Component {
   }
 
   fetchUserDetails() {
-    let app = this;
-    let userApiUrl = "http://localhost:3000/users?token=" + this.state.token
+    if (this.state.token){
+      let app = this;
+      let userApiUrl = "http://localhost:3000/users?token=" + this.state.token
 
-    axios.get(userApiUrl).then((response)=>{
-      app.setState({info: response.data}, ()=>{
+      axios.get(userApiUrl).then((response)=>{
+        app.setState({info: response.data}, ()=>{
+        })
+      }).catch((error)=>{
+        app.setNotice(error.toString(), "User must be logged in")
       })
-    }).catch((error)=>{
-      app.setNotice(error.toString(), "User must be logged in")
-    })
+    }
+    
   }
 
   setNotice(...errors){
@@ -57,11 +60,11 @@ class App extends Component {
     const info = this.state.info;
     return (
       <div>
-        <Header token={this.state.token} logout={this.deleteToken}  userInfo={this.fetchUserDetails} info={info} />
-        <Main setNotice={this.setNotice} token={this.state.token} info={info}/>
-        <Notice notice={ this.state.notice } deleteErrorsAfterView={ this.deleteErrorsAfterView }/>
+      <Header token={this.state.token} logout={this.deleteToken}  userInfo={this.fetchUserDetails} info={info} />
+      <Main setNotice={this.setNotice} token={this.state.token} info={info}/>
+      <Notice notice={ this.state.notice } deleteErrorsAfterView={ this.deleteErrorsAfterView }/>
       </div>
-    )
+      )
   }
 }
 
