@@ -8,35 +8,49 @@ class SearchApp extends Component {
   constructor(props){
     super(props)
     this.state = {
-      query: {
-        language: ""
+      searchBarCurrentValue: {
+        language: '',
+        keywords: '',
+        difficulty: 1,
+        documentation: true,
+        bugs: true
       },
-      languages: []
+      languages: [],
     }
+
     this.setQuery = this.setQuery.bind(this);
+    this.languageDropDown = this.languageDropDown.bind(this);
+    this.search = this.search.bind(this);
   }
 
   componentDidMount(){
     this.callInitialize();
   }
 
+  languageDropDown(languages){
+    let languages_array = []
+    languages.map((language)=> languages_array.push({value: language, label: language}))
+    return languages_array
+  }
+
   callInitialize(){
     //calls api to recover languages
-    let searchApp = this;
+    let searchApp = this
     let apiUrl = "http://localhost:3000/issues/start/?token=" + this.props.token
 
     axios.get(apiUrl).then((response)=>{
-      searchApp.setState({languages: response.data})
-      searchApp.props.setNotice([])
+      let language_array = this.languageDropDown(response.data)
+      searchApp.setState({languages: language_array})
+      searchApp.props.setNotice([]) // TODO -- WHAT DOES THIS DO?
     }).catch((error)=>{
       searchApp.props.setNotice(error.toString(), "Couldn't recover languages")
     })
   }
 
-  callSearch(){
+  search(){
     //calls api to display issues from query
-    let searchApp = this;
-    let query = querystring.stringify(this.state.query)
+    let searchApp = this
+    let query = querystring.stringify(searchApp.state.searchBarCurrentValue)
     let apiUrl = "http://localhost:3000/issues/search/?token=" + this.props.token + "&" + query
 
     axios.post(apiUrl).then((response)=>{
@@ -47,16 +61,15 @@ class SearchApp extends Component {
     })
   }
 
-  setQuery(args){
-    let language = this.state.query.language
-    this.setState({query: args}, this.callSearch)
+  setQuery(key_hash, value){
+    this.state.searchBarCurrentValue[key_hash] = value
+    this.forceUpdate()
   }
-
 
   render() {
     return (
       <div className="SearchApp">
-      <SearchBar languages={this.state.languages} setQuery={this.setQuery} value={this.state.query} token={this.props.token} />
+      <SearchBar languages={this.state.languages} setQuery={this.setQuery} searchBarCurrentValue={this.state.searchBarCurrentValue} token={this.props.token} search={this.search}/>
       </div>
       );
   }
