@@ -20,7 +20,7 @@ class Header extends Component {
                 image={info.avatar_url}
               />
               <span className='Header-userName'>
-                <a className='Header-link' href={info.html_url}>{info.name}</a>
+                <Link to={`/users/${info.id}`} className='Header-link'>{info.name}</Link>
               </span>
             </span>
           <LogoutButton logout={this.props.logout} info={this.props.info} />
@@ -48,3 +48,5 @@ class Header extends Component {
 
 
 export default Header
+
+
