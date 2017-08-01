@@ -9,11 +9,10 @@ class SearchApp extends Component {
     super(props)
     this.state = {
       searchBarCurrentValue: {
-        language: ""
+        language: "All"
       },
       languages: [],
     },
-
     this.setQuery = this.setQuery.bind(this);
     this.languageDropDown = this.languageDropDown.bind(this);
   }
@@ -22,13 +21,12 @@ class SearchApp extends Component {
     this.callInitialize();
   }
 
-  languageDropDown(){
-    let languages = this.state.languages
-    return languages.map((language, idx)=>{
-      languages.push({value: language, label: language})
-      console.log(languages)
-      return languages
+  languageDropDown(languages){
+    let languages_array = []
+    languages.map((language, idx)=>{
+      languages_array.push({value: language, label: language})
     })
+    return languages_array
   }
 
   callInitialize(){
@@ -37,8 +35,9 @@ class SearchApp extends Component {
     let apiUrl = "http://localhost:3000/issues/start/?token=" + this.props.token
 
     axios.get(apiUrl).then((response)=>{
-      searchApp.setState({languages: this.languageDropDown()})
-      searchApp.props.setNotice([])
+      let language_array = this.languageDropDown(response.data)
+      searchApp.setState({languages: language_array})
+      searchApp.props.setNotice([]) // TODO -- WHAT DOES THIS DO?
     }).catch((error)=>{
       searchApp.props.setNotice(error.toString(), "Couldn't recover languages")
     })
@@ -47,7 +46,7 @@ class SearchApp extends Component {
   callSearch(){
     //calls api to display issues from query
     let searchApp = this;
-    let query = querystring.stringify(this.state.query)
+    let query = querystring.stringify(this.state.searchBarCurrentValue)
     let apiUrl = "http://localhost:3000/issues/search/?token=" + this.props.token + "&" + query
 
     axios.post(apiUrl).then((response)=>{
@@ -60,7 +59,7 @@ class SearchApp extends Component {
 
   setQuery(args){
     let language = this.state.searchBarCurrentValue.language
-    this.setState({query: args}, this.callSearch)
+    this.setState({searchBarCurrentValue: args}, this.callSearch)
   }
 
 

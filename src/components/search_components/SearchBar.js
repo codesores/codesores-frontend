@@ -7,13 +7,9 @@ class SearchBar extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
-
   handleChange(value){
-    let new_state = {...this.state}
-    this.props.query['language'] = value
-    this.setState(new_state);
-  };
-
+    this.props.setQuery({language: value});
+  }
 
   render() {
     return (
@@ -21,12 +17,12 @@ class SearchBar extends Component {
       <Dropdown
         auto
         onChange={this.handleChange}
-        source={this.props.language}
-        value={this.props.searchBarCurrentValue.language}
+        source={this.props.languages}
+        value={this.props.searchBarCurrentValue['language']}
       />
       </div>
 
-    );
+    )
   }
 }
 
