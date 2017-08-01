@@ -10,15 +10,15 @@ import { getQueryParams } from './utils';
 
 class App extends Component {
   constructor() {
-    super();
+    super()
 
-    const params = getQueryParams();
+    const params = getQueryParams()
 
     this.state = {
       token: params.token,
       notice: [],
       info: ""
-    };
+    }
 
 
     this.fetchUserDetails();
@@ -60,11 +60,11 @@ class App extends Component {
     const info = this.state.info;
     return (
       <div>
-      <Header token={this.state.token} logout={this.deleteToken}  userInfo={this.fetchUserDetails} info={info} />
-      <Main setNotice={this.setNotice} token={this.state.token} info={info}/>
-      <Notice notice={ this.state.notice } deleteErrorsAfterView={ this.deleteErrorsAfterView }/>
+        <Header token={this.state.token} logout={this.deleteToken}  userInfo={this.fetchUserDetails} info={info} />
+        <Main setNotice={this.setNotice} token={this.state.token} info={info}/>
+        <Notice notice={ this.state.notice } deleteErrorsAfterView={ this.deleteErrorsAfterView }/>
       </div>
-      )
+    )
   }
 }
 
