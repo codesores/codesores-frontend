@@ -67,21 +67,20 @@ class UserFeedback extends Component {
       return (
         <ButtonGroup vertical>
         <Validity
-        validity={this.state.feedback.validity}
-        setFeedback={this.setFeedback}
-
+          validity={this.state.feedback.validity}
+          setFeedback={this.setFeedback}
         />
 
         <Difficulty
-        difficulty={this.state.feedback.difficulty}
-        setFeedback={this.setFeedback}
+          difficulty={this.state.feedback.difficulty}
+          setFeedback={this.setFeedback}
         />
         <RequestType
-        type={this.state.feedback.request_type}
-        setFeedback={this.setFeedback}
+          type={this.state.feedback.request_type}
+          setFeedback={this.setFeedback}
         />
         <Submit
-        submit={this.submit}
+          submit={this.submit}
         />
         </ButtonGroup>
         )
