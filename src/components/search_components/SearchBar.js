@@ -1,32 +1,28 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import Dropdown from 'react-toolbox/lib/dropdown'
 
 class SearchBar extends Component {
   constructor(props){
     super(props)
-    this.setQuery = this.setQuery.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  setQuery(e){
-    this.props.setQuery({language: e.target.value})
-  }
-
-  languageDropDown(){
-    return this.props.languages.map((language, idx)=>{
-      return (<option key={idx} value={language}>{language}</option>)
-    })
-
-
+  handleChange(value){
+    this.props.setQuery({language: value});
   }
 
   render() {
-    // console.log(this.props)
     return (
-      <div className="SearchBar">
-        <select name='language' onChange={this.setQuery} value={this.props.query}>
-          {this.languageDropDown()}
-        </select>
+      <div className="search-bar">
+      <Dropdown
+        auto
+        onChange={this.handleChange}
+        source={this.props.languages}
+        value={this.props.searchBarCurrentValue['language']}
+      />
       </div>
-      );
+
+    )
   }
 }
 
