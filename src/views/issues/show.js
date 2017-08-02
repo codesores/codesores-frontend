@@ -13,6 +13,8 @@ import ButtonContribute from '../../components/issue_components/button_contribut
 import {Grid, Row, Col} from 'react-bootstrap'
 
 import UserFeedback from '../../components/user_feedback/UserFeedback.js'
+import createHistory from 'history/createBrowserHistory'
+
 
 
 class issueShow extends React.Component {
@@ -86,8 +88,19 @@ class issueShow extends React.Component {
     return hasVoted
   }
 
+  backButton(){
+    const history = createHistory()
+    return(
+       <button
+        onClick={history.goBack}>
+        Back
+      </button>
+      )
+  }
 
-  render(){
+
+  render(){ 
+    console.log('show props', this.props)
     return(
       <div>
         <Grid>
@@ -104,6 +117,7 @@ class issueShow extends React.Component {
             </Col>
             <Col xs={6} md={4}>
               <div id='feedback'>
+                {this.backButton()}
                 <StarApp issue={this.state.issue} token={this.props.token} info={this.props.info}/>
                 <a href={this.state.issue.url}>Go to Repository</a><br/><br/>
                 {this.feedbackConditional()}

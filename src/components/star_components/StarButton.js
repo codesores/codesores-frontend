@@ -23,7 +23,6 @@ class StarButton extends React.Component {
   }
 
   render(){
-    console.log('props:',this.props)
     return(
       <div>
       {this.buttonConditional()}

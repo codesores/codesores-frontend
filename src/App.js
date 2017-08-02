@@ -37,7 +37,6 @@ class App extends Component {
   }
 
   fetchUserDetails() {
-    console.log('fetching!!!')
     if (this.state.token){
       let app = this;
       let userApiUrl = "http://localhost:3000/users?token=" + this.state.token
