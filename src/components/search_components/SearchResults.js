@@ -10,6 +10,7 @@ import Button from 'react-toolbox/lib/button/Button';
 class SearchResults extends Component {
 
   returnColumn(element){
+    console.log("Element********", element)
     return(
       <Link to={'/issues/' + element.id}>
       <Col className='column' sm={6} md={3}>
