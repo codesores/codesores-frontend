@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import { List, ListItem, ListSubHeader, ListDivider, ListCheckbox } from 'react-toolbox/lib/list';
 
 
 class PastFeedback extends Component {
@@ -14,13 +15,27 @@ class PastFeedback extends Component {
     let sortedFeedback = this.sortRecentFeedbacks(this.props.feedbacks)
 
     let cappedFeedback = sortedFeedback.slice(0, limit).map((feedback) => {
+      console.log(feedback)
       const issueUrl = "/issues/" + feedback.issue_id
+      const validity = feedback.validity
+      const difficulty = feedback.difficulty
+
+      const all_types = ['', 'Bug', 'Docs', 'Feature', 'Other']
+      const type = all_types[feedback.request_type_id]
       return (
-        <li item={feedback} key={feedback.id}>
-        <Link to={issueUrl}>Issue</Link>
-        <div>Validity: {feedback.validity}</div>
-        <div>Difficulty: {feedback.difficulty}</div>
-        </li>
+        <span>
+        <ListItem item={feedback} key={feedback.id}
+        caption={feedback.issue_id}
+        legend={`Validity: ${validity} Difficulty: ${difficulty} Type: ${type}`}
+        selectable
+        to={issueUrl + "?token=" + this.props.token}
+        />
+        </span>
+
+
+
+
+
         )
     })
     return cappedFeedback
@@ -30,8 +45,10 @@ class PastFeedback extends Component {
     if (this.props.feedbacks){
       return (
         <div>
-        <p> Past Feedbacks: </p>
+        <List selectable ripple>
+        <ListSubHeader caption='Past Feedback' />
         {this.iterateFeedbacks(5)}
+        </List>
         </div>
         )
     }
