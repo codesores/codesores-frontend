@@ -10,15 +10,18 @@ import Button from 'react-toolbox/lib/button/Button';
 class SearchResults extends Component {
 
   returnColumn(element){
+    console.log(element)
     return(
+      <Link to={'/issues/' + element.id}>
       <Col className='column' sm={6} md={3}>
+      <b>Project:</b> <Link to={element.repo.url}>{element.repo.name}</Link>
         <ul>
-          <li> Title: {element.title} </li>
-          <li> Labels: {element.label} </li>
-          <li> Comment Count: {element.comment_count} </li>
-          <li> <Link to={'/issues/' + element.id}>See Issue</Link> </li>
+          <li> <b>Issue:</b> {element.title} </li>
+          <li> <b>Labels:</b> {element.label} </li>
+          <li> <b>Comment Count:</b> {element.comment_count} </li>
         </ul>
       </Col>
+      </Link>
     )
   }
 
