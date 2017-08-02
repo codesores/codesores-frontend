@@ -65,39 +65,24 @@ class StarApp extends React.Component {
   }
 
   shouldComponentUpdate(nextProp){
-    console.log(this.props)
-    let hasVoted = false
-    if (this.props.issue.stars && nextProp.info){
-      this.props.issue.stars.forEach((star)=>{
-        console.log('star id', star.user_id)
-        console.log('user id', nextProp.info.id)
+    this.setState({liked: this.userHasLiked(nextProp)})
 
-        if (star.user_id === nextProp.info.id){
-          hasVoted = true
-        }
-      })
-      if (hasVoted){
-        console.log('liked true')
-        // debugger
-        this.setState({liked: true}, console.log('worked?',this.state.liked))
-        this.state.liked = true
-        console.log('state???',this.state.liked)
-
-      }else{
-        console.log('set to false')
-        this.setState({liked: false})
-        this.state.liked = false
-        console.log('state???',this.state.liked)
-      }
-    }
     return true
+  }
+
+  userHasLiked(props) {
+    const match = props.issue.stars.find(function (star) {
+      return star.user_id === props.info.id
+    })
+
+    return !!match
   }
 
 
   render(){
     return(
       <div>
-      <StarButton starState={this.state.liked} setStar={this.setStar}/>
+      <StarButton liked={this.state.liked} setStar={this.setStar}/>
       </div>
       )
   }
