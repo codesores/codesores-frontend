@@ -94,7 +94,7 @@ class issueShow extends React.Component {
           <Row className="show-grid">
             <Col xs={12} md={8}>
               <div id='issue_id'>
-                <Summary 
+                <Summary
                   issue={this.state.issue}
                   repo={this.state.repo}
                   language={this.state.language}
@@ -111,7 +111,11 @@ class issueShow extends React.Component {
             </Col>
           </Row>
         </Grid>
-        <DonutChart value={50} lowerLimit={0} upperLimit={100} delay={1000} diameter={500} />
+        <div id='stats'>
+        <DonutChart value={30} lowerLimit={0} upperLimit={100} delay={1000} diameter={150} />
+        <DonutChart value={60} lowerLimit={0} upperLimit={100} delay={1500} diameter={150} />
+        <DonutChart value={90} lowerLimit={0} upperLimit={100} delay={2000} diameter={150} />
+        </div>
       </div>
       )
   }
