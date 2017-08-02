@@ -19,7 +19,10 @@ class issueShow extends React.Component {
   constructor(args){
     super(args)
     this.state = {
-      issue: {}
+      issue: {},
+      repo: {},
+      language: {},
+      feedbacks: {}
     };
 
     //Make API call
@@ -42,6 +45,9 @@ class issueShow extends React.Component {
   parseJSONAndSetState(json){
     this.setState({
       issue: json.data,
+      repo: json.data.repo,
+      language: json.data.language,
+      feedbacks: json.data.feedbacks
     })
   }
 
@@ -87,7 +93,12 @@ class issueShow extends React.Component {
           <Row className="show-grid">
             <Col xs={12} md={8}>
               <div id='issue_id'>
-                <Summary issue={this.state.issue}/>
+                <Summary 
+                  issue={this.state.issue}
+                  repo={this.state.repo}
+                  language={this.state.language}
+                  feedbacks={this.state.feedbacks}
+                />
               </div>
             </Col>
             <Col xs={6} md={4}>
