@@ -17,6 +17,7 @@ class UsersShow extends React.Component {
     const info = this.props.info
     return(
       <Grid>
+      //missing issue name, stars issue name
           <Row className="show-grid">
             <Col xs={12} md={8}>
               <div id='issue_id'>
