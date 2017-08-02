@@ -39,8 +39,9 @@ class SearchApp extends Component {
     let apiUrl = "http://localhost:3000/issues/start/?token=" + this.props.token
 
     axios.get(apiUrl).then((response)=>{
-      let language_array = this.languageDropDown(response.data)
+      let language_array = this.languageDropDown(response.data.languages)
       searchApp.setState({languages: language_array})
+      searchApp.props.updateResults(response.data.issues)
       searchApp.props.setNotice([]) // TODO -- WHAT DOES THIS DO?
     }).catch((error)=>{
       searchApp.props.setNotice(error.toString(), "Couldn't recover languages")
