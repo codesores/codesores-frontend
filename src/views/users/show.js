@@ -6,12 +6,12 @@ import {Grid, Row, Col} from 'react-bootstrap'
 import PastFeedback from '../../components/profile_components/PastFeedback.js'
 import StarredIssues from '../../components/profile_components/StarredIssues.js'
 
-
 class UsersShow extends React.Component {
 
   componentWillMount(){
     this.props.fetchUser()
   }
+
 
   render(){
     const info = this.props.info
