@@ -1,27 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { List, ListItem, ListSubHeader, ListDivider, ListCheckbox } from 'react-toolbox/lib/list';
-
-const ListTest = () => (
-  <List selectable ripple>
-    <ListSubHeader caption='Starred Issues' />
-    <ListItem
-      caption='Dr. Manhattan'
-      legend="Jonathan 'Jon' Osterman"
-      rightIcon=''
-    />
-    <ListItem
-      caption='Ozymandias'
-      legend='Adrian Veidt'
-      rightIcon=''
-    />
-    <ListItem
-      caption='Rorschach'
-      legend='Walter Joseph Kovacs'
-      rightIcon=''
-    />
-  </List>
-);
+import createHistory from 'history/createBrowserHistory'
 
 class StarredIssues extends React.Component {
 
@@ -29,6 +9,8 @@ class StarredIssues extends React.Component {
     return stars.sort((a, b)=>{
       return new Date(b.created_at) - new Date(a.created_at);
     });
+
+
   }
 
   iterateStars(limit=10){
@@ -37,9 +19,17 @@ class StarredIssues extends React.Component {
     let cappedStars = sortedStars.slice(0, limit).map((star) => {
       const issueUrl = "/issues/" + star.issue_id
       return (
-        <li item={star} key={star.id}>
-        <Link to={issueUrl}>Issue</Link>
-        </li>
+        <span>
+        <ListItem item={star} key={star.id}
+        caption='Issue'
+        legend={star.issue_id}
+        rightIcon=''
+        selectable
+        to={issueUrl + "?token=" + this.props.token}
+        />
+
+        </span>
+
         )
     })
 
@@ -50,14 +40,17 @@ class StarredIssues extends React.Component {
     if (this.props.stars){
       return (
         <div>
-        <p> Past Stars: </p>
-        {this.iterateStars(20)}
+        <List selectable ripple>
+        <ListSubHeader caption='Starred Issues' />
+        {this.iterateStars(10)}
+        </List>
         </div>
         )
     }
   }
 
   render(){
+    console.log(this.props)
     return(
       <div>
       {this.starBox()}

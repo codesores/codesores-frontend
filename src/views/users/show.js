@@ -21,13 +21,13 @@ class UsersShow extends React.Component {
             <Col xs={12} md={8}>
               <div id='issue_id'>
                 <h1> {info.name} </h1>
+                <StarredIssues token={this.props.token} stars={info.stars} router={this.props.router}/>
               </div>
             </Col>
             <Col xs={6} md={4}>
               <div id='feedback'><br/>
                 <a href={info.html_url}>GitHub Page</a><br/><br/>
                 <PastFeedback feedbacks={info.user_feedbacks}/><br/><br/>
-                <StarredIssues stars={info.stars}/>
               </div>
             </Col>
           </Row>

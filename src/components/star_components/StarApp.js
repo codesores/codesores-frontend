@@ -67,10 +67,12 @@ class StarApp extends React.Component {
   }
 
   userHasLiked(props) {
-    const match = props.issue.stars.find(function (star) {
-      return star.user_id === props.info.id
-    })
-    return !!match
+    if ( props.issue.stars){
+      const match = props.issue.stars.find(function (star) {
+        return star.user_id === props.info.id
+      })
+      return !!match
+    }
   }
 
   render(){

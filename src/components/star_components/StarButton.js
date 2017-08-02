@@ -10,13 +10,13 @@ class StarButton extends React.Component {
     if (this.props.liked){
       return (
       <button onClick={this.props.setStar}>
-        Unlike
+        Unstar
       </button> 
         )
     } else {
       return (
       <button onClick={this.props.setStar}>
-        Like
+        Star
       </button>
         )
     }
