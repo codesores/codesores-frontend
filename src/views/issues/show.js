@@ -6,7 +6,7 @@ import Header from '../../components/Header.js'
 import Summary from '../../components/issue_components/summary.js'
 // import Meta from '../../components/issue_components/meta.js'
 import Feedback from '../../components/issue_components/feedback.js'
-import StarApp from '../../components/issue_components/StarApp.js'
+import StarApp from '../../components/star_components/StarApp.js'
 
 import ButtonContribute from '../../components/issue_components/button_contribute.js'
 import {Grid, Row, Col} from 'react-bootstrap'
@@ -66,30 +66,21 @@ class issueShow extends React.Component {
       }
     }
 
-    // starConditional(){
-    // const issueShow = this
 
-    // if (this.state.issue.user_feedbacks && issueShow.props.info){
-    //   let display = true
-
-    //   this.state.issue.user_feedbacks.forEach((feedback)=>{
-    //     if (feedback.user_id === issueShow.props.info.id){
-    //       display = false 
-    //     }
-    //   })
-
-    //   if (display){
-    //     return (
-    //       <UserFeedback issueId={this.props.router.match.params.id} setNotice={this.props.setNotice} token={this.props.token} />
-    //       )
-    //   }
-
-    //   }
-    // }
+  persistStarState(){
+    let hasVoted = false
+    if (this.props.issue.stars){
+      this.props.issue.stars.forEach((star)=>{
+        if (star.user_id === this.props.info.id){
+          hasVoted = true
+        }
+      })
+    }
+    return hasVoted
+  }
 
 
   render(){
-    console.log(this.state.issue)
     return(
       <div>
         <Grid>
@@ -101,7 +92,7 @@ class issueShow extends React.Component {
             </Col>
             <Col xs={6} md={4}>
               <div id='feedback'>
-                <StarApp />
+                <StarApp issue={this.state.issue} token={this.props.token} info={this.props.info}/>
                 <a href={this.state.issue.url}>Go to Repository</a><br/><br/>
                 {this.feedbackConditional()}
               </div>
