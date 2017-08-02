@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "d3": "^4.10.0",
+    "history": "^4.6.3",
     "qs": "^6.5.0",
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.1",
