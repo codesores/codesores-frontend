@@ -9,7 +9,9 @@ class IssuesIndex extends React.Component {
     super(args)
     this.state = {
       issue: {},
-      feedback: []
+      repo: {},
+      language: {},
+      feedbacks: {}
     };
 
     //Make API call
@@ -28,6 +30,9 @@ class IssuesIndex extends React.Component {
   parseJSONAndSetState(json){
     this.setState({
       issue: json.data,
+      rep: json.data.repo,
+      language: json.data.language,
+      feedbacks: json.data.feedbacks
     })
   }
 
@@ -37,10 +42,10 @@ class IssuesIndex extends React.Component {
 
       <div id='issue_id'>
       <Summary 
-        issue={this.state.issue} 
-        repo={this.state.issue.repo} 
-        language={this.state.issue.language.language}
-        
+        issue={this.state.issue}
+        repo={this.state.repo}
+        language={this.state.language}
+        feedbacks={this.state.feedbacks}
       />
       </div>
 
