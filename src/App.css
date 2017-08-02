@@ -4,6 +4,7 @@
   top: 0px;
   transition: top 300ms, background-color 800ms;
 }
+
 .column:hover {
   top: -10px;
   background-color: #ccc;
@@ -37,7 +38,6 @@
 }
 
 #search-bar{
-
   max-width: 400px;
   margin: 0 auto 0;
 }
