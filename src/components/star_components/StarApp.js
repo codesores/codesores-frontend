@@ -77,9 +77,9 @@ class StarApp extends React.Component {
 
   render(){
     return(
-      <div>
+      <span>
       <StarButton liked={this.state.liked} setStar={this.setStar}/>
-      </div>
+      </span>
       )
   }
 }

@@ -17,6 +17,7 @@ class StarredIssues extends React.Component {
     let sortedStars = this.sortRecentStars(this.props.stars)
 
     let cappedStars = sortedStars.slice(0, limit).map((star) => {
+      console.log('star', star)
       const issueUrl = "/issues/" + star.issue_id
       return (
         <span>

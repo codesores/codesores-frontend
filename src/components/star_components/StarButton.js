@@ -24,9 +24,9 @@ class StarButton extends React.Component {
 
   render(){
     return(
-      <div>
+      <span>
       {this.buttonConditional()}
-      </div>
+      </span>
     )
   }
 }
