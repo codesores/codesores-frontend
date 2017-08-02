@@ -44,6 +44,7 @@ class SearchResults extends Component {
   render() {
     return (
       <div className="SearchResults">
+      if 
       <Grid className="show-grid">
         { this.mapResultsToFours().map(this.renderRow.bind(this)) }
       </Grid>
