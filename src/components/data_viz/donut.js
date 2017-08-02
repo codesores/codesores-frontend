@@ -6,38 +6,30 @@ class DonutChart extends React.Component {
       super(props)
       this.createDonutChart = this.createDonutChart.bind(this)
    }
+   
    componentDidMount() {
       this.createDonutChart(this.props.value, this.props.lowerLimit, this.props.upperLimit, this.props.delay, this.props.diameter)
    }
-   componentDidUpdate() {
-    //  this.createDonutChart(this.props.value, this.props.lowerLimit, this.props.upperLimit, this.props.delay, this.props.diameter)
-   }
 
   createDonutChart(value, lowerLimit, upperLimit, delay, diameter) {
-
      var width = diameter,
          height = diameter,
          transitionDuration = 1200,
-         tau = 2 * Math.PI;
-
+         tau = 2 * Math.PI
 
      var svg = d3.select('body')
-                 .append('svg')
-                 .attr('width', width)
-                 .attr('height', height)
+       .append('svg')
+       .attr('width', width)
+       .attr('height', height)
 
      var arc = d3.arc()
-     .innerRadius(diameter/4)
-     .outerRadius(diameter/2)
-     .startAngle(0)
+       .innerRadius(diameter/4)
+       .outerRadius(diameter/2)
+       .startAngle(0)
 
      var convertValueToRadians = d3.scaleLinear()
-     .range([0, 6.28319])
-     .domain([lowerLimit, upperLimit]);
-
-     // var convertDegreesToRadians = d3.scaleLinear()
-     // .range([0, 6.28319])
-     // .domain([0, 360]);
+       .range([0, 6.28319])
+       .domain([lowerLimit, upperLimit])
 
      var color = d3.scaleLinear()
        .domain([0, tau])
@@ -46,40 +38,40 @@ class DonutChart extends React.Component {
      var g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
      var background = g.append("path")
-     .datum({endAngle: tau})
-     .style("fill", "#ddd")
-     .attr("d", arc);
+       .datum({endAngle: tau})
+       .style("fill", "#ddd")
+       .attr("d", arc)
 
      var foreground = g.append("path")
-     .datum({endAngle: .1})
-     .style("fill", color(.1))
-     .attr("d", arc);
+       .datum({endAngle: .1})
+       .style("fill", color(.1))
+       .attr("d", arc)
 
      foreground.transition()
-     .duration(transitionDuration)
-     .delay(delay)
-     .attrTween("d", arcTween(convertValueToRadians(value)))
-     .style('fill', color(convertValueToRadians(value)));
+       .duration(transitionDuration)
+       .delay(delay)
+       .attrTween("d", arcTween(convertValueToRadians(value)))
+       .style('fill', color(convertValueToRadians(value)))
 
      function arcTween(newAngle) {
        return function(d) {
-         var interpolate = d3.interpolate(d.endAngle, newAngle);
+         var interpolate = d3.interpolate(d.endAngle, newAngle)
          return function(t) {
-           d.endAngle = interpolate(t);
-           return arc(d);
-         };
-       };
+           d.endAngle = interpolate(t)
+           return arc(d)
+         }
+       }
      }
 
      var text = svg.insert('text')
-     .text(lowerLimit)
-     .attr("text-anchor", "middle")
-     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+       .text(lowerLimit)
+       .attr("text-anchor", "middle")
+       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
 
      text.transition()
-     .duration(transitionDuration)
-     .delay(delay)
-     .tween("text", numberTween(value))
+       .duration(transitionDuration)
+       .delay(delay)
+       .tween("text", numberTween(value))
 
      function numberTween(newValue) {
        return function(){
