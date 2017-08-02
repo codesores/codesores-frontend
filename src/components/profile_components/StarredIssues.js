@@ -29,7 +29,7 @@ class StarredIssues extends React.Component {
       return (
         <div>
         <p> Past Stars: </p>
-        {this.iterateStars(5)}
+        {this.iterateStars(20)}
         </div>
         )
     }

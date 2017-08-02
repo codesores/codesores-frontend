@@ -24,6 +24,7 @@ class App extends Component {
     this.deleteToken = this.deleteToken.bind(this)
     this.deleteErrorsAfterView = this.deleteErrorsAfterView.bind(this)
     this.setNotice = this.setNotice.bind(this)
+    this.fetchUserDetails = this.fetchUserDetails.bind(this)
   }
 
   deleteToken() {
@@ -36,6 +37,7 @@ class App extends Component {
   }
 
   fetchUserDetails() {
+    console.log('fetching!!!')
     if (this.state.token){
       let app = this;
       let userApiUrl = "http://localhost:3000/users?token=" + this.state.token
@@ -60,7 +62,7 @@ class App extends Component {
     return (
       <div>
         <Header token={this.state.token} logout={this.deleteToken}  userInfo={this.fetchUserDetails} info={info} />
-        <Main setNotice={this.setNotice} token={this.state.token} info={info}/>
+        <Main setNotice={this.setNotice} token={this.state.token} info={info} fetchUser={this.fetchUserDetails}/>
         <Notice notice={ this.state.notice } deleteErrorsAfterView={ this.deleteErrorsAfterView }/>
       </div>
     )

@@ -39,6 +39,12 @@ class StarApp extends React.Component {
     axios.post("http://localhost:3000/stars/create",params).then((response)=>{
     }).catch((error)=>{
     })
+
+    const fakePush = {
+      user_id: this.props.info.id,
+      issue_id: this.props.issue.id
+    }
+    this.props.info.stars.push(fakePush)
   }
 
   deleteStar(){

@@ -9,6 +9,10 @@ import StarredIssues from '../../components/profile_components/StarredIssues.js'
 
 class UsersShow extends React.Component {
 
+  componentWillReceiveProps(){
+    this.props.fetchUser()
+  }
+
   render(){
     const info = this.props.info
     return(
