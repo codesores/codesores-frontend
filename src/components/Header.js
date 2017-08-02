@@ -37,7 +37,6 @@ class Header extends Component {
   }
 
   render() {
-    const info = this.props.info;
     return (
       <AppBar title='CodeSores'>
           { this.logInOrLogout() }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Errors from './Errors'
 
 class Notice extends React.Component {

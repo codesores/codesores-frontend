@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
-import { Link, Switch, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import Index from '../views/index.js'
 import IssuesShow from '../views/issues/show.js'
-import IssuesIndex from '../views/issues/index.js'
 import UsersShow from '../views/users/show.js'
 
 
