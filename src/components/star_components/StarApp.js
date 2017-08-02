@@ -14,19 +14,15 @@ class StarApp extends React.Component {
     this.state = {
       liked: null
     }
-    
+
     this.setStar = this.setStar.bind(this)
     this.render = this.render.bind(this)
-    // this.persistStarState = this.persistStarState.bind(this)
-    // this.starConditional = this.starConditional.bind(this)
   }
 
   setStar(){
     if (this.state.liked === false){
-      console.log("liked")
       this.setState({liked: true},this.createStar())
     } else {
-      console.log("unliked")
       this.setState({liked: false},this.deleteStar())
     }
   }
@@ -41,9 +37,7 @@ class StarApp extends React.Component {
     })
 
     axios.post("http://localhost:3000/stars/create",params).then((response)=>{
-
     }).catch((error)=>{
-      // starApp.props.setNotice(error.toString(), "Couldn't star issue")
     })
   }
 
@@ -57,16 +51,12 @@ class StarApp extends React.Component {
     })
 
     axios.post("http://localhost:3000/stars/delete",params).then((response)=>{
-
     }).catch((error)=>{
-      // starApp.props.setNotice(error.toString(), "Couldn't star issue")
     })
-
   }
 
   shouldComponentUpdate(nextProp){
     this.setState({liked: this.userHasLiked(nextProp)})
-
     return true
   }
 
@@ -74,10 +64,8 @@ class StarApp extends React.Component {
     const match = props.issue.stars.find(function (star) {
       return star.user_id === props.info.id
     })
-
     return !!match
   }
-
 
   render(){
     return(
@@ -87,6 +75,5 @@ class StarApp extends React.Component {
       )
   }
 }
-
 
 export default StarApp

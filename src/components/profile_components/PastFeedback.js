@@ -23,10 +23,8 @@ class PastFeedback extends Component {
         </li>
         )
     })
-
     return cappedFeedback
   }
-
 
   feedbackBox(){
     if (this.props.feedbacks){

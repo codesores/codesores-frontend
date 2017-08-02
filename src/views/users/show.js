@@ -11,7 +11,6 @@ class UsersShow extends React.Component {
 
   render(){
     const info = this.props.info
-
     return(
       <Grid>
           <Row className="show-grid">
@@ -24,7 +23,7 @@ class UsersShow extends React.Component {
               <div id='feedback'><br/>
                 <a href={info.html_url}>GitHub Page</a><br/><br/>
                 <PastFeedback feedbacks={info.user_feedbacks}/>
-                <StarredIssues />
+                <StarredIssues stars={info.stars}/>
               </div>
             </Col>
           </Row>

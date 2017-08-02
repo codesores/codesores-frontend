@@ -1,14 +1,45 @@
 import React from 'react'
-import axios from 'axios'
-
-import PastFeedback from '../../components/profile_components/PastFeedback.js'
+import { Link } from 'react-router-dom'
 
 class StarredIssues extends React.Component {
 
-  render(){
+  sortRecentStars(stars){
+    return stars.sort((a, b)=>{
+      return new Date(b.created_at) - new Date(a.created_at);
+    });
+  }
 
+  iterateStars(limit=10){
+    let sortedStars = this.sortRecentStars(this.props.stars)
+
+    let cappedStars = sortedStars.slice(0, limit).map((star) => {
+      const issueUrl = "/issues/" + star.issue_id
+      return (
+        <li item={star} key={star.id}>
+        <Link to={issueUrl}>Issue</Link>
+        </li>
+        )
+    })
+
+    return cappedStars
+  }
+
+  starBox(){
+    if (this.props.stars){
+      return (
+        <div>
+        <p> Past Stars: </p>
+        {this.iterateStars(5)}
+        </div>
+        )
+    }
+  }
+
+  render(){
     return(
-      <div> starred issues </div>
+      <div>
+      {this.starBox()}
+      </div>
       )
   }
 }
