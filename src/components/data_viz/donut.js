@@ -6,7 +6,7 @@ class DonutChart extends React.Component {
       super(props)
       this.createDonutChart = this.createDonutChart.bind(this)
    }
-   
+
    componentDidMount() {
       this.createDonutChart(this.props.value, this.props.lowerLimit, this.props.upperLimit, this.props.delay, this.props.diameter)
    }
@@ -17,10 +17,9 @@ class DonutChart extends React.Component {
          transitionDuration = 1200,
          tau = 2 * Math.PI
 
-     var svg = d3.select('body')
-       .append('svg')
-       .attr('width', width)
-       .attr('height', height)
+    const node = this.node
+
+     var svg = d3.select(node)
 
      var arc = d3.arc()
        .innerRadius(diameter/4)
@@ -86,7 +85,7 @@ class DonutChart extends React.Component {
 
 render() {
       return <svg ref={node => this.node = node}
-      width={500} height={500}>
+      width={this.props.diameter} height={this.props.diameter}>
       </svg>
    }
 }
