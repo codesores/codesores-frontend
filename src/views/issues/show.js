@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Header from '../../components/Header.js'
+import DonutChart from '../../components/data_viz/donut.js'
 
 // import Comments from '../../components/issue_components/comments.js'
 import Summary from '../../components/issue_components/summary.js'
@@ -56,7 +57,7 @@ class issueShow extends React.Component {
 
       this.state.issue.user_feedbacks.forEach((feedback)=>{
         if (feedback.user_id === issueShow.props.info.id){
-          display = false 
+          display = false
         }
       })
 
@@ -91,6 +92,7 @@ class issueShow extends React.Component {
             </Col>
           </Row>
         </Grid>
+        <DonutChart value={50} lowerLimit={0} upperLimit={100} delay={1000} diameter={500} />
       </div>
       )
   }
