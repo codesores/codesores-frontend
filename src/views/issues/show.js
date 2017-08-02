@@ -75,6 +75,15 @@ class issueShow extends React.Component {
       }
     }
 
+    starConditional(){
+      if(this.props.info){
+                
+        return (
+          <StarApp issue={this.state.issue} token={this.props.token} info={this.props.info}/>
+          )
+      }
+    }
+
 
   persistStarState(){
     let hasVoted = false
@@ -120,7 +129,7 @@ class issueShow extends React.Component {
             <Col xs={6} md={4}>
               <div id='feedback'>
                 <a href={this.state.issue.url}>Go to Repository</a><br/>
-                <StarApp issue={this.state.issue} token={this.props.token} info={this.props.info}/>
+                {this.starConditional()}
                 {this.backButton()}<br/><br/>
                 {this.feedbackConditional()}
               </div>
