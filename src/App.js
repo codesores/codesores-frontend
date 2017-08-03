@@ -49,7 +49,7 @@ class App extends Component {
         app.setNotice(error.toString(), "User must be logged in")
       })
     }
-    
+
   }
 
   setNotice(...errors){
@@ -61,8 +61,10 @@ class App extends Component {
     return (
       <div>
         <Header token={this.state.token} logout={this.deleteToken}  userInfo={this.fetchUserDetails} info={info} />
+        <div className="full-container">
         <Main setNotice={this.setNotice} token={this.state.token} info={info} fetchUser={this.fetchUserDetails}/>
         <Notice notice={ this.state.notice } deleteErrorsAfterView={ this.deleteErrorsAfterView }/>
+        </div>
       </div>
     )
   }

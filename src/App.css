@@ -68,3 +68,8 @@
   opacity: 1;
   transition: opacity 1s ease-in;
 }
+
+.full-container {
+  max-width: 950px;
+  margin: 0 auto 0;
+}
