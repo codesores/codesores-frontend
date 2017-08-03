@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import Header from '../../components/Header.js'
 import DonutChart from '../../components/data_viz/donut.js'
 
 import Summary from '../../components/issue_components/summary.js'
@@ -33,7 +32,7 @@ class issueShow extends React.Component {
       thisComponent.props.setNotice([])
     }
     ).catch((error)=>{
-      thisComponent.props.setNotice(error.toString(), `Couldn't find the issue with id: ${this.props.router.  match.params.id} `)
+      thisComponent.props.setNotice(error.toString(), `Couldn't find the issue with id: ${this.props.router.match.params.id} `)
     })
 
     //Bind components to this
