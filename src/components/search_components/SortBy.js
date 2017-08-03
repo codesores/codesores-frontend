@@ -6,6 +6,7 @@ class SortBy extends Component {
   constructor(props){
     super(props)
     this.handleChange = this.handleChange.bind(this)
+
   }
 
   handleChange(value, key_hash){
@@ -14,7 +15,10 @@ class SortBy extends Component {
 
   render() {
     return (
-      <Button label='search' onMouseUp={this.props.updateSortBy} raised primary />
+      <div>
+      <Button label='Comment Count' onMouseUp={() => this.props.updateSortBy('commentCount')} raised primary />
+      <Button label='Issue Count' onMouseUp={() => this.props.updateSortBy('issueCount')} raised primary />
+      </div>
     )
   }
 }

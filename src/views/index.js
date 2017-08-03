@@ -14,8 +14,8 @@ class Index extends React.Component {
       resultsPurgatory: [],
       resultsToDisplay: [],
       sortBy: {
-        commentCount: false,
-        issueCount: true,
+        commentCount: true,
+        issueCount: false,
         dateCreated: false
       }
     }
@@ -24,9 +24,12 @@ class Index extends React.Component {
     this.updateSortBy = this.updateSortBy.bind(this)
   }
 
-  updateSortBy(x){
+  updateSortBy(toggleValue){
+    
 
+    this.setState({})
   }
+
 
   updateResults(response){
     this.setState({resultsPurgatory: response})
