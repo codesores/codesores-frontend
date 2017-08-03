@@ -28,7 +28,7 @@ class UsersShow extends React.Component {
             <Col xs={6} md={4}>
               <div id='feedback'><br/>
                 <a href={info.html_url}>GitHub Page</a><br/><br/>
-                <PastFeedback feedbacks={info.user_feedbacks}/><br/><br/>
+                <PastFeedback feedbacks={info.user_feedbacks} token={this.props.token}/><br/><br/>
               </div>
             </Col>
           </Row>
