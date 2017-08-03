@@ -4,8 +4,6 @@ import SearchResults from '../components/search_components/SearchResults.js'
 import SortBy from '../components/search_components/SortBy.js'
 import Header from '../components/Header.js'
 
-import Jumbotron from 'react-bootstrap/lib/Jumbotron';
-
 
 class Index extends React.Component {
   constructor(args){
