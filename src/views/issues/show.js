@@ -9,8 +9,7 @@ import {Grid, Row, Col} from 'react-bootstrap'
 
 import UserFeedback from '../../components/user_feedback/UserFeedback.js'
 import createHistory from 'history/createBrowserHistory'
-
-
+import { Card, CardMedia, CardTitle, CardText, CardActions } from 'react-toolbox/lib/card';
 
 class issueShow extends React.Component {
 
@@ -18,6 +17,7 @@ class issueShow extends React.Component {
     super(args)
     this.state = {
       issue: {},
+      issue_type: {},
       repo: {},
       language: {},
       feedbacks: {}
@@ -43,6 +43,7 @@ class issueShow extends React.Component {
   parseJSONAndSetState(json){
     this.setState({
       issue: json.data.issue,
+      issue_type: json.data.request_type,
       repo: json.data.repo,
       language: json.data.language,
       feedbacks: json.data.feedbacks,
@@ -72,7 +73,7 @@ class issueShow extends React.Component {
     }
 
     starConditional(){
-      if(this.props.info){  
+      if(this.props.info){
         return (
           <StarApp issue={this.state.issue} stars={this.state.stars} token={this.props.token} info={this.props.info}/>
           )
@@ -92,15 +93,18 @@ class issueShow extends React.Component {
   }
 
 
-  render(){ 
+
+  render(){
     return(
       <div>
         <Grid>
           <Row className="show-grid">
             <Col xs={12} md={8}>
               <div id='issue_id'>
+              <br />
                 <Summary
                   issue={this.state.issue}
+                  issue_type={this.state.issue_type}
                   repo={this.state.repo}
                   language={this.state.language}
                   feedbacks={this.state.feedbacks}
@@ -117,7 +121,7 @@ class issueShow extends React.Component {
             </Col>
           </Row>
         </Grid>
-        <div id='stats'>
+        <div id='stats' className="stats-container">
         <DonutChart value={30} lowerLimit={0} upperLimit={100} delay={1000} diameter={150} />
         <DonutChart value={60} lowerLimit={0} upperLimit={100} delay={1500} diameter={150} />
         <DonutChart value={90} lowerLimit={0} upperLimit={100} delay={2000} diameter={150} />
