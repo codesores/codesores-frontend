@@ -15,7 +15,7 @@ class IssuesIndex extends React.Component {
     };
 
     //Make API call
-    let apiUrl = "http://localhost:3000/issues/?token=" + this.props.token
+    let apiUrl = process.env.REACT_APP_HOST + "/issues/?token=" + this.props.token
     const thisComponent = this
     axios.get(apiUrl).then(function (response) {
       thisComponent.parseJSONAndSetState(response);

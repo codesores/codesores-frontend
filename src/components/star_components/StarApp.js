@@ -32,7 +32,7 @@ class StarApp extends React.Component {
       liked: this.state.liked
     })
 
-    axios.post("http://localhost:3000/stars/create",params).then((response)=>{
+    axios.post(process.env.REACT_APP_HOST + "/stars/create",params).then((response)=>{
     }).catch((error)=>{
     })
 
@@ -50,7 +50,7 @@ class StarApp extends React.Component {
       liked: this.state.liked
     })
 
-    axios.post("http://localhost:3000/stars/delete",params).then((response)=>{
+    axios.post(process.env.REACT_APP_HOST + "/stars/delete",params).then((response)=>{
     }).catch((error)=>{
     })
   }

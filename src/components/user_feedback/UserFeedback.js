@@ -10,8 +10,6 @@ import RequestType from './RequestType.js'
 import Submit from './Submit.js'
 
 class UserFeedback extends Component {
-//missing user id from feedback params !!!
-//showForm is not tied to specific user !!!
   constructor(){
     super()
     this.state = {
@@ -23,8 +21,6 @@ class UserFeedback extends Component {
       },
       showForm: true
     }
-
-    // console.log(this.props)
 
     this.setFeedback = this.setFeedback.bind(this)
     this.submit      = this.submit.bind(this)
@@ -53,7 +49,7 @@ class UserFeedback extends Component {
     let UserFeedback = this
     let feedback = qs.stringify(this.state)
     // console.log('feedback:', feedback)
-    let apiUrl = "http://localhost:3000/user_feedbacks/?token=" + this.props.token + "&" + feedback
+    let apiUrl = process.env.REACT_APP_HOST + "/user_feedbacks/?token=" + this.props.token + "&" + feedback
     axios.post(apiUrl).then((response)=>{
       UserFeedback.props.setNotice([])
     }).catch((error)=>{
