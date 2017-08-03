@@ -33,6 +33,7 @@ class issueShow extends React.Component {
     let apiUrl = "http://localhost:3000/issues/" + this.props.router.match.params.id + "/?token=" + this.props.token
 
     axios.get(apiUrl).then(function (response) {
+      console.log("Response!!!!!", response)
       thisComponent.parseJSONAndSetState(response);
       thisComponent.props.setNotice([])
     }
@@ -47,10 +48,11 @@ class issueShow extends React.Component {
   // consume JSON from API call and update setState
   parseJSONAndSetState(json){
     this.setState({
-      issue: json.data,
+      issue: json.data.issue,
       repo: json.data.repo,
       language: json.data.language,
-      feedbacks: json.data.feedbacks
+      feedbacks: json.data.feedbacks,
+      stars: json.data.stars
     })
   }
 
@@ -111,7 +113,6 @@ class issueShow extends React.Component {
 
 
   render(){ 
-    console.log('show props', this.props)
     return(
       <div>
         <Grid>

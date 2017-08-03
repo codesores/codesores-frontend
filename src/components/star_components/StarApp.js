@@ -49,7 +49,6 @@ class StarApp extends React.Component {
 
   deleteStar(){
     let starApp = this
-
     let params = qs.stringify({
       token: this.props.token,
       issue_id: this.props.issue.id,
