@@ -27,7 +27,6 @@ class SearchBar extends Component {
       <Checkbox checked={this.props.searchBarCurrentValue.documentation} label="show documentation" onChange={(value) => this.handleChange(value, 'documentation')} />
       <Checkbox checked={this.props.searchBarCurrentValue.bugs} label="show bugs" onChange={(value) => this.handleChange(value, 'bugs')}/>
       <Button label='search' onMouseUp={this.props.search} raised primary />
-      <div className='loader'></div>
       </div>
     )
   }
