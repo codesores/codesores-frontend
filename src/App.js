@@ -17,8 +17,6 @@ class App extends Component {
       notice: [],
       info: ""
     }
-
-
     this.fetchUserDetails();
 
     this.deleteToken = this.deleteToken.bind(this)
@@ -42,14 +40,12 @@ class App extends Component {
       let userApiUrl = process.env.REACT_APP_HOST + "/users?token=" + this.state.token
 
       axios.get(userApiUrl).then((response)=>{
-        // console.log(response.data)
         app.setState({info: response.data}, ()=>{
         })
       }).catch((error)=>{
         app.setNotice(error.toString(), "User must be logged in")
       })
     }
-
   }
 
   setNotice(...errors){
