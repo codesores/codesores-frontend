@@ -6,6 +6,8 @@ import Notice from './components/error_handling/Notice'
 import axios from 'axios'
 import { getQueryParams } from './utils';
 
+require('dotenv').config()
+
 class App extends Component {
   constructor() {
     super()
@@ -57,7 +59,8 @@ class App extends Component {
   }
 
   render() {
-    const info = this.state.info;
+    console.log(process.env)
+    const info = this.statete.info;
     return (
       <div>
         <Header token={this.state.token} logout={this.deleteToken}  userInfo={this.fetchUserDetails} info={info} />
