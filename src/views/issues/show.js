@@ -3,13 +3,9 @@ import axios from 'axios'
 import Header from '../../components/Header.js'
 import DonutChart from '../../components/data_viz/donut.js'
 
-// import Comments from '../../components/issue_components/comments.js'
 import Summary from '../../components/issue_components/summary.js'
-// import Meta from '../../components/issue_components/meta.js'
-import Feedback from '../../components/issue_components/feedback.js'
 import StarApp from '../../components/star_components/StarApp.js'
 
-import ButtonContribute from '../../components/issue_components/button_contribute.js'
 import {Grid, Row, Col} from 'react-bootstrap'
 
 import UserFeedback from '../../components/user_feedback/UserFeedback.js'
@@ -33,7 +29,6 @@ class issueShow extends React.Component {
     let apiUrl = "http://localhost:3000/issues/" + this.props.router.match.params.id + "/?token=" + this.props.token
 
     axios.get(apiUrl).then(function (response) {
-      console.log("Response!!!!!", response)
       thisComponent.parseJSONAndSetState(response);
       thisComponent.props.setNotice([])
     }
@@ -78,26 +73,12 @@ class issueShow extends React.Component {
     }
 
     starConditional(){
-      if(this.props.info){
-                
+      if(this.props.info){  
         return (
-          <StarApp issue={this.state.issue} token={this.props.token} info={this.props.info}/>
+          <StarApp issue={this.state.issue} stars={this.state.stars} token={this.props.token} info={this.props.info}/>
           )
       }
     }
-
-
-  persistStarState(){
-    let hasVoted = false
-    if (this.props.issue.stars){
-      this.props.issue.stars.forEach((star)=>{
-        if (star.user_id === this.props.info.id){
-          hasVoted = true
-        }
-      })
-    }
-    return hasVoted
-  }
 
   backButton(){
     const history = createHistory()
