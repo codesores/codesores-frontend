@@ -6,26 +6,18 @@ class FeedbackList extends React.Component {
   }
 
   render() {
-    let responseCount = 0
-    let validity = "N/A"
-    let difficulty = "N/A"
-    if(typeof this.props.feedbacks === 'array'){
-      responseCount = this.props.feedbacks.length
-      let validity = this.average(this.props.feedbacks.map(feedback => feedback.validty))
-      let difficulty = this.average(this.props.feedbacks.map(feedback => feedback.validty))
-    }
     return (
       <div className="feedback-list">
         <h3>Issue Stats</h3>
         <ul>
           <li>
-            Response Count: {responseCount}
+            Response Count: {this.props.feedbacks.count}
           </li>
           <li>
-            Average Validity Rating: {validity}
+            Average Validity Rating: {this.props.feedbacks.average_validity}
           </li>
           <li>
-            Average Difficulty Rating: {difficulty}
+            Average Difficulty Rating: {this.props.feedbacks.average_difficulty}
           </li>
         </ul>
       </div>

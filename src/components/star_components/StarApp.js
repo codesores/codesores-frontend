@@ -49,7 +49,6 @@ class StarApp extends React.Component {
 
   deleteStar(){
     let starApp = this
-
     let params = qs.stringify({
       token: this.props.token,
       issue_id: this.props.issue.id,
@@ -67,19 +66,23 @@ class StarApp extends React.Component {
   }
 
   userHasLiked(props) {
-    const match = props.issue.stars.find(function (star) {
-      return star.user_id === props.info.id
-    })
-    return !!match
+    if ( props.issue.stars){
+      const match = props.issue.stars.find(function (star) {
+        return star.user_id === props.info.id
+      })
+      return !!match
+    }
   }
 
-  render(){
-    return(
-      <div>
-      <StarButton liked={this.state.liked} setStar={this.setStar}/>
-      </div>
-      )
-  }
+  
+
+render(){
+  return(
+    <span>
+    <StarButton liked={this.state.liked} setStar={this.setStar}/>
+    </span>
+    )
+}
 }
 
 export default StarApp

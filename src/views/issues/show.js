@@ -13,6 +13,8 @@ import ButtonContribute from '../../components/issue_components/button_contribut
 import {Grid, Row, Col} from 'react-bootstrap'
 
 import UserFeedback from '../../components/user_feedback/UserFeedback.js'
+import createHistory from 'history/createBrowserHistory'
+
 
 
 class issueShow extends React.Component {
@@ -31,6 +33,7 @@ class issueShow extends React.Component {
     let apiUrl = "http://localhost:3000/issues/" + this.props.router.match.params.id + "/?token=" + this.props.token
 
     axios.get(apiUrl).then(function (response) {
+      console.log("Response!!!!!", response)
       thisComponent.parseJSONAndSetState(response);
       thisComponent.props.setNotice([])
     }
@@ -45,10 +48,11 @@ class issueShow extends React.Component {
   // consume JSON from API call and update setState
   parseJSONAndSetState(json){
     this.setState({
-      issue: json.data,
+      issue: json.data.issue,
       repo: json.data.repo,
       language: json.data.language,
-      feedbacks: json.data.feedbacks
+      feedbacks: json.data.feedbacks,
+      stars: json.data.stars
     })
   }
 
@@ -73,6 +77,15 @@ class issueShow extends React.Component {
       }
     }
 
+    starConditional(){
+      if(this.props.info){
+                
+        return (
+          <StarApp issue={this.state.issue} token={this.props.token} info={this.props.info}/>
+          )
+      }
+    }
+
 
   persistStarState(){
     let hasVoted = false
@@ -86,8 +99,20 @@ class issueShow extends React.Component {
     return hasVoted
   }
 
+  backButton(){
+    const history = createHistory()
+    return(
+      <span>
+       <button
+        onClick={history.goBack}>
+        Back
+      </button>
+      </span>
+      )
+  }
 
-  render(){
+
+  render(){ 
     return(
       <div>
         <Grid>
@@ -104,8 +129,9 @@ class issueShow extends React.Component {
             </Col>
             <Col xs={6} md={4}>
               <div id='feedback'>
-                <StarApp issue={this.state.issue} token={this.props.token} info={this.props.info}/>
-                <a href={this.state.issue.url}>Go to Repository</a><br/><br/>
+                <a href={this.state.issue.url}>Go to Repository</a><br/>
+                {this.starConditional()}
+                {this.backButton()}<br/><br/>
                 {this.feedbackConditional()}
               </div>
             </Col>
