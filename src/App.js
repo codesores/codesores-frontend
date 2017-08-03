@@ -39,7 +39,7 @@ class App extends Component {
   fetchUserDetails() {
     if (this.state.token){
       let app = this;
-      let userApiUrl = "http://localhost:3000/users?token=" + this.state.token
+      let userApiUrl = process.env.REACT_APP_HOST + "/users?token=" + this.state.token
 
       axios.get(userApiUrl).then((response)=>{
         // console.log(response.data)
@@ -57,6 +57,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(process.env.REACT_APP_HOST)
     const info = this.state.info;
     return (
       <div>
