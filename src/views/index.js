@@ -13,11 +13,8 @@ class Index extends React.Component {
     this.state = {
       resultsPurgatory: [],
       resultsToDisplay: [],
-      sortBy: {
-        commentCount: true,
-        issueCount: false,
-        dateCreated: false
-      }
+      sortBy: {},
+      sortByDescending: true
     }
     this.updateResults = this.updateResults.bind(this)
     this.sortResultsBy = this.sortResultsBy.bind(this)
@@ -25,11 +22,9 @@ class Index extends React.Component {
   }
 
   updateSortBy(toggleValue){
-    
-
-    this.setState({})
+    new Promise(()=>(this.setState({sortBy: {[toggleValue]: true}}))).then(
+      this.sortResultsBy())
   }
-
 
   updateResults(response){
     this.setState({resultsPurgatory: response})
@@ -37,33 +32,33 @@ class Index extends React.Component {
   }
 
   sortResultsBy(){
-
     let sortedArray = []
-
-    if(this.state.sortBy.commentCount) {
+    let sortBy = Object.keys(this.state.sortBy)[0]
+    console.log(sortBy)
+    if(sortBy) {
       sortedArray = this.state.resultsPurgatory.sort(function(a, b){
-        return a.comment_count - b.comment_count
+        console.log(a[sortBy])
+        return a[sortBy] - b[sortBy]
       })
     }
 
-    else if(this.state.sortBy.issueCount){
-      sortedArray = this.state.resultsPurgatory.sort(function(a, b){
-        return a.issue_count - b.issue_count
-      })
-    }
+    else{sortedArray = this.state.resultsPurgatory }
 
-    let new_resultsToDisplay = this.state.resultsToDisplay.concat(sortedArray);
+    let new_resultsToDisplay = sortedArray;
     this.setState({resultsToDisplay: new_resultsToDisplay})
-
   }
 
   render(){
 
     return(
       <div>
+      <aside>
       <SearchApp updateResults={this.updateResults} setNotice={this.props.setNotice} token={this.props.token} />
-      <SearchResults resultsToDisplay={this.state.resultsToDisplay} token={this.props.token} />
+      </aside>
+      <main id='search-results'>
       <SortBy updateSortBy={this.updateSortBy}/>
+      <SearchResults resultsToDisplay={this.state.resultsToDisplay} token={this.props.token} />
+      </main>
       </div>
     )
   }

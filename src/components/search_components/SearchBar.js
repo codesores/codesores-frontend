@@ -18,9 +18,7 @@ class SearchBar extends Component {
   }
 
   render() {
-    //      <Dropdown auto  label='Select Progamming Language' onChange={(value) => this.handleChange(value, 'language')} source={this.props.languages} value={this.props.searchBarCurrentValue['language']} />
-
-    return (
+        return (
       <div id="search-bar">
       <h1>Search</h1>
 
@@ -32,7 +30,8 @@ class SearchBar extends Component {
                value={this.props.searchBarCurrentValue['language']}
       />
 
-      <Slider label='difficulty' pinned min={0} max={5} step={1} value={this.props.searchBarCurrentValue['difficulty']} onChange={(value) => this.handleChange(value, 'difficulty')} />
+      <Slider label='difficulty' min={0} max={5} step={1} value={this.props.searchBarCurrentValue['difficulty']} onChange={(value) => this.handleChange(value, 'difficulty')} />
+      <Checkbox checked={!this.props.searchBarCurrentValue['difficulty']} label="don't filter by difficulty" onChange={(value) => this.handleChange(0, 'difficulty')} />
       <Input type='text' label='Keywords' name='keywords' value={this.props.searchBarCurrentValue['keywords']} onChange={(value) => this.handleChange(value, 'keywords')} maxLength={36} />
       <Checkbox checked={this.props.searchBarCurrentValue.documentation} label="show documentation" onChange={(value) => this.handleChange(value, 'documentation')} />
       <Checkbox checked={this.props.searchBarCurrentValue.bugs} label="show bugs" onChange={(value) => this.handleChange(value, 'bugs')}/>
