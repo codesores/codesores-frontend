@@ -48,7 +48,7 @@ class issueShow extends React.Component {
   // consume JSON from API call and update setState
   parseJSONAndSetState(json){
     this.setState({
-      issue: json.data,
+      issue: json.data.issue,
       repo: json.data.repo,
       language: json.data.language,
       feedbacks: json.data.feedbacks,
