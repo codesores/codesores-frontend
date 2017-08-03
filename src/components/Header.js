@@ -7,6 +7,7 @@ import LoginButton from './LoginButton'
 import AppBar from 'react-toolbox/lib/app_bar/AppBar';
 import Navigation from 'react-toolbox/lib/navigation/Navigation';
 import Avatar from 'react-toolbox/lib/avatar/Avatar';
+import HomeButton from './HomeButton';
 import './Header.css';
 
 class Header extends Component {
@@ -24,13 +25,14 @@ class Header extends Component {
               </span>
             </span>
           <LogoutButton logout={this.props.logout} info={this.props.info} />
-          <Link to='/' className='Header-link'>Home</Link>
+          <HomeButton />
         </Navigation>
       )
     } else {
       return (
         <Navigation type='horizontal'>
             <LoginButton />
+            <HomeButton />
         </Navigation>
       )
     }
@@ -38,6 +40,7 @@ class Header extends Component {
 
   render() {
     return (
+
       <AppBar title='CodeSores'>
           { this.logInOrLogout() }
       </AppBar>
@@ -47,5 +50,3 @@ class Header extends Component {
 
 
 export default Header
-
-

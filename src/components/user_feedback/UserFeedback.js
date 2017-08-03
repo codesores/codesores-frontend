@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import qs from 'qs';
 
-import ReactBootstrap from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
 import { ButtonGroup } from 'react-bootstrap';
-import { DropdownButton } from 'react-bootstrap';
-import { MenuItem } from 'react-bootstrap';
 
 import Validity from './Validity.js'
 import Difficulty from './Difficulty.js'
