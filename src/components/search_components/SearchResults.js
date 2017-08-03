@@ -8,21 +8,15 @@ import Button from 'react-toolbox/lib/button/Button';
 import { CSSTransitionGroup } from 'react-transition-group'
 
 class SearchResults extends Component {
-
-  constructor() {
-    super()
-
-    this.state = {
-      resultsOffPage: [],
-      resultsOnPage: []
-    }
+  componentDidMount(){
+    console.log('I mounted')
   }
 
   renderIssue(element){
     return(
 
       <div id={`issue_${element.id}`} className='issue-card'>
-      <header>{element.title}</header>
+      <h2>{element.title}</h2>
         <Link to={'/issues/' + element.id}>Issue</Link>
           <b>Project:</b> <Link to={element.repo.url}>{element.repo.name}</Link>
          <p>{element.label}</p>
@@ -32,45 +26,14 @@ class SearchResults extends Component {
     )
   }
 
-  doTheThing (array, interval, func) {
-    var thisComponent = this
-    if(array.length > 0) {
-      setTimeout(function() {
-        func(array[0])
-        thisComponent.doTheThing(array.pop(), interval, func)
-      }, 1000)
-    }
-  }
-
-  componentDidUpdate () {
-    console.log("componentDidMount")
-    console.log("this.props.resultsToDisplay:", this.props.resultsToDisplay)
-    var thisComponent = this
-
-    if(thisComponent.state.resultsOffPage.length === 0) {
-      this.setState({resultsOffPage: thisComponent.props.resultsToDisplay})
-    }
-    // setTimeout(() => alert('hi'), 1000)
-    this.doTheThing(
-      thisComponent.state.resultsOffPage,
-      1000,
-      function(result){
-        console.log("result:",result)
-        thisComponent.setState({
-          resultsOnPage: thisComponent.state.resultsOnPage.concat(result)
-        })
-      }
-      // function(thing){console.log(thing)}
-    )
-  }
 
   render() {
 
     return (
       <ul className='issue-deck'>
-      { this.state.resultsOnPage.map((result, index) =>
+      { this.props.resultsToDisplay.map((result, idx) =>
         <CSSTransitionGroup
-          transitionName="issue"
+          transitionName='issue'
           transitionAppear={true}
           transitionAppearTimeout={1000}
           transitionEnter={false}
