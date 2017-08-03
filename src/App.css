@@ -73,3 +73,12 @@
   max-width: 950px;
   margin: 0 auto 0;
 }
+
+.card-icon {
+  padding-right: 10px;
+}
+
+.stats-container {
+  display: block;
+  float: none;
+}
