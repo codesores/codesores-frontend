@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
 import { List, ListItem, ListSubHeader, ListDivider, ListCheckbox } from 'react-toolbox/lib/list';
 
 
@@ -31,11 +30,6 @@ class PastFeedback extends Component {
         to={issueUrl + "?token=" + this.props.token}
         />
         </span>
-
-
-
-
-
         )
     })
     return cappedFeedback

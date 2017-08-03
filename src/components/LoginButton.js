@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import Button from 'react-toolbox/lib/button/Button';
 import GithubIcon from './GithubIcon';
 

@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom'
 import FeedbackList from './FeedbackList'
 
 class Summary extends React.Component {
-  constructor(args){
-    super(args)
-  }
 
   render() {
     return (
