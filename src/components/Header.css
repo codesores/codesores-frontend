@@ -2,11 +2,18 @@
   flex: none;
 }
 
+.lGWLJ {
+  max-width: 950px;
+  margin: 0 auto 0;
+}
+
 .Header-link {
   color: #fff !important;
   text-decoration: none;
+  font-weight: bold;
 }
 
 .Header-userName {
   padding: 0 15px;
+  font-weight: bold;
 }

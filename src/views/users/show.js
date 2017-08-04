@@ -1,6 +1,4 @@
 import React from 'react'
-import axios from 'axios'
-import Header from '../../components/Header.js'
 import {Grid, Row, Col} from 'react-bootstrap'
 
 import PastFeedback from '../../components/profile_components/PastFeedback.js'
@@ -17,7 +15,6 @@ class UsersShow extends React.Component {
     const info = this.props.info
     return(
       <Grid>
-      //missing issue name, stars issue name
           <Row className="show-grid">
             <Col xs={12} md={8}>
               <div id='issue_id'>

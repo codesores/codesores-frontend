@@ -1,7 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { List, ListItem, ListSubHeader, ListDivider, ListCheckbox } from 'react-toolbox/lib/list';
-import createHistory from 'history/createBrowserHistory'
+import { List, ListItem, ListSubHeader } from 'react-toolbox/lib/list';
 
 class StarredIssues extends React.Component {
 

@@ -1,8 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import Button from 'react-toolbox/lib/button/Button'
-import IconButton from 'react-toolbox/lib/button/Button'
-import FontIcon from 'react-toolbox/lib/font_icon';
 import qs from 'qs'
 import StarButton from './StarButton.js'
 
@@ -17,6 +14,7 @@ class StarApp extends React.Component {
 
     this.setStar = this.setStar.bind(this)
     this.render = this.render.bind(this)
+    this.userHasLiked = this.userHasLiked.bind(this)
   }
 
   setStar(){
@@ -28,8 +26,6 @@ class StarApp extends React.Component {
   }
 
   createStar(){
-    let starApp = this
-
     let params = qs.stringify({
       token: this.props.token,
       issue_id: this.props.issue.id,
@@ -48,7 +44,6 @@ class StarApp extends React.Component {
   }
 
   deleteStar(){
-    let starApp = this
     let params = qs.stringify({
       token: this.props.token,
       issue_id: this.props.issue.id,
@@ -66,8 +61,8 @@ class StarApp extends React.Component {
   }
 
   userHasLiked(props) {
-    if ( props.issue.stars){
-      const match = props.issue.stars.find(function (star) {
+    if ( props.stars){
+      const match = props.stars.find(function (star) {
         return star.user_id === props.info.id
       })
       return !!match

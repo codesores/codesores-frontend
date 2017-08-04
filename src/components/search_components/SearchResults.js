@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
-import UserFeedback from '../user_feedback/UserFeedback.js'
-import { Jumbotron, Grid, Row, Col  } from 'react-bootstrap';
+import { Grid, Row, Col  } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Card, CardMedia, CardTitle, CardText, CardActions } from 'react-toolbox/lib/card';
 import Button from 'react-toolbox/lib/button/Button';
