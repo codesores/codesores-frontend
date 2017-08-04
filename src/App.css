@@ -169,8 +169,8 @@ text-align: center;
 }
 
 .search-card-results {
-  width: 80%;
-  padding: 20px;
+  width: 100%;
+  padding: 10px;
   margin: 0 auto 0;
 }
 
@@ -230,11 +230,6 @@ text-align: center;
   text-align: center;
 }
 
-.show-categories {
-  display: flex;
-  padding: 1em 0;
-
-}
 
 .button-right {
   float: right;
@@ -246,6 +241,36 @@ text-align: center;
   max-width: 30%;
   float: left;
   padding: 0 0 1em 1em;
-  margin: 
+  margin:
 
+}
+
+#sort-by {
+  padding: 1em;
+  max-width: 80%;
+  margin: 0 auto 0;
+}
+
+.search-full-container {
+  position: relative;
+  margin-top: 64px;
+  border: solid 2px orange;
+}
+
+.search-sidebar {
+  position: fixed;
+  width: 20%;
+  border: solid 2px red;
+}
+
+.search-results {
+  position: relative;
+  width: 70%;
+  border: solid 2px blue;
+  float: right;
+}
+
+.sort-by {
+  margin-top: 10%;
+  padding: 10%;
 }

@@ -36,8 +36,6 @@ class SearchBar extends Component {
       <p>Difficulty</p>
       <Slider label='difficulty' min={0} max={5} step={1} value={this.props.searchBarCurrentValue['difficulty']} onChange={(value) => this.handleChange(value, 'difficulty')} />
 
-
-
       <div className='show-categories'>
       <Checkbox checked={this.props.searchBarCurrentValue.documentation} label="documentation" onChange={(value) => this.handleChange(value, 'documentation')} />
       <Checkbox checked={this.props.searchBarCurrentValue.bugs} label="bugs" onChange={(value) => this.handleChange(value, 'bugs')}/>

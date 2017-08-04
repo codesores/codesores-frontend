@@ -38,7 +38,7 @@ class Header extends Component {
   render() {
     return (
 
-      <AppBar title='CodeSores'>
+      <AppBar title='CodeSores' fixed>
           { this.logInOrLogout() }
       </AppBar>
     )

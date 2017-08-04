@@ -26,22 +26,19 @@ class SortBy extends Component {
     ]
 
       return (
-        <div>
+        <div><Dropdown
+          auto
+          label='Sort By'
+          onChange={this.handleChange}
+          source={sortTypes}
+          value={this.state.value}
+        />
               <Switch
               checked={this.props.sortByDescending}
-              label="sort by descending"
+              label="descending"
               onChange={this.props.updateSortByDescending}
               />
-
-              <Dropdown
-                auto
-                label='Sort By'
-                onChange={this.handleChange}
-                source={sortTypes}
-                value={this.state.value}
-              />
-
-              </div>
+</div>
             );
 
           }
