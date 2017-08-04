@@ -259,39 +259,33 @@ text-align: center;
   text-align: center;
 }
 
-
-
-
 #profile-title{
   text-align: center;
-
   padding: 1.2rem;
-
-
+  margin-top: 30px;
 }
 
 
-#git {
+/*#git {
   position: relative;
   left: 45%;
-}
+}*/
 
 /*#git-icon {
   padding: 1.2em;
 }*/
 
 .starred-issue {
-  margin-top: 2em; 
+  margin-top: 2em;
 }
 .sub-tit-pro {
   text-align: center;
   border-bottom: solid 2px #ccc;
   padding: 1.2rem;
-  margin-bottom: 1.4em;
-  margin-top: 2em; 
-  
-    margin: 0 auto;
-  max-width: 300px;
+  margin-bottom: 15%;
+  margin-top: 10%;
+  margin: 0 auto 0;
+  max-width: 450px;
 }
 
 .button-right {
@@ -351,3 +345,32 @@ text-align: center;
   padding: 10%;
 }
 
+.user-git-button {
+  /*border: solid 2px black;*/
+  width: 20%;
+  margin-left: 40%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.user-profile-card {
+  /*width: 0%;*/
+  /*border: solid 2px black;*/
+  margin-top: 10px;
+}
+
+.user-profile-card-section {
+  width: 80%;
+  /*border: solid 2px red;*/
+  margin-left: 10%;
+  /*text-overflow: clip;*/
+}
+
+.user-profile-section {
+  width: 100%;
+  /*border: solid 2px blue;*/
+  margin-top: 5%;
+  /*margin-left: 10%;*/
+  /*text-overflow: clip;*/
+}

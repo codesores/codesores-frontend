@@ -61,7 +61,7 @@ class StarredIssues extends React.Component {
       console.log('star', star)
       const issueUrl = "/issues/" + star.issue_id
       return (
-        <span>
+        <div className="user-profile-card">
         <ListItem item={star} key={star.id}
         legend={star.issue.repo_name}
         caption={star.issue.title}
@@ -69,8 +69,7 @@ class StarredIssues extends React.Component {
         selectable
         to={issueUrl + "?token=" + this.props.token}
         />
-
-        </span>
+        </div>
 
         )
     })
@@ -81,12 +80,16 @@ class StarredIssues extends React.Component {
   starBox(){
     if (this.props.stars){
       return (
+        <div className="user-profile-section">
         <div>
-        <h3 className="sub-tit-pro" > Starred Issues </h3>
+        <h3 className="sub-tit-pro">Your starred issues:</h3>
+        </div>
+        <div className = "user-profile-card-section">
         <List selectable ripple>
         <ListSubHeader/>
         {this.iterateStars(10)}
         </List>
+        </div>
         </div>
         )
     }
@@ -104,4 +107,3 @@ class StarredIssues extends React.Component {
 
 
 export default StarredIssues
-
