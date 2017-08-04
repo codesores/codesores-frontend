@@ -15,23 +15,14 @@ class UsersShow extends React.Component {
     console.log(info)
     return(
       <div>
-      <h1 id="profile-title"> {info.name} </h1>
-      <span id="git">Go to GitHub <a id="git-icon" href={info.html_url}><img src={giticon} width="30px" height="30px" /></a> </span>
-
-      <Grid>
-      <Row className="show-grid">
-      <Col xs={10} md={10}><br/><br/><br/>
+      <h1 id="profile-title"> Hey, {info.name} </h1>
+      <div className="user-git-button">
+      <span>Go to GitHub <a id="git-icon" href={info.html_url}><img src={giticon} width="30px" height="30px" /></a></span>
+      </div>
 
       <StarredIssues  token={this.props.token} stars={this.props.stars} router={this.props.router}/>
 
-      </Col>
-      <Col xs={10} md={10}>
-
       <PastFeedback className="starred-issue" feedbacks={this.props.feedbacks} token={this.props.token}/>
-
-      </Col>
-      </Row>
-      </Grid>
 
       </div>
       )
@@ -40,4 +31,3 @@ class UsersShow extends React.Component {
 
 
 export default UsersShow
-
