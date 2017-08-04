@@ -260,6 +260,40 @@ text-align: center;
 }
 
 
+
+
+#profile-title{
+  text-align: center;
+
+  padding: 1.2rem;
+
+
+}
+
+
+#git {
+  position: relative;
+  left: 45%;
+}
+
+/*#git-icon {
+  padding: 1.2em;
+}*/
+
+.starred-issue {
+  margin-top: 2em; 
+}
+.sub-tit-pro {
+  text-align: center;
+  border-bottom: solid 2px #ccc;
+  padding: 1.2rem;
+  margin-bottom: 1.4em;
+  margin-top: 2em; 
+  
+    margin: 0 auto;
+  max-width: 300px;
+}
+
 .button-right {
   float: right;
   padding: 1em;
@@ -311,3 +345,9 @@ text-align: center;
   margin-top: 20px;
   margin-bottom: 30px;
 }
+
+.sort-by {
+  margin-top: 10%;
+  padding: 10%;
+}
+

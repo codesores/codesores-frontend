@@ -16,7 +16,7 @@ class Main extends Component {
         <Route exact path='/search' render={routeProps => <Index setNotice={this.props.setNotice} token={this.props.token} />} />
         <Route exact path='/' render={routeProps => <Splash setNotice={this.props.setNotice} token={this.props.token} />} />
         <Route path="/issues/:id" render={routeProps => <IssuesShow info={this.props.info} router={routeProps} setNotice={this.props.setNotice} token={this.props.token} />} />
-        <Route exact path='/users/:id' render={routeProps => <UsersShow info={this.props.info} router={routeProps} setNotice={this.props.setNotice} token={this.props.token} fetchUser={this.props.fetchUser} />} onEnter={this.props.fetchUser}/>
+        <Route exact path='/users/:id' render={routeProps => <UsersShow stars={this.props.stars} feedbacks={this.props.feedbacks} info={this.props.info} router={routeProps} setNotice={this.props.setNotice} token={this.props.token} fetchUser={this.props.fetchUser} />} onEnter={this.props.fetchUser}/>
       </Switch>
       </div>
       </main>
