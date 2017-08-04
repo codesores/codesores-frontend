@@ -23,8 +23,7 @@ class UserFeedback extends Component {
       },
       showForm: true
     }
-
-    // console.log(this.props)
+    console.error('feedback questionaire constructed')
 
     this.setFeedback = this.setFeedback.bind(this)
     this.submit      = this.submit.bind(this)

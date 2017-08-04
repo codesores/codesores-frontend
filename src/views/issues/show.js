@@ -53,44 +53,41 @@ class issueShow extends React.Component {
 
   feedbackConditional(){
     const issueShow = this
-
-    if (this.state.issue.user_feedbacks && issueShow.props.info){
+    if (this.state.feedbacks.feedback_ids && issueShow.props.info){
       let display = true
 
-      this.state.issue.user_feedbacks.forEach((feedback)=>{
-        if (feedback.user_id === issueShow.props.info.id){
+      this.state.feedbacks.feedback_ids.forEach((id)=>{
+        if (id === issueShow.props.info.id){
           display = false
         }
       })
 
-      display = true;
       if (display){
         return (
           <UserFeedback issueId={this.props.router.match.params.id} setNotice={this.props.setNotice} token={this.props.token} />
-          )
-      }
-
+        )
       }
     }
+  }
 
-    starConditional(){
-      if(this.props.info){
-        return (
-          <StarApp issue={this.state.issue} stars={this.state.stars} token={this.props.token} info={this.props.info}/>
-          )
-      }
+  starConditional(){
+    if(this.props.info){
+      return (
+        <StarApp issue={this.state.issue} stars={this.state.stars} token={this.props.token} info={this.props.info}/>
+      )
     }
+  }
 
   backButton(){
     const history = createHistory()
     return(
       <span>
-       <button
-        onClick={history.goBack}>
-        Back
-      </button>
+        <button
+          onClick={history.goBack}>
+          Back
+        </button>
       </span>
-      )
+    )
   }
 
 
@@ -102,7 +99,7 @@ class issueShow extends React.Component {
           <Row className="show-grid">
             <Col xs={12} md={8}>
               <div id='issue_id'>
-              <br />
+                <br />
                 <Summary
                   issue={this.state.issue}
                   issue_type={this.state.issue_type}
@@ -153,10 +150,8 @@ class issueShow extends React.Component {
           </Col>
           </Row>
         </Grid>
-        <br />
-
       </div>
-      )
+    )
   }
 }
 
