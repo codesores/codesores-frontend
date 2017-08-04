@@ -1,4 +1,5 @@
 import axios from 'axios'
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + getCookie('token');
 
 export function getQueryParams() {
   const query = window.location.search.substring(1);

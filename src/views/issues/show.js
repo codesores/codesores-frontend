@@ -10,6 +10,8 @@ import {Grid, Row, Col} from 'react-bootstrap'
 import UserFeedback from '../../components/user_feedback/UserFeedback.js'
 import createHistory from 'history/createBrowserHistory'
 import { Card, CardMedia, CardTitle, CardText, CardActions } from 'react-toolbox/lib/card';
+import { getCookie } from '../../utils';
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + getCookie('token');
 
 class issueShow extends React.Component {
 

@@ -5,6 +5,7 @@ import Main from './components/Main'
 import Notice from './components/error_handling/Notice'
 import axios from 'axios'
 import { getQueryParams, getCookie } from './utils';
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + getCookie('token');
 
 class App extends Component {
   constructor() {
@@ -45,7 +46,6 @@ class App extends Component {
       let app = this;
       let userApiUrl = "http://localhost:3000/users"
 
-      axios.defaults.headers.common['Authorization'] = 'Bearer ' + getCookie('token');
       axios.get(userApiUrl).then((response)=>{
         console.error("user call", response.data)
         app.setState({info: response.data}, ()=>{

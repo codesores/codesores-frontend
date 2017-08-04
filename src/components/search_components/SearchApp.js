@@ -3,6 +3,8 @@ import SearchBar  from './SearchBar';
 import axios from 'axios';
 import querystring from 'querystring';
 import Loading from './Loading.js'
+import { getCookie } from '../../utils';
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + getCookie('token');
 
 class SearchApp extends Component {
 

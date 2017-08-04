@@ -8,6 +8,8 @@ import Validity from './Validity.js'
 import Difficulty from './Difficulty.js'
 import RequestType from './RequestType.js'
 import Submit from './Submit.js'
+import { getCookie } from '../../utils';
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + getCookie('token');
 
 class UserFeedback extends Component {
 //missing user id from feedback params !!!

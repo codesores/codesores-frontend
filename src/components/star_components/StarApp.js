@@ -2,6 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import qs from 'qs'
 import StarButton from './StarButton.js'
+import { getCookie } from '../../utils';
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + getCookie('token');
 
 
 class StarApp extends React.Component {

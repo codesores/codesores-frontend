@@ -2,6 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import Summary from '../../components/issue_components/summary.js'
 import Header from '../../components/Header.js'
+import { getCookie } from '../../utils';
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + getCookie('token');
 
 class IssuesIndex extends React.Component {
 
