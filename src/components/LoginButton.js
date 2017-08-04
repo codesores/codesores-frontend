@@ -16,7 +16,7 @@ class LoginButton extends Component {
         >
         <GithubIcon />
         {' '}
-        Login with GitHub
+        Sign in with GitHub
       </Button>
     );
   }

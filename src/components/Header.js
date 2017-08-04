@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import LogoutButton from './LogoutButton'
 import LoginButton from './LoginButton'
-// import ReactBootstrap from 'react-bootstrap';
-// import { PageHeader } from 'react-bootstrap';
 import AppBar from 'react-toolbox/lib/app_bar/AppBar';
 import Navigation from 'react-toolbox/lib/navigation/Navigation';
 import Avatar from 'react-toolbox/lib/avatar/Avatar';
@@ -31,7 +29,6 @@ class Header extends Component {
     } else {
       return (
         <Navigation type='horizontal'>
-            <LoginButton />
             <HomeButton />
         </Navigation>
       )
