@@ -22,9 +22,6 @@ class issueShow extends React.Component {
       language: {},
       feedbacks: {}
     };
-
-    setTimeout(() => (console.log(this.state)), 2000)
-    setTimeout(() => (console.log(this.state.feedbacks)), 2000)
     //Make API call
     const thisComponent = this
     let apiUrl = "http://localhost:3000/issues/" + this.props.router.match.params.id + "/?token=" + this.props.token

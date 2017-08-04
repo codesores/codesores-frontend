@@ -74,7 +74,7 @@ class SearchApp extends Component {
 
   render() {
     return (
-      <div className="SearchApp">
+      <div>
       <SearchBar languages={this.state.languages} setQuery={this.setQuery} searchBarCurrentValue={this.state.searchBarCurrentValue} token={this.props.token} search={this.search}/>
       {this.state.loading == true &&
         <Loading />

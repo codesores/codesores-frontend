@@ -23,7 +23,9 @@ body {
 }
 
 #search-bar {
-  padding: 4em;
+  padding: 1em;
+  max-width: 80%;
+      margin: 0 auto 0;
 }
 
 .loader {
@@ -84,7 +86,9 @@ body {
 
 .issue-deck {
   list-style-type: none;
+  padding: 0;
 }
+
 
 .issue-card {
   position: relative;
@@ -167,6 +171,7 @@ text-align: center;
 .search-card-results {
   width: 80%;
   padding: 20px;
+  margin: 0 auto 0;
 }
 
 .search-card-inner {
@@ -223,4 +228,10 @@ text-align: center;
   position: absolute;
   font-size: 1.5em;
   text-align: center;
+}
+
+.show-categories {
+  display: flex;
+  padding: 1em 0;
+
 }
