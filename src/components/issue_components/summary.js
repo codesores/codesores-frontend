@@ -57,7 +57,6 @@ class Summary extends React.Component {
     </CardActions>
       </Card>
         <br/>
-        <FeedbackList feedbacks={this.props.feedbacks} />
       </div>
     )
 
