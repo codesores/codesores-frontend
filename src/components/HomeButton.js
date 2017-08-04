@@ -8,7 +8,7 @@ class HomeButton extends Component {
     const HomeButton = withRouter(({history}) => (
       <Button
           className='Header-link'
-          onClick={() => { history.push('/') }}
+          onClick={() => { history.push('/search') }}
         >
         <HomeIcon />
         {' '}
