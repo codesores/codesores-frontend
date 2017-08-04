@@ -3,6 +3,7 @@ import SearchApp from '../components/search_components/SearchApp.js'
 import SearchResults from '../components/search_components/SearchResults.js'
 import SortBy from '../components/search_components/SortBy.js'
 import Header from '../components/Header.js'
+import LoginButton from '../components/LoginButton'
 
 
 class Index extends React.Component {
@@ -20,8 +21,8 @@ class Index extends React.Component {
   }
 
   updateSortBy(toggleValue){
-    new Promise(()=>(this.setState({sortBy: {[toggleValue]: true}}))).then(
-      this.sortResultsBy())
+    this.setState({sortBy: {[toggleValue]: true}})
+    this.sortResultsBy(toggleValue)
   }
 
   updateResults(response){
@@ -29,13 +30,11 @@ class Index extends React.Component {
     this.sortResultsBy()
   }
 
-  sortResultsBy(){
+  sortResultsBy(toggleValue){
     let sortedArray = []
-    let sortBy = Object.keys(this.state.sortBy)[0]
-    console.log(sortBy)
+    let sortBy = toggleValue
     if(sortBy) {
       sortedArray = this.state.resultsPurgatory.sort(function(a, b){
-        console.log(a[sortBy])
         return a[sortBy] - b[sortBy]
       })
     }
@@ -44,15 +43,17 @@ class Index extends React.Component {
 
     let new_resultsToDisplay = sortedArray;
     this.setState({resultsToDisplay: new_resultsToDisplay})
+
   }
 
   render(){
 
     return(
       <div>
-      <aside>
+      <h1 id='title'>CodeSores</h1>
+      <h2 id='subtitle'>A place to find open source repos</h2>
+      <div className='centering'><LoginButton/></div>
       <SearchApp updateResults={this.updateResults} setNotice={this.props.setNotice} token={this.props.token} />
-      </aside>
       <main id='search-results'>
       <SortBy updateSortBy={this.updateSortBy}/>
       <SearchResults resultsToDisplay={this.state.resultsToDisplay} token={this.props.token} />

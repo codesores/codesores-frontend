@@ -11,6 +11,7 @@ class SearchResults extends Component {
   }
 
   renderIssue(element){
+    console.log(element)
     return(
 
       <div id={`issue_${element.id}`} className='issue-card'>
@@ -34,7 +35,7 @@ class SearchResults extends Component {
           transitionName='issue'
           transitionAppear={true}
           transitionAppearTimeout={1000}
-          transitionEnter={false}
+          transitionEnter={true}
           transitionLeave={false}>
           <li>{this.renderIssue(result)}</li>
           </CSSTransitionGroup>

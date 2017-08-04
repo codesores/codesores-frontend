@@ -20,7 +20,7 @@ class SearchBar extends Component {
   render() {
         return (
       <div id="search-bar">
-      <h1>Search</h1>
+      <h3>Search for an issue</h3>
 
       <Autocomplete
                direction="down"
