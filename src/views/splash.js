@@ -65,6 +65,7 @@ class Splash extends React.Component {
       <div>
       <div className="full-bleed">
       <div className="project-name">
+      <img src='logo.png' />
       <h1 id='title'>CodeSores</h1>
       </div>
       <div className="project-description">
