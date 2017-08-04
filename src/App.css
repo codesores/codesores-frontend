@@ -79,6 +79,27 @@
 }
 
 .stats-container {
-  display: block;
+  display: flex;
+  justify-content: space-between;
   float: none;
+  width: 100%;
+}
+
+.donut-container {
+  display: inline;
+  /*border: solid 2px black;*/
+  /*justify-content: center;*/
+  /*margin: 0 auto 0;*/
+  width: 30%;
+}
+
+.card-and-sidebar {
+  position: relative;
+}
+
+.centering {
+  margin: 0 auto 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
