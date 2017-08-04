@@ -1,3 +1,7 @@
+body {
+  color: white !important;
+
+}
 #main-menu {
   display: inline-block;
   float: right;
@@ -23,11 +27,6 @@
   display: flex;
   justify-content: center;
   padding: 4em;
-}
-
-#search-bar{
-  max-width: 400px;
-  margin: 0 auto 0;
 }
 
 .loader {
@@ -61,11 +60,48 @@
 }
 
 .issue-appear {
+  position: relative;
   opacity: 0.01;
+  top: 15px;
 }
 
 .issue-appear.issue-appear-active {
   opacity: 1;
+  top: 0px;
+  transition: opacity 1s ease-in, top 1s;
+
+}
+
+.issue-deck {
+  list-style-type: none;
+}
+
+.issue-card {
+  position: relative;
+  top: 0px;
+  background-color: #192538;
+  margin: 3em 1em;
+  border-radius: 25px;
+  box-shadow: 0 1px 0 #293d5c;
+  height: 200px;
+  transition: top 500ms ease;
+}
+
+.issue-card:hover {
+  position: relative;
+  top: -5px;
+}
+
+.issue-card h2 {
+  background-color: #d75040;
+    border-radius: 25px 25px 0 0;
+    height: 50px;
+    color: white;
+}
+
+.issue-card h2 {
+  font-size: 1.3em;
+  text-align: center;
   transition: opacity 1s ease-in;
 }
 

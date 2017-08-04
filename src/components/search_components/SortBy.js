@@ -16,8 +16,11 @@ class SortBy extends Component {
   render() {
     return (
       <div>
-      <Button label='Comment Count' onMouseUp={() => this.props.updateSortBy('commentCount')} raised primary />
-      <Button label='Issue Count' onMouseUp={() => this.props.updateSortBy('issueCount')} raised primary />
+      <Button label='Assignee Count' onMouseUp={() => this.props.updateSortBy('assignee_count')} raised primary />
+      <Button label='Comment Count' onMouseUp={() => this.props.updateSortBy('comment_count')} raised primary />
+      <Button label='Issue Created At' onMouseUp={() => this.props.updateSortBy('issue_created_at')} raised primary />
+      <Button label='Participant Count' onMouseUp={() => this.props.updateSortBy('participant_count')} raised primary />
+      <Button label='Stars Count' onMouseUp={() => this.props.updateSortBy('stars_count')} raised primary />
       </div>
     )
   }

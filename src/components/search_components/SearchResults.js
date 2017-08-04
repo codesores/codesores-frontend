@@ -6,38 +6,41 @@ import Button from 'react-toolbox/lib/button/Button';
 import { CSSTransitionGroup } from 'react-transition-group'
 
 class SearchResults extends Component {
+  componentDidMount(){
+    console.log('I mounted')
+  }
 
-  returnColumn(element){
+  renderIssue(element){
     return(
-      <Link to={'/issues/' + element.id}>
 
-      <b>Project:</b> <Link to={element.repo.url}>{element.repo.name}</Link>
-        <ul>
-          <li> <b>Issue:</b> {element.title} </li>
-          <li> <b>Labels:</b> {element.label} </li>
-          <li> <b>Comment Count:</b> {element.comment_count} </li>
-        </ul>
+      <div id={`issue_${element.id}`} className='issue-card'>
+      <h2>{element.title}</h2>
+        <Link to={'/issues/' + element.id}>Issue</Link>
+          <b>Project:</b> <Link to={element.repo.url}>{element.repo.name}</Link>
+         <p>{element.label}</p>
+          <b>Comment Count:</b> {element.comment_count}
+        </div>
 
-      </Link>
     )
   }
+
 
   render() {
 
     return (
-      <div className="SearchResults">
-      { this.props.resultsToDisplay.map((result) =>
-          <CSSTransitionGroup
-            transitionName="issue"
-            transitionAppear={true}
-            transitionAppearTimeout={1000}
-            transitionEnter={false}
-            transitionLeave={false}>
-          <li>{this.returnColumn(result)}</li>
-        </CSSTransitionGroup>
+      <ul className='issue-deck'>
+      { this.props.resultsToDisplay.map((result, idx) =>
+        <CSSTransitionGroup
+          transitionName='issue'
+          transitionAppear={true}
+          transitionAppearTimeout={1000}
+          transitionEnter={false}
+          transitionLeave={false}>
+          <li>{this.renderIssue(result)}</li>
+          </CSSTransitionGroup>
         )
          }
-      </div>
+      </ul>
     );
   }
 }
