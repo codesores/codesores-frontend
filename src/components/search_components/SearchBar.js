@@ -30,13 +30,18 @@ class SearchBar extends Component {
                value={this.props.searchBarCurrentValue['language']}
       />
 
-      <Slider label='difficulty' min={0} max={5} step={1} value={this.props.searchBarCurrentValue['difficulty']} onChange={(value) => this.handleChange(value, 'difficulty')} />
-      <Checkbox checked={!this.props.searchBarCurrentValue['difficulty']} label="don't filter by difficulty" onChange={(value) => this.handleChange(0, 'difficulty')} />
+
       <Input type='text' label='Keywords' name='keywords' value={this.props.searchBarCurrentValue['keywords']} onChange={(value) => this.handleChange(value, 'keywords')} maxLength={36} />
-      <Checkbox checked={this.props.searchBarCurrentValue.documentation} label="show documentation" onChange={(value) => this.handleChange(value, 'documentation')} />
-      <Checkbox checked={this.props.searchBarCurrentValue.bugs} label="show bugs" onChange={(value) => this.handleChange(value, 'bugs')}/>
-      <Checkbox checked={this.props.searchBarCurrentValue.features} label="show features" onChange={(value) => this.handleChange(value, 'features')} />
+      <Checkbox checked={!this.props.searchBarCurrentValue['difficulty']} label="don't filter by difficulty" onChange={(value) => this.handleChange(0, 'difficulty')} />
+      <p>Difficulty</p>
+      <Slider label='difficulty' min={0} max={5} step={1} value={this.props.searchBarCurrentValue['difficulty']} onChange={(value) => this.handleChange(value, 'difficulty')} />
+
+      <div className='show-categories'>
+      <Checkbox checked={this.props.searchBarCurrentValue.documentation} label="documentation" onChange={(value) => this.handleChange(value, 'documentation')} />
+      <Checkbox checked={this.props.searchBarCurrentValue.bugs} label="bugs" onChange={(value) => this.handleChange(value, 'bugs')}/>
+      <Checkbox checked={this.props.searchBarCurrentValue.features} label="features" onChange={(value) => this.handleChange(value, 'features')} />
       <Checkbox checked={this.props.searchBarCurrentValue.other} label="other" onChange={(value) => this.handleChange(value, 'other')} />
+      </div>
       <Button label='search' onMouseUp={this.props.search} raised primary />
       </div>
     )
