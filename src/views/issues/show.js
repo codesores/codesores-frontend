@@ -63,7 +63,7 @@ class issueShow extends React.Component {
         }
       })
 
-      display = true
+      display = true;
       if (display){
         return (
           <UserFeedback issueId={this.props.router.match.params.id} setNotice={this.props.setNotice} token={this.props.token} />
@@ -114,9 +114,8 @@ class issueShow extends React.Component {
             </Col>
             <Col xs={6} md={4}>
               <div id='feedback' className="feedback-sidebar">
-                <a href={this.state.issue.url}>Go to Repository</a><br/>
                 {this.starConditional()}
-                {this.backButton()}<br/><br/>
+                <br/><br/>
                 {this.feedbackConditional()}
               </div>
             </Col>
