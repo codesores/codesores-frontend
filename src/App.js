@@ -32,9 +32,9 @@ class App extends Component {
   }
 
   deleteToken() {
-    
     this.setState({ token: null });
-    window.location.href = window.location.href.replace(/\?.*$/, '');
+    // window.location.href = window.location.href.replace(/\?.*$/, '');
+    window.location.href = 'http://localhost:3000/logout'
   }
 
   deleteErrorsAfterView(){
