@@ -124,6 +124,10 @@ body {
   padding-right: 10px;
 }
 
+.card-icon-large {
+  margin-right: 20px;
+}
+
 .stats-container {
   display: flex;
   justify-content: space-between;
@@ -150,10 +154,16 @@ body {
   justify-content: center;
 }
 
+
 #title{
 text-align: center;
 }
 
 #subtitle {
 text-align: center;
+}
+
+.search-card-results {
+  width: 80%;
+  padding: 10px;
 }

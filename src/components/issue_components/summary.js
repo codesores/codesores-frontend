@@ -11,7 +11,6 @@ import Button from 'react-toolbox/lib/button/Button';
 class Summary extends React.Component {
   returnIcon(){
     let request_type = this.props.issue_type.scope;
-    console.log(this.props.language);
     switch(request_type) {
       case "bug":
       return (
