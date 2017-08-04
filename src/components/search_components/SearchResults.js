@@ -57,35 +57,29 @@ class SearchResults extends Component {
         accent
         onClick={() => { history.push(issueLink) }}
         >
-        Help categorize this issue!
+        More
       </Button>
     ))
+
     return(
       <div className="search-card-results">
         <Card>
         <div className="search-card-inner">
-        <CardTitle
-        avatar={icon}
-        title={issueTypeName}
-        subtitle={`${element.language.language}`}>
-        <h5>
-        Repo: <Link to={element.repo.url}>{element.repo.name}</Link>
-        </h5>
-        </CardTitle>
-        <CardTitle
-        title={element.title}
-        subtitle={`posted by: ${element.author}`}>
-        <p>{element.label}</p>
+        <CardTitle avatar={icon} title={<h3>{element.title}</h3>} subtitle={<h4>
+        repo: <Link to={element.repo.url}>{element.repo.name} </Link>
+          | issue type: {issueTypeName} | language: {element.language.language}</h4>} />
+        <div className='search-card-stats'>
         <ul>
         <li>{`Comment count: ${element.comment_count}`}</li>
         <li>{`Assignee count: ${element.assignee_count}`}</li>
         <li>{`Participant count: ${element.participant_count}`}</li>
         <li>{`Stars count: ${element.stars_count}`}</li>
         </ul>
-        </CardTitle>
-        <CardTitle>
-        <IssueButton />
-        </CardTitle>
+        </div>
+
+
+        <div className='button-right'><IssueButton /></div>
+
         </div>
         </Card>
       </div>

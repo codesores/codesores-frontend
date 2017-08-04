@@ -175,7 +175,7 @@ text-align: center;
 }
 
 .search-card-inner {
-  padding: 20px 10px 10px 20px;
+
 }
 
 .show-sidebar {
@@ -233,5 +233,19 @@ text-align: center;
 .show-categories {
   display: flex;
   padding: 1em 0;
+
+}
+
+.button-right {
+  float: right;
+  padding: 1em;
+  display: inline-block;
+}
+
+.search-card-stats {
+  max-width: 30%;
+  float: left;
+  padding: 0 0 1em 1em;
+  margin: 
 
 }

@@ -63,6 +63,7 @@ class Index extends React.Component {
 
     return(
       <div>
+      <div id='sidebar'>
       <div className="full-bleed">
       <div className="project-name">
       <h1 id='title'>CodeSores</h1>
@@ -75,6 +76,8 @@ class Index extends React.Component {
       <div className='full-bleed-cta'><LoginButton token={this.props.token} /></div>
       </div>
       <SearchApp updateResults={this.updateResults} setNotice={this.props.setNotice} token={this.props.token} />
+      </div>
+
       <main id='search-results'>
       <SortBy updateSortByDescending={this.updateSortByDescending} updateSortBy={this.updateSortBy} sortByDescending={this.state.sortByDescending}/>
       <SearchResults resultsToDisplay={this.state.resultsToDisplay} token={this.props.token} sortByDescending={this.state.sortByDescending} updateSortBy={this.updateSortBy}/>
