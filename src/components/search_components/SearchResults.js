@@ -10,13 +10,9 @@ import Button from 'react-toolbox/lib/button/Button';
 import { CSSTransitionGroup } from 'react-transition-group'
 
 class SearchResults extends Component {
-  componentDidMount(){
-    console.log('I mounted')
-  }
 
   returnIcon(element){
     let request_type = element.request_type_id;
-    console.log(request_type);
     switch(request_type) {
       case 1:
       return (
@@ -36,7 +32,6 @@ class SearchResults extends Component {
 
   returnIssueTypeName(element){
     let request_type = element.request_type_id;
-    console.log(request_type);
     switch(request_type) {
       case 1:
       return "bug";
@@ -53,7 +48,6 @@ class SearchResults extends Component {
   }
 
   renderIssue(element){
-    console.log(element);
     const icon = this.returnIcon(element);
     const issueTypeName = this.returnIssueTypeName(element);
     const issueLink = `/issues/${element.id}`
@@ -109,6 +103,7 @@ class SearchResults extends Component {
           transitionAppear={true}
           transitionAppearTimeout={1000}
           transitionEnter={true}
+          transitionEnterTimeout={1000}
           transitionLeave={false}>
           <li>{this.renderIssue(result)}</li>
           </CSSTransitionGroup>

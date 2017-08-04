@@ -13,6 +13,7 @@ class UsersShow extends React.Component {
 
   render(){
     const info = this.props.info
+    console.log(info)
     return(
       <Grid>
           <Row className="show-grid">
