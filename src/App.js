@@ -16,10 +16,13 @@ class App extends Component {
     this.state = {
       token: cookieToken,
       notice: [],
-      info: ""
+      info: "",
+      stars: [],
+      feedbacks: []
     }
 
     this.fetchUserDetails();
+    this.fetchUserStars();
 
     this.deleteToken = this.deleteToken.bind(this)
     this.deleteErrorsAfterView = this.deleteErrorsAfterView.bind(this)
@@ -42,21 +45,6 @@ class App extends Component {
       let app = this;
       let userApiUrl = "http://localhost:3000/users"
 
-      // let getUserDeets = axios.create({
-      //   method: 'get',
-      //   auth: {
-      //     JWT: this.state.token
-      //   },
-      //   xsrfCookieName: 'token'
-      // })
-
-      // getUserDeets.get(userApiUrl).then(response => {
-      //   alert("yes")
-      //   console.log("response text*****", response)
-      // }).catch((err) => {
-      //   console.log("user details error", err)
-      // })
-
       axios.defaults.headers.common['Authorization'] = 'Bearer ' + getCookie('token');
       axios.get(userApiUrl).then((response)=>{
         console.error("user call", response.data)
@@ -66,6 +54,45 @@ class App extends Component {
         console.error("info error" )
         app.setNotice(error.toString(), "User must be logged in")
       })
+    }
+
+    this.fetchUserStars();
+    this.fetchUserFeedbacks();
+
+
+  }
+
+  fetchUserStars() {
+    if (this.state.token){
+      let app = this;
+      let userApiUrl = "http://localhost:3000/users/stars?token=" + this.state.token
+
+      axios.get(userApiUrl).then((response)=>{
+        // console.log(response.data)
+        app.setState({stars: response.data}, ()=>{ console.log(this.state.stars)
+        })
+      }).catch((error)=>{
+        app.setNotice(error.toString(), "User must be logged in")
+      })
+
+    }
+
+  }
+
+  fetchUserFeedbacks() {
+    if (this.state.token){
+      let app = this;
+      let userApiUrl = "http://localhost:3000/user_feedbacks?token=" + this.state.token
+
+      axios.get(userApiUrl).then((response)=>{
+        console.log('fetched!', response)
+        // console.log(response.data)
+        app.setState({feedbacks: response.data}, ()=>{ console.log(this.state.feedbacks)
+        })
+      }).catch((error)=>{
+        app.setNotice(error.toString(), "User must be logged in")
+      })
+
     }
 
   }
@@ -79,8 +106,15 @@ class App extends Component {
     return (
       <div>
         <Header token={this.state.token} logout={this.deleteToken}  userInfo={this.fetchUserDetails} info={info} />
-        <Main setNotice={this.setNotice} token={this.state.token} info={info} fetchUser={this.fetchUserDetails}/>
+        <div className="full-container">
+
+        <div className="full-body-container">
+    
+        <Main setNotice={this.setNotice} token={this.state.token} info={info} fetchUser={this.fetchUserDetails} stars={this.state.stars} feedbacks={this.state.feedbacks}/>
+
         <Notice notice={ this.state.notice } deleteErrorsAfterView={ this.deleteErrorsAfterView }/>
+        </div>
+        </div>
       </div>
     )
   }

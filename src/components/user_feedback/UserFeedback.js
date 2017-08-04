@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import qs from 'qs';
 
-import ReactBootstrap from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
 import { ButtonGroup } from 'react-bootstrap';
-import { DropdownButton } from 'react-bootstrap';
-import { MenuItem } from 'react-bootstrap';
 
 import Validity from './Validity.js'
 import Difficulty from './Difficulty.js'
@@ -27,8 +23,7 @@ class UserFeedback extends Component {
       },
       showForm: true
     }
-
-    // console.log(this.props)
+    console.error('feedback questionaire constructed')
 
     this.setFeedback = this.setFeedback.bind(this)
     this.submit      = this.submit.bind(this)
@@ -68,7 +63,10 @@ class UserFeedback extends Component {
   render(){
     if (this.state.showForm){
       return (
-        <ButtonGroup vertical>
+        <div className="feedback-sidebar">
+        <p>Help categorize this issue:</p>
+        <ButtonGroup vertical className="feedback-form">
+        Fill out the following:
         <Validity
           validity={this.state.feedback.validity}
           setFeedback={this.setFeedback}
@@ -86,6 +84,7 @@ class UserFeedback extends Component {
           submit={this.submit}
         />
         </ButtonGroup>
+        </div>
         )
     } else {
       return (<div> Thank you! </div>)

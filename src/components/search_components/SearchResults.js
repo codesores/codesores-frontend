@@ -1,55 +1,109 @@
 import React, { Component } from 'react'
-import axios from 'axios'
-import UserFeedback from '../user_feedback/UserFeedback.js'
-import { Jumbotron, Grid, Row, Col  } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Grid, Row, Col  } from 'react-bootstrap';
+import { Link, withRouter } from 'react-router-dom';
 import { Card, CardMedia, CardTitle, CardText, CardActions } from 'react-toolbox/lib/card';
+import bug from '../../components/issue_icons/bug.svg'
+import docs from '../../components/issue_icons/docs.svg'
+import feature from '../../components/issue_icons/feature.svg'
+import other from '../../components/issue_icons/other.svg'
 import Button from 'react-toolbox/lib/button/Button';
-
+import { CSSTransitionGroup } from 'react-transition-group'
 
 class SearchResults extends Component {
 
-  returnColumn(element){
+  returnIcon(element){
+    let request_type = element.request_type_id;
+    switch(request_type) {
+      case 1:
+      return (
+        <img width="45px" height="45px" src={bug} className="card-icon-large"/>
+      );
+      break;
+      case 2:
+      return <img width="45px" height="45px" src={docs} className="card-icon-large"/>;
+      break;
+      case 3:
+      return <img width="45px" height="45px" src={feature} className="card-icon-large"/>;
+      break;
+      default:
+      return <img width="45px" height="45px" src={other} className="card-icon-large"/>;
+    }
+  }
+
+  returnIssueTypeName(element){
+    let request_type = element.request_type_id;
+    switch(request_type) {
+      case 1:
+      return "bug";
+      break;
+      case 2:
+      return "docs";
+      break;
+      case 3:
+      return "feature";
+      break;
+      default:
+      return "other";
+    }
+  }
+
+  renderIssue(element){
+    const icon = this.returnIcon(element);
+    const issueTypeName = this.returnIssueTypeName(element);
+    const issueLink = `/issues/${element.id}`
+    const IssueButton = withRouter(({history}) => (
+      <Button
+        raised
+        accent
+        onClick={() => { history.push(issueLink) }}
+        >
+        More
+      </Button>
+    ))
+
     return(
-      <Link to={'/issues/' + element.id}>
-      <Col className='column' sm={6} md={3}>
-      <b>Project:</b> <Link to={element.repo.url}>{element.repo.name}</Link>
+      <div className="search-card-results">
+        <Card>
+        <div className="search-card-inner">
+        <CardTitle avatar={icon} title={<h3>{element.title}</h3>} subtitle={<h4>
+        repo: <Link to={element.repo.url}>{element.repo.name} </Link>
+          | issue type: {issueTypeName} | language: {element.language.language}</h4>} />
+        <div className='search-card-stats'>
         <ul>
-          <li> <b>Issue:</b> {element.title} </li>
-          <li> <b>Labels:</b> {element.label} </li>
-          <li> <b>Comment Count:</b> {element.comment_count} </li>
+        <li>{`Comment count: ${element.comment_count}`}</li>
+        <li>{`Assignee count: ${element.assignee_count}`}</li>
+        <li>{`Participant count: ${element.participant_count}`}</li>
+        <li>{`Stars count: ${element.stars_count}`}</li>
         </ul>
-      </Col>
-      </Link>
+        </div>
+
+
+        <div className='button-right'><IssueButton /></div>
+
+        </div>
+        </Card>
+      </div>
     )
   }
 
-  mapResultsToFours() {
-    let results = this.props.results
-    let results_array = [];
-    for(let i = 0; i < results.length; i ++) {
-      if(i % 4 === 0){
-        results_array.push([])
-      }
-      results_array[results_array.length - 1].push(results[i])
-    }
-    return results_array
-  }
-  renderRow(row) {
-    return (
-      <Row>
-      {row.map(this.returnColumn)}
-      </Row>
-    )
-  }
 
   render() {
+
     return (
-      <div className="SearchResults">
-      <Grid className="show-grid">
-        { this.mapResultsToFours().map(this.renderRow.bind(this)) }
-      </Grid>
-      </div>
+      <ul className='issue-deck'>
+      { this.props.resultsToDisplay.map((result, idx) =>
+        <CSSTransitionGroup
+          transitionName='issue'
+          transitionAppear={true}
+          transitionAppearTimeout={1000}
+          transitionEnter={true}
+          transitionEnterTimeout={1000}
+          transitionLeave={false}>
+          <li>{this.renderIssue(result)}</li>
+          </CSSTransitionGroup>
+        )
+         }
+      </ul>
     );
   }
 }

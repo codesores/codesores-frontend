@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import Button from 'react-toolbox/lib/button/Button';
 import GithubIcon from './GithubIcon';
-import './LoginButton.css';
 
 const authorizeUrl = 'https://github.com/login/oauth/authorize'
 const clientId = '8515e9a1dcd00ca18123'
@@ -10,6 +8,16 @@ const scope = 'user:email'
 
 class LoginButton extends Component {
   render() {
+    if(this.props.token) {
+      return (
+        <Button
+            raised
+            accent
+          >
+          Start searching!
+        </Button>
+      )
+    } else {
     return (
       <Button
           raised
@@ -18,9 +26,9 @@ class LoginButton extends Component {
         >
         <GithubIcon />
         {' '}
-        Login with GitHub
+        Sign in with GitHub
       </Button>
-    );
+    )};
   }
 }
 

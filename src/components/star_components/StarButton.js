@@ -1,32 +1,35 @@
 import React from 'react'
 import axios from 'axios'
 import Button from 'react-toolbox/lib/button/Button'
+import liked from './favorite.svg'
+import not_liked from './not_liked.svg'
 
 
 class StarButton extends React.Component {
 
-
   buttonConditional(){
     if (this.props.liked){
       return (
-      <button onClick={this.props.setStar}>
-        Unstar
-      </button> 
+      <div onClick={this.props.setStar} className="like-button">
+        <img width="20px" height="20px" src={liked}/>
+        <span className="star-text">Added to favorites</span>
+      </div>
         )
     } else {
       return (
-      <button onClick={this.props.setStar}>
-        Star
-      </button>
+      <div onClick={this.props.setStar} className="like-button" >
+        <img width="20px" height="20px" src={not_liked} />
+        <span className="star-text">Add to favorites</span>
+      </div>
         )
     }
   }
 
   render(){
     return(
-      <span>
+      <div>
       {this.buttonConditional()}
-      </span>
+      </div>
     )
   }
 }

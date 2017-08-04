@@ -27,15 +27,15 @@ export function fetchUserDetails(options) {
   }).catch(error => {
     console.error('Could not fetch user details', error)
   })
-  // return fetch(url, {
-  //   headers: {
-  //     'Accept': 'application/json'
-  //   },
-  // })
-  // .then(response => {
-  //   return response.json();
-  // })
-  // .catch(error => {
-  //   console.error('Could not fetch user details', error);
-  // });
+  return fetch(url, {
+    headers: {
+      'Accept': 'application/json'
+    },
+  })
+  .then(response => {
+    return response.json();
+  })
+  .catch(error => {
+    console.error('Could not fetch user details', error);
+  });
 }

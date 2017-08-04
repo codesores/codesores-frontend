@@ -1,15 +1,6 @@
-.column {
-  border-radius: 10px;
-  background-color: transparent;
-  top: 0px;
-  transition: top 300ms, background-color 800ms;
-}
+body {
 
-.column:hover {
-  top: -10px;
-  background-color: #ccc;
 }
-
 #main-menu {
   display: inline-block;
   float: right;
@@ -31,14 +22,9 @@
   display: block;
 }
 
-.SearchBar {
-  display: flex;
-  justify-content: center;
-  padding: 4em;
-}
-
-#search-bar{
-  max-width: 400px;
+#search-bar {
+  padding: 0.5em;
+  max-width: 90%;
   margin: 0 auto 0;
 }
 
@@ -55,3 +41,313 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+
+.like-button {
+  padding: 1.2rem;
+  position: relative;
+}
+
+.like-button:hover {
+  top: -1px;
+  opacity: 0.9;
+
+}
+
+.like-button:active {
+  opacity: 0.7;
+}
+
+.issue-appear {
+  position: relative;
+  opacity: 0.01;
+  top: 15px;
+}
+
+.issue-appear.issue-appear-active {
+  opacity: 1;
+  top: 0px;
+  transition: opacity 1s ease-in, top 1s;
+
+}
+
+.issue-enter {
+  position: relative;
+  opacity: 0.01;
+  top: 15px;
+}
+
+.issue-enter.issue-enter-active {
+  opacity: 1;
+  top: 0px;
+  transition: opacity 1s ease-in, top 1s;
+
+}
+
+.issue-deck {
+  list-style-type: none;
+  padding: 0;
+}
+
+
+.issue-card {
+  position: relative;
+  top: 0px;
+  background-color: #192538;
+  margin: 3em 1em;
+  border-radius: 25px;
+  box-shadow: 0 1px 0 #293d5c;
+  height: 200px;
+  transition: top 500ms ease;
+}
+
+.issue-card:hover {
+  position: relative;
+  top: -5px;
+}
+
+.issue-card h2 {
+  background-color: #d75040;
+    border-radius: 25px 25px 0 0;
+    height: 50px;
+    color: white;
+}
+
+.issue-card h2 {
+  font-size: 1.3em;
+  text-align: center;
+  transition: opacity 1s ease-in;
+}
+
+.full-container {
+  max-width: 950px;
+  margin: 0 auto 0;
+  padding-top: 64px;
+}
+
+.full-body-container {
+  max-width: 950px;
+  margin: 0 auto 0;
+  /*padding-top: 64px;*/
+  /*position: relative;*/
+}
+
+.card-icon {
+  padding-right: 10px;
+}
+
+.card-icon-large {
+  margin-right: 20px;
+}
+
+.stats-container {
+  display: flex;
+  justify-content: space-between;
+  float: none;
+  width: 100%;
+}
+
+.donut-container {
+  display: inline;
+  /*border: solid 2px black;*/
+  /*justify-content: center;*/
+  /*margin: 0 auto 0;*/
+  width: 30%;
+}
+
+.card-and-sidebar {
+  position: relative;
+}
+
+.centering {
+  margin: 0 auto 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+
+#title {
+  text-align: center;
+  font-size: 4em;
+}
+
+#subtitle {
+text-align: center;
+}
+
+.search-card-results {
+  width: 100%;
+  padding: 10px;
+  margin: 0 auto 0;
+}
+
+.search-card-inner {
+
+}
+
+.show-sidebar {
+  position: relative;
+  width: 55%;
+  /*padding: 5px;*/
+  margin-top: 20px;
+  margin-left: -20px;
+  /*border: solid 2px red;*/
+  font-weight: bold;
+  /*align-items: center;
+  display: flex;*/
+}
+
+.feedback-sidebar {
+  position: relative;
+  width: 55%;
+  padding: 10px 0px 10px 10px;
+  margin-top: -20px;
+  margin-left: -20px;
+  /*border: solid 2px blue;*/
+  font-weight: bold;
+  /*align-items: center;
+  display: flex;*/
+}
+
+.feedback-form {
+  width: 90%;
+  padding-left: 5%;
+  /*margin-top: 5%;*/
+  font-weight: lighter;
+  line-height: 2.5em;
+}
+
+.star-text {
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.full-bleed {
+  position: relative;
+  height: 550px;
+  /*background-color: #ccc;*/
+  border-bottom: solid 2px #ccc;
+}
+
+.full-bleed-cta {
+  width: 30%;
+  margin-top: 45%;
+  margin-left: 35%;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.project-name {
+  /*border: solid 2px black;*/
+  width: 40%;
+  margin-top: 10%;
+  margin-left: 30%;
+  position: absolute;
+}
+
+.project-description {
+  /*border: solid 2px black;*/
+  width: 80%;
+  margin-top: 20%;
+  margin-left: 10%;
+  position: absolute;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+
+
+
+#profile-title{
+  text-align: center;
+
+  padding: 1.2rem;
+
+
+}
+
+
+#git {
+  position: relative;
+  left: 45%;
+}
+
+/*#git-icon {
+  padding: 1.2em;
+}*/
+
+.starred-issue {
+  margin-top: 2em; 
+}
+.sub-tit-pro {
+  text-align: center;
+  border-bottom: solid 2px #ccc;
+  padding: 1.2rem;
+  margin-bottom: 1.4em;
+  margin-top: 2em; 
+  
+    margin: 0 auto;
+  max-width: 300px;
+}
+
+.button-right {
+  float: right;
+  padding: 1em;
+  display: inline-block;
+}
+
+.search-card-stats {
+  max-width: 30%;
+  float: left;
+  padding: 0 0 1em 1em;
+  margin:
+
+}
+
+#sort-by {
+  padding: 0.5em;
+  max-width: 90%;
+  margin: 0 auto 0;
+}
+
+.search-full-container {
+  position: relative;
+  /*margin-top: 64px;*/
+  /*border: solid 2px orange;*/
+}
+
+.search-sidebar {
+  position: fixed;
+  width: 20%;
+  /*border: solid 2px red;*/
+}
+
+.search-results {
+  position: relative;
+  width: 70%;
+  /*border: solid 2px blue;*/
+  float: right;
+}
+
+.search-field {
+  margin-top: -25px;
+}
+
+.show-categories {
+  margin-top: 30px;
+}
+
+.category-list {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.sort-by {
+  margin-top: 10%;
+  padding: 10%;
+}
+

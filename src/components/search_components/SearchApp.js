@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SearchBar  from './SearchBar';
 import axios from 'axios';
 import querystring from 'querystring';
+import Loading from './Loading.js'
 
 class SearchApp extends Component {
 
@@ -9,13 +10,17 @@ class SearchApp extends Component {
     super(props)
     this.state = {
       searchBarCurrentValue: {
-        language: '',
+        language: [],
         keywords: '',
         difficulty: 1,
         documentation: true,
-        bugs: true
+        bugs: true,
+        features: true,
+        other: true
       },
       languages: [],
+      loading: true
+
     }
 
     this.setQuery = this.setQuery.bind(this);
@@ -28,8 +33,8 @@ class SearchApp extends Component {
   }
 
   languageDropDown(languages){
-    let languages_array = []
-    languages.map((language)=> languages_array.push({value: language, label: language}))
+    let languages_array = {}
+    languages.map((language)=> languages_array[language] = language)
     return languages_array
   }
 
@@ -45,16 +50,17 @@ class SearchApp extends Component {
       searchApp.props.setNotice([]) // TODO -- WHAT DOES THIS DO?
     }).catch((error)=>{
       searchApp.props.setNotice(error.toString(), "Couldn't recover languages")
-    })
+    }).then(this.setState({loading: false}))
   }
 
   search(){
-    //calls api to display issues from query
+    this.setState({loading: true})
     let searchApp = this
     let query = querystring.stringify(searchApp.state.searchBarCurrentValue)
     let apiUrl = "http://localhost:3000/issues/search/?token=" + this.props.token + "&" + query
 
-    axios.post(apiUrl, {withCredentials: true, 'Access-Control-Allow-Credentials': true}).then((response)=>{
+    axios.post(apiUrl).then((response)=>{
+      this.setState({loading: false})
       searchApp.props.updateResults(response.data)
       searchApp.props.setNotice([])
     }).catch((error)=>{
@@ -63,14 +69,17 @@ class SearchApp extends Component {
   }
 
   setQuery(key_hash, value){
-    this.state.searchBarCurrentValue[key_hash] = value
+  this.state.searchBarCurrentValue[key_hash] = value
     this.forceUpdate()
   }
 
   render() {
     return (
-      <div className="SearchApp">
+      <div>
       <SearchBar languages={this.state.languages} setQuery={this.setQuery} searchBarCurrentValue={this.state.searchBarCurrentValue} token={this.props.token} search={this.search}/>
+      {this.state.loading == true &&
+        <Loading />
+      }
       </div>
       );
   }
