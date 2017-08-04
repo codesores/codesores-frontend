@@ -62,8 +62,10 @@ class App extends Component {
       <div>
         <Header token={this.state.token} logout={this.deleteToken}  userInfo={this.fetchUserDetails} info={info} />
         <div className="full-container">
+        <div className="full-body-container">
         <Main setNotice={this.setNotice} token={this.state.token} info={info} fetchUser={this.fetchUserDetails}/>
         <Notice notice={ this.state.notice } deleteErrorsAfterView={ this.deleteErrorsAfterView }/>
+        </div>
         </div>
       </div>
     )

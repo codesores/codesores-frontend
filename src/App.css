@@ -23,9 +23,9 @@ body {
 }
 
 #search-bar {
-  padding: 1em;
-  max-width: 80%;
-      margin: 0 auto 0;
+  padding: 0.5em;
+  max-width: 90%;
+  margin: 0 auto 0;
 }
 
 .loader {
@@ -122,6 +122,14 @@ body {
 .full-container {
   max-width: 950px;
   margin: 0 auto 0;
+  padding-top: 64px;
+}
+
+.full-body-container {
+  max-width: 950px;
+  margin: 0 auto 0;
+  /*padding-top: 64px;*/
+  /*position: relative;*/
 }
 
 .card-icon {
@@ -267,31 +275,39 @@ text-align: center;
 }
 
 #sort-by {
-  padding: 1em;
-  max-width: 80%;
+  padding: 0.5em;
+  max-width: 90%;
   margin: 0 auto 0;
 }
 
 .search-full-container {
   position: relative;
-  margin-top: 64px;
-  border: solid 2px orange;
+  /*margin-top: 64px;*/
+  /*border: solid 2px orange;*/
 }
 
 .search-sidebar {
   position: fixed;
   width: 20%;
-  border: solid 2px red;
+  /*border: solid 2px red;*/
 }
 
 .search-results {
   position: relative;
   width: 70%;
-  border: solid 2px blue;
+  /*border: solid 2px blue;*/
   float: right;
 }
 
-.sort-by {
-  margin-top: 10%;
-  padding: 10%;
+.search-field {
+  margin-top: -25px;
+}
+
+.show-categories {
+  margin-top: 30px;
+}
+
+.category-list {
+  margin-top: 20px;
+  margin-bottom: 30px;
 }

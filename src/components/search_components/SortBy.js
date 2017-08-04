@@ -26,7 +26,7 @@ class SortBy extends Component {
     ]
 
       return (
-        <div><Dropdown
+        <div className='search-field'><Dropdown
           auto
           label='Sort By'
           onChange={this.handleChange}
