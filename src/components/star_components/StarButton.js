@@ -10,24 +10,26 @@ class StarButton extends React.Component {
   buttonConditional(){
     if (this.props.liked){
       return (
-      <span onClick={this.props.setStar} className="like-button">
-        <img width="55px" height="55px" src={liked}/>
-      </span> 
+      <div onClick={this.props.setStar} className="like-button">
+        <img width="20px" height="20px" src={liked}/>
+        <span className="star-text">Added to favorites</span>
+      </div>
         )
     } else {
       return (
-      <span onClick={this.props.setStar} className="like-button" >
-        <img width="55px" height="55px" src={not_liked} />
-      </span>
+      <div onClick={this.props.setStar} className="like-button" >
+        <img width="20px" height="20px" src={not_liked} />
+        <span className="star-text">Add to favorites</span>
+      </div>
         )
     }
   }
 
   render(){
     return(
-      <span>
+      <div>
       {this.buttonConditional()}
-      </span>
+      </div>
     )
   }
 }

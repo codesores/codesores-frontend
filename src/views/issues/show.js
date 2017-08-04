@@ -61,7 +61,7 @@ class issueShow extends React.Component {
           display = false
         }
       })
-      
+
       if (display){
         return (
           <UserFeedback issueId={this.props.router.match.params.id} setNotice={this.props.setNotice} token={this.props.token} />
@@ -94,7 +94,7 @@ class issueShow extends React.Component {
 
   render(){
     return(
-      <div>
+      <div className="card-and-sidebar">
         <Grid>
           <Row className="show-grid">
             <Col xs={12} md={8}>
@@ -110,20 +110,46 @@ class issueShow extends React.Component {
               </div>
             </Col>
             <Col xs={6} md={4}>
-              <div id='feedback'>
-                <a href={this.state.issue.url}>Go to Repository</a><br/>
+              <div id='feedback' className="feedback-sidebar">
                 {this.starConditional()}
-                {this.backButton()}<br/><br/>
+                <br/><br/>
                 {this.feedbackConditional()}
               </div>
             </Col>
           </Row>
+          <Row>
+          <Col xs={12} md={8}>
+            <div id='issue_id'>
+            <br />
+            <div id='stats' className="stats-container">
+            <div className="donut-container">
+            <div className="centering">
+            <h5>Validity (% of responses)</h5><br /></div>
+            <div className="centering">
+            <DonutChart value={30} lowerLimit={0} upperLimit={100} delay={1000} diameter={150} />
+            </div>
+            </div>
+            <div className="donut-container">
+            <div className="centering">
+            <h5>Difficulty level (% of responses)</h5><br /></div>
+            <div className="centering">
+            <DonutChart value={60} lowerLimit={0} upperLimit={100} delay={1500} diameter={150} />
+            </div>
+            </div>
+            <div className="donut-container">
+            <div className="centering">
+            <h5>Number of responses</h5><br /></div>
+            <div className="centering">
+            <DonutChart value={90} lowerLimit={0} upperLimit={100} delay={2000} diameter={150} />
+            </div>
+            </div>
+            </div>
+            </div>
+          </Col>
+          <Col xs={6} md={4}>
+          </Col>
+          </Row>
         </Grid>
-        <div id='stats' className="stats-container">
-          <DonutChart value={30} lowerLimit={0} upperLimit={100} delay={1000} diameter={150} />
-          <DonutChart value={60} lowerLimit={0} upperLimit={100} delay={1500} diameter={150} />
-          <DonutChart value={90} lowerLimit={0} upperLimit={100} delay={2000} diameter={150} />
-        </div>
       </div>
     )
   }

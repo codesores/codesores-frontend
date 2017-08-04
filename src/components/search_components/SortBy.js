@@ -1,26 +1,42 @@
 import React, { Component } from 'react'
 import Button from 'react-toolbox/lib/button/Button'
+import Dropdown from 'react-toolbox/lib/dropdown';
 
 
 class SortBy extends Component {
+
   constructor(props){
     super(props)
     this.handleChange = this.handleChange.bind(this)
+    this.state = {value: ''}
 
-  }
+    }
 
-  handleChange(value, key_hash){
-    this.props.setQuery(key_hash, value);
-  }
+    handleChange(value){
+      this.setState({value: value});
+      this.props.updateSortBy(value)
+    }
+
 
   render() {
-    return (
-      <div>
-      <Button label='Comment Count' onMouseUp={() => this.props.updateSortBy('commentCount')} raised primary />
-      <Button label='Issue Count' onMouseUp={() => this.props.updateSortBy('issueCount')} raised primary />
-      </div>
-    )
+
+    const sortTypes = [
+      { value: 'comment_count', label: 'Comment Count' },
+      { value: 'stars_count', label: 'Stars Count' }
+    ]
+
+      let that = this
+      return (
+              <Dropdown
+                auto
+                label='Sort By'
+                onChange={that.handleChange}
+                source={sortTypes}
+                value={that.state.value}
+              />
+            );
+
+          }
   }
-}
 
 export default SortBy;

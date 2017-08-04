@@ -69,13 +69,13 @@ class StarApp extends React.Component {
     }
   }
 
-  
+
 
 render(){
   return(
-    <span>
+    <div className="show-sidebar">
     <StarButton liked={this.state.liked} setStar={this.setStar}/>
-    </span>
+    </div>
     )
 }
 }
