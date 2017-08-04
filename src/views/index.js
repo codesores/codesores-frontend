@@ -59,7 +59,7 @@ class Index extends React.Component {
       <br />
       <p>Want to contribute, but not sure where to start? Easily find the right issue that suits your interests and level with CodeSores.</p>
       </div>
-      <div className='full-bleed-cta'><LoginButton/></div>
+      <div className='full-bleed-cta'><LoginButton token={this.props.token} /></div>
       </div>
       <SearchApp updateResults={this.updateResults} setNotice={this.props.setNotice} token={this.props.token} />
       <main id='search-results'>
