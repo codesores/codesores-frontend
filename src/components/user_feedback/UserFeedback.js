@@ -8,6 +8,8 @@ import Validity from './Validity.js'
 import Difficulty from './Difficulty.js'
 import RequestType from './RequestType.js'
 import Submit from './Submit.js'
+import { getCookie } from '../../utils';
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + getCookie('token');
 
 class UserFeedback extends Component {
 //missing user id from feedback params !!!
@@ -53,7 +55,7 @@ class UserFeedback extends Component {
     let feedback = qs.stringify(this.state)
     // console.log('feedback:', feedback)
     let apiUrl = "http://localhost:3000/user_feedbacks/?token=" + this.props.token + "&" + feedback
-    axios.post(apiUrl).then((response)=>{
+    axios.post(apiUrl, {withCredentials: true, 'Access-Control-Allow-Credentials': true}).then((response)=>{
       UserFeedback.props.setNotice([])
     }).catch((error)=>{
       UserFeedback.props.setNotice(error.toString(), "Couldn't send feedback to server")

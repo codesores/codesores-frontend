@@ -3,6 +3,8 @@ import SearchBar  from './SearchBar';
 import axios from 'axios';
 import querystring from 'querystring';
 import Loading from './Loading.js'
+import { getCookie } from '../../utils';
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + getCookie('token');
 
 class SearchApp extends Component {
 
@@ -58,6 +60,7 @@ class SearchApp extends Component {
     let searchApp = this
     let query = querystring.stringify(searchApp.state.searchBarCurrentValue)
     let apiUrl = "http://localhost:3000/issues/search/?token=" + this.props.token + "&" + query
+
     axios.post(apiUrl).then((response)=>{
       this.setState({loading: false})
       searchApp.props.updateResults(response.data)

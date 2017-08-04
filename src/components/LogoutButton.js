@@ -6,8 +6,7 @@ class LogoutButton extends Component {
   render() {
     return (
       <Button
-            href='/'
-            active
+        href='http://localhost:3000/logout'
             label='Log out'
             className='Header-link'
             onClick={this.props.logout}

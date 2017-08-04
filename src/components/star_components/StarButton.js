@@ -3,6 +3,8 @@ import axios from 'axios'
 import Button from 'react-toolbox/lib/button/Button'
 import liked from './favorite.svg'
 import not_liked from './not_liked.svg'
+import { getCookie } from '../../utils';
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + getCookie('token');
 
 
 class StarButton extends React.Component {

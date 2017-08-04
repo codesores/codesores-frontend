@@ -5,6 +5,8 @@ import bug from '../../components/issue_icons/bug.svg'
 import docs from '../../components/issue_icons/docs.svg'
 import feature from '../../components/issue_icons/feature.svg'
 import other from '../../components/issue_icons/other.svg'
+import { getCookie } from '../../utils';
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + getCookie('token');
 
 class StarredIssues extends React.Component {
 
