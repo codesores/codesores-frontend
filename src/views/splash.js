@@ -62,20 +62,21 @@ class Splash extends React.Component {
   render(){
 
     return(
+      <div className='splash'>
       <div>
-      <div className="full-bleed">
-      <div className="project-name">
-      <img src='logo.png' />
+      <div><img className='centering' height="100" width="100" src='https://image.flaticon.com/icons/svg/172/172808.svg' /></div>
       <h1 id='title'>CodeSores</h1>
       </div>
-      <div className="project-description">
+      <div >
       <h2 id='subtitle'>Help out your favorite open source projects and become a better developer while doing it.</h2>
       <br />
-      <p>Want to contribute, but not sure where to start? Easily find the right issue that suits your interests and level with CodeSores.</p>
+      <h5>Want to contribute, but not sure where to start? Easily find the right issue that suits your interests and level with CodeSores.</h5>
       </div>
-      <div className='full-bleed-cta'><LoginButton token={this.props.token} /></div>
+      <br />
+      <br />
+      <div className='login'><LoginButton className='centering' token={this.props.token} /></div>
       </div>
-      </div>
+
     )
   }
 
