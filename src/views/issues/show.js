@@ -23,6 +23,8 @@ class issueShow extends React.Component {
       feedbacks: {}
     };
 
+    setTimeout(() => (console.log(this.state)), 2000)
+    setTimeout(() => (console.log(this.state.feedbacks)), 2000)
     //Make API call
     const thisComponent = this
     let apiUrl = "http://localhost:3000/issues/" + this.props.router.match.params.id + "/?token=" + this.props.token
@@ -126,21 +128,21 @@ class issueShow extends React.Component {
             <div className="centering">
             <h5>Validity (% of responses)</h5><br /></div>
             <div className="centering">
-            <DonutChart value={30} lowerLimit={0} upperLimit={100} delay={1000} diameter={150} />
+            <DonutChart value={this.state.feedbacks.average_validity * 100} lowerLimit={0} upperLimit={100} delay={1000} diameter={150} />
             </div>
             </div>
             <div className="donut-container">
             <div className="centering">
             <h5>Difficulty level (% of responses)</h5><br /></div>
             <div className="centering">
-            <DonutChart value={60} lowerLimit={0} upperLimit={100} delay={1500} diameter={150} />
+            <DonutChart value={this.state.feedbacks.average_difficulty * 10} lowerLimit={0} upperLimit={100} delay={1500} diameter={150} />
             </div>
             </div>
             <div className="donut-container">
             <div className="centering">
             <h5>Number of responses</h5><br /></div>
             <div className="centering">
-            <DonutChart value={90} lowerLimit={0} upperLimit={100} delay={2000} diameter={150} />
+            <DonutChart value={this.state.issue.comment_count} lowerLimit={0} upperLimit={20} delay={2000} diameter={150} />
             </div>
             </div>
             </div>

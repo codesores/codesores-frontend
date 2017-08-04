@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Button from 'react-toolbox/lib/button/Button'
 import Dropdown from 'react-toolbox/lib/dropdown';
-
+import Switch from 'react-toolbox/lib/switch/Switch';
 
 class SortBy extends Component {
 
@@ -25,15 +25,23 @@ class SortBy extends Component {
       { value: 'stars_count', label: 'Stars Count' }
     ]
 
-      let that = this
       return (
+        <div>
+              <Switch
+              checked={this.props.sortByDescending}
+              label="sort by descending"
+              onChange={this.props.updateSortByDescending}
+              />
+
               <Dropdown
                 auto
                 label='Sort By'
-                onChange={that.handleChange}
+                onChange={this.handleChange}
                 source={sortTypes}
-                value={that.state.value}
+                value={this.state.value}
               />
+
+              </div>
             );
 
           }
