@@ -50,9 +50,17 @@ class Index extends React.Component {
 
     return(
       <div>
+      <div className="full-bleed">
+      <div className="project-name">
       <h1 id='title'>CodeSores</h1>
-      <h2 id='subtitle'>A place to find open source repos</h2>
-      <div className='centering'><LoginButton/></div>
+      </div>
+      <div className="project-description">
+      <h2 id='subtitle'>Help out your favorite open source projects and become a better developer while doing it.</h2>
+      <br />
+      <p>Want to contribute, but not sure where to start? Easily find the right issue that suits your interests and level with CodeSores.</p>
+      </div>
+      <div className='full-bleed-cta'><LoginButton/></div>
+      </div>
       <SearchApp updateResults={this.updateResults} setNotice={this.props.setNotice} token={this.props.token} />
       <main id='search-results'>
       <SortBy updateSortBy={this.updateSortBy}/>
