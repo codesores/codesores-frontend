@@ -63,6 +63,7 @@ class issueShow extends React.Component {
         }
       })
 
+      display = true
       if (display){
         return (
           <UserFeedback issueId={this.props.router.match.params.id} setNotice={this.props.setNotice} token={this.props.token} />
