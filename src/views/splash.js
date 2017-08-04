@@ -65,7 +65,7 @@ class Splash extends React.Component {
       <div className='splash'>
       <div>
       <div><img className='centering' height="100" width="100" src='https://image.flaticon.com/icons/svg/172/172808.svg' /></div>
-      <h1 id='title'>CodeSores</h1>
+      <h1 id='title'>OpenSores</h1>
       </div>
       <div >
       <h2 id='subtitle'>Help out your favorite open source projects and become a better developer while doing it.</h2>

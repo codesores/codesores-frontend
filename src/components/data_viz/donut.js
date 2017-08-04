@@ -33,7 +33,7 @@ class DonutChart extends React.Component {
 
      var color = d3.scaleLinear()
        .domain([0, tau])
-       .range(['gray', 'black'])
+       .range(['gray', '#303f9f'])
 
      var g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
@@ -63,25 +63,25 @@ class DonutChart extends React.Component {
        }
      }
 
-     var text = svg.insert('text')
-       .text(lowerLimit)
-       .attr("text-anchor", "middle")
-       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
-
-     text.transition()
-       .duration(transitionDuration)
-       .delay(delay)
-       .tween("text", numberTween(value))
-
-     function numberTween(newValue) {
-       return function(){
-         let that = this
-         var interpolate = d3.interpolate(this.textContent, newValue)
-           return function(t) {
-             that.textContent = Math.round(interpolate(t))
-           }
-       }
-     }
+  //    var text = svg.insert('text')
+  //      .text(lowerLimit)
+  //      .attr("text-anchor", "middle")
+  //      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+   //
+  //    text.transition()
+  //      .duration(transitionDuration)
+  //      .delay(delay)
+  //      .tween("text", numberTween(value))
+   //
+  //    function numberTween(newValue) {
+  //      return function(){
+  //        let that = this
+  //        var interpolate = d3.interpolate(this.textContent, newValue)
+  //          return function(t) {
+  //            that.textContent = Math.round(interpolate(t))
+  //          }
+  //      }
+  //    }
    }
 
 render() {
