@@ -122,18 +122,19 @@ class issueShow extends React.Component {
           <Row>
           <Col xs={12} md={8}>
             <div id='issue_id'>
+            <h3>Issue Stats</h3>
             <br />
             <div id='stats' className="stats-container">
             <div className="donut-container">
             <div className="centering">
-            <h5>Validity (% of responses)</h5><br /></div>
+            <h5>Average validity rating (%)</h5><br /></div>
             <div className="centering">
             <DonutChart value={this.state.feedbacks.average_validity * 100} lowerLimit={0} upperLimit={100} delay={1000} diameter={150} />
             </div>
             </div>
             <div className="donut-container">
             <div className="centering">
-            <h5>Difficulty level (% of responses)</h5><br /></div>
+            <h5>Average difficulty rating (out of 5)</h5><br /></div>
             <div className="centering">
             <DonutChart value={this.state.feedbacks.average_difficulty * 10} lowerLimit={0} upperLimit={100} delay={1500} diameter={150} />
             </div>
