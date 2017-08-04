@@ -112,7 +112,7 @@ class issueShow extends React.Component {
               </div>
             </Col>
             <Col xs={6} md={4}>
-              <div id='feedback' className="feedback-sidebar">
+              <div id='feedback' className="all-sidebar">
                 {this.starConditional()}
                 <br/><br/>
                 {this.feedbackConditional()}

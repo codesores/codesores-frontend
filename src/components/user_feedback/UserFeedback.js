@@ -63,7 +63,10 @@ class UserFeedback extends Component {
   render(){
     if (this.state.showForm){
       return (
-        <ButtonGroup vertical>
+        <div className="feedback-sidebar">
+        <p>Help categorize this issue:</p>
+        <ButtonGroup vertical className="feedback-form">
+        Fill out the following:
         <Validity
           validity={this.state.feedback.validity}
           setFeedback={this.setFeedback}
@@ -81,6 +84,7 @@ class UserFeedback extends Component {
           submit={this.submit}
         />
         </ButtonGroup>
+        </div>
         )
     } else {
       return (<div> Thank you! </div>)
