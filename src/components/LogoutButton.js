@@ -6,7 +6,7 @@ class LogoutButton extends Component {
   render() {
     return (
       <Button
-        href='http://localhost:3000/logout'
+        href='https://opensores-back.herokuapp.com/logout'
             label='Log out'
             className='Header-link'
             onClick={this.props.logout}

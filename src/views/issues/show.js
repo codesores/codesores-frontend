@@ -26,7 +26,7 @@ class issueShow extends React.Component {
     };
     //Make API call
     const thisComponent = this
-    let apiUrl = "http://localhost:3000/issues/" + this.props.router.match.params.id + "/?token=" + this.props.token
+    let apiUrl = "https://opensores-back.herokuapp.com/issues/" + this.props.router.match.params.id + "/?token=" + this.props.token
 
     axios.get(apiUrl).then(function (response) {
       thisComponent.parseJSONAndSetState(response);

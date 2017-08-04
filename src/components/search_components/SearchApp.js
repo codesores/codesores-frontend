@@ -43,7 +43,7 @@ class SearchApp extends Component {
   callInitialize(){
     //calls api to recover languages
     let searchApp = this
-    let apiUrl = "http://localhost:3000/issues/start/?token=" + this.props.token
+    let apiUrl = "https://opensores-back.herokuapp.com/issues/start/?token=" + this.props.token
 
     axios.get(apiUrl).then((response)=>{
       let language_array = this.languageDropDown(response.data.languages)
@@ -59,7 +59,7 @@ class SearchApp extends Component {
     this.setState({loading: true})
     let searchApp = this
     let query = querystring.stringify(searchApp.state.searchBarCurrentValue)
-    let apiUrl = "http://localhost:3000/issues/search/?token=" + this.props.token + "&" + query
+    let apiUrl = "https://opensores-back.herokuapp.com/issues/search/?token=" + this.props.token + "&" + query
 
     axios.post(apiUrl).then((response)=>{
       this.setState({loading: false})

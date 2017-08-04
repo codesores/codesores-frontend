@@ -54,7 +54,7 @@ class UserFeedback extends Component {
     let UserFeedback = this
     let feedback = qs.stringify(this.state)
     // console.log('feedback:', feedback)
-    let apiUrl = "http://localhost:3000/user_feedbacks/?token=" + this.props.token + "&" + feedback
+    let apiUrl = "https://opensores-back.herokuapp.com/user_feedbacks/?token=" + this.props.token + "&" + feedback
     axios.post(apiUrl, {withCredentials: true, 'Access-Control-Allow-Credentials': true}).then((response)=>{
       UserFeedback.props.setNotice([])
     }).catch((error)=>{

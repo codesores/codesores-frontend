@@ -34,7 +34,7 @@ class StarApp extends React.Component {
       liked: this.state.liked
     })
 
-    axios.post("http://localhost:3000/stars/create",params).then((response)=>{
+    axios.post("https://opensores-back.herokuapp.com/stars/create",params).then((response)=>{
     }).catch((error)=>{
     })
 
@@ -52,7 +52,7 @@ class StarApp extends React.Component {
       liked: this.state.liked
     })
 
-    axios.post("http://localhost:3000/stars/delete",params).then((response)=>{
+    axios.post("https://opensores-back.herokuapp.com/stars/delete",params).then((response)=>{
     }).catch((error)=>{
     })
   }

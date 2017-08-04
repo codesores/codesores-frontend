@@ -34,7 +34,7 @@ class App extends Component {
   deleteToken() {
     this.setState({ token: null });
     // window.location.href = window.location.href.replace(/\?.*$/, '');
-    window.location.href = 'http://localhost:3000/logout'
+    window.location.href = 'https://opensores-back.herokuapp.com/logout'
   }
 
   deleteErrorsAfterView(){
@@ -44,7 +44,7 @@ class App extends Component {
   fetchUserDetails() {
     if (this.state.token){
       let app = this;
-      let userApiUrl = "http://localhost:3000/users"
+      let userApiUrl = "https://opensores-back.herokuapp.com/users"
 
       axios.get(userApiUrl).then((response)=>{
         console.error("user call", response.data)
@@ -65,7 +65,7 @@ class App extends Component {
   fetchUserStars() {
     if (this.state.token){
       let app = this;
-      let userApiUrl = "http://localhost:3000/users/stars?token=" + this.state.token
+      let userApiUrl = "https://opensores-back.herokuapp.com/users/stars?token=" + this.state.token
 
       axios.get(userApiUrl).then((response)=>{
         // console.log(response.data)
@@ -82,7 +82,7 @@ class App extends Component {
   fetchUserFeedbacks() {
     if (this.state.token){
       let app = this;
-      let userApiUrl = "http://localhost:3000/user_feedbacks?token=" + this.state.token
+      let userApiUrl = "https://opensores-back.herokuapp.com/user_feedbacks?token=" + this.state.token
 
       axios.get(userApiUrl).then((response)=>{
         console.log('fetched!', response)
@@ -109,7 +109,7 @@ class App extends Component {
         <div className="full-container">
 
         <div className="full-body-container">
-    
+
         <Main setNotice={this.setNotice} token={this.state.token} info={info} fetchUser={this.fetchUserDetails} stars={this.state.stars} feedbacks={this.state.feedbacks}/>
 
         <Notice notice={ this.state.notice } deleteErrorsAfterView={ this.deleteErrorsAfterView }/>

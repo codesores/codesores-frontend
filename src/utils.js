@@ -17,7 +17,7 @@ export function getCookie(name) {
 }
 
 
-// const baseApiUrl = 'http://localhost:3000';
+// const baseApiUrl = 'https://opensores-back.herokuapp.com';
 
 export function fetchUserDetails(options) {
   const { token } = options;
