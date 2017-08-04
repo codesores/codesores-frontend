@@ -6,7 +6,7 @@ import LoginButton from '../components/LoginButton'
 import SortBy from '../components/search_components/SortBy.js'
 
 
-class Index extends React.Component {
+class Splash extends React.Component {
   constructor(args){
     super(args)
     this.state = {
@@ -62,16 +62,17 @@ class Index extends React.Component {
   render(){
 
     return(
-      <div className="search-full-container">
-      <div className='search-sidebar'>
-      <SearchApp updateResults={this.updateResults} setNotice={this.props.setNotice} token={this.props.token} />
-      <div id='sort-by'><h3>Sort your results:</h3><SortBy updateSortByDescending={this.updateSortByDescending} updateSortBy={this.updateSortBy} sortByDescending={this.state.sortByDescending}/></div>
+      <div>
+      <div className="full-bleed">
+      <div className="project-name">
+      <h1 id='title'>CodeSores</h1>
       </div>
-      <div className="search-results">
-      <main id='search-results'>
-
-      <SearchResults resultsToDisplay={this.state.resultsToDisplay} token={this.props.token} sortByDescending={this.state.sortByDescending} updateSortBy={this.updateSortBy}/>
-      </main>
+      <div className="project-description">
+      <h2 id='subtitle'>Help out your favorite open source projects and become a better developer while doing it.</h2>
+      <br />
+      <p>Want to contribute, but not sure where to start? Easily find the right issue that suits your interests and level with CodeSores.</p>
+      </div>
+      <div className='full-bleed-cta'><LoginButton token={this.props.token} /></div>
       </div>
       </div>
     )
@@ -80,4 +81,4 @@ class Index extends React.Component {
 }
 
 
-export default Index
+export default Splash

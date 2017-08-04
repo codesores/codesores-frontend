@@ -23,7 +23,9 @@ body {
 }
 
 #search-bar {
-  padding: 4em;
+  padding: 1em;
+  max-width: 80%;
+      margin: 0 auto 0;
 }
 
 .loader {
@@ -84,7 +86,9 @@ body {
 
 .issue-deck {
   list-style-type: none;
+  padding: 0;
 }
+
 
 .issue-card {
   position: relative;
@@ -165,12 +169,13 @@ text-align: center;
 }
 
 .search-card-results {
-  width: 80%;
-  padding: 20px;
+  width: 100%;
+  padding: 10px;
+  margin: 0 auto 0;
 }
 
 .search-card-inner {
-  padding: 20px 10px 10px 20px;
+
 }
 
 .show-sidebar {
@@ -179,9 +184,30 @@ text-align: center;
   /*padding: 5px;*/
   margin-top: 20px;
   margin-left: -20px;
-  border: solid 2px black;
+  /*border: solid 2px red;*/
+  font-weight: bold;
   /*align-items: center;
   display: flex;*/
+}
+
+.feedback-sidebar {
+  position: relative;
+  width: 55%;
+  padding: 10px 0px 10px 10px;
+  margin-top: -20px;
+  margin-left: -20px;
+  /*border: solid 2px blue;*/
+  font-weight: bold;
+  /*align-items: center;
+  display: flex;*/
+}
+
+.feedback-form {
+  width: 90%;
+  padding-left: 5%;
+  /*margin-top: 5%;*/
+  font-weight: lighter;
+  line-height: 2.5em;
 }
 
 .star-text {
@@ -226,6 +252,7 @@ text-align: center;
 }
 
 
+<<<<<<< HEAD
 
 #profile-title{
   text-align: center;
@@ -258,3 +285,48 @@ text-align: center;
     margin: 0 auto;
   max-width: 300px;
 }
+
+.button-right {
+  float: right;
+  padding: 1em;
+  display: inline-block;
+}
+
+.search-card-stats {
+  max-width: 30%;
+  float: left;
+  padding: 0 0 1em 1em;
+  margin:
+
+}
+
+#sort-by {
+  padding: 1em;
+  max-width: 80%;
+  margin: 0 auto 0;
+}
+
+.search-full-container {
+  position: relative;
+  margin-top: 64px;
+  border: solid 2px orange;
+}
+
+.search-sidebar {
+  position: fixed;
+  width: 20%;
+  border: solid 2px red;
+}
+
+.search-results {
+  position: relative;
+  width: 70%;
+  border: solid 2px blue;
+  float: right;
+}
+
+.sort-by {
+  margin-top: 10%;
+  padding: 10%;
+}
+
