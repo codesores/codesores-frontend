@@ -4,20 +4,20 @@ import Header from './components/Header'
 import Main from './components/Main'
 import Notice from './components/error_handling/Notice'
 import axios from 'axios'
-import { getQueryParams } from './utils';
+import { getQueryParams, getCookie } from './utils';
 
 class App extends Component {
   constructor() {
     super()
 
     const params = getQueryParams()
+    const cookieToken = getCookie('token')
 
     this.state = {
-      token: params.token,
+      token: cookieToken,
       notice: [],
       info: ""
     }
-
 
     this.fetchUserDetails();
 
@@ -28,6 +28,7 @@ class App extends Component {
   }
 
   deleteToken() {
+    
     this.setState({ token: null });
     window.location.href = window.location.href.replace(/\?.*$/, '');
   }
@@ -39,17 +40,34 @@ class App extends Component {
   fetchUserDetails() {
     if (this.state.token){
       let app = this;
-      let userApiUrl = "http://localhost:3000/users?token=" + this.state.token
+      let userApiUrl = "http://localhost:3000/users"
 
+      // let getUserDeets = axios.create({
+      //   method: 'get',
+      //   auth: {
+      //     JWT: this.state.token
+      //   },
+      //   xsrfCookieName: 'token'
+      // })
+
+      // getUserDeets.get(userApiUrl).then(response => {
+      //   alert("yes")
+      //   console.log("response text*****", response)
+      // }).catch((err) => {
+      //   console.log("user details error", err)
+      // })
+
+      axios.defaults.headers.common['Authorization'] = 'Bearer ' + getCookie('token');
       axios.get(userApiUrl).then((response)=>{
-        // console.log(response.data)
+        console.error("user call", response.data)
         app.setState({info: response.data}, ()=>{
         })
       }).catch((error)=>{
+        console.error("info error" )
         app.setNotice(error.toString(), "User must be logged in")
       })
     }
-    
+
   }
 
   setNotice(...errors){

@@ -32,7 +32,7 @@ class issueShow extends React.Component {
     const thisComponent = this
     let apiUrl = "http://localhost:3000/issues/" + this.props.router.match.params.id + "/?token=" + this.props.token
 
-    axios.get(apiUrl).then(function (response) {
+    axios.get(apiUrl, {withCredentials: true, 'Access-Control-Allow-Credentials': true}).then(function (response) {
       thisComponent.parseJSONAndSetState(response);
       thisComponent.props.setNotice([])
     }

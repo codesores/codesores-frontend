@@ -54,7 +54,7 @@ class SearchApp extends Component {
     let query = querystring.stringify(searchApp.state.searchBarCurrentValue)
     let apiUrl = "http://localhost:3000/issues/search/?token=" + this.props.token + "&" + query
 
-    axios.post(apiUrl).then((response)=>{
+    axios.post(apiUrl, {withCredentials: true, 'Access-Control-Allow-Credentials': true}).then((response)=>{
       searchApp.props.updateResults(response.data)
       searchApp.props.setNotice([])
     }).catch((error)=>{
