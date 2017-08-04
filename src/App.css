@@ -226,7 +226,7 @@ text-align: center;
 
 .full-bleed {
   position: relative;
-  height: 550px;
+  height: 650px;
   /*background-color: #ccc;*/
   border-bottom: solid 2px #ccc;
 }
@@ -373,4 +373,18 @@ text-align: center;
   margin-top: 5%;
   /*margin-left: 10%;*/
   /*text-overflow: clip;*/
+}
+
+.login{
+
+  display: flex;
+      justify-content: center;
+}
+
+.splash {
+  padding-top: 10%;
+}
+
+h5 {
+  text-align: center;
 }
