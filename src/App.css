@@ -165,5 +165,26 @@ text-align: center;
 
 .search-card-results {
   width: 80%;
-  padding: 10px;
+  padding: 20px;
+}
+
+.search-card-inner {
+  padding: 20px 10px 10px 20px;
+}
+
+.show-sidebar {
+  position: relative;
+  width: 55%;
+  /*padding: 5px;*/
+  margin-top: 20px;
+  margin-left: -20px;
+  border: solid 2px black;
+  /*align-items: center;
+  display: flex;*/
+}
+
+.star-text {
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 1em;
 }

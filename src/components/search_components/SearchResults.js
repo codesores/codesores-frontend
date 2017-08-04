@@ -69,6 +69,7 @@ class SearchResults extends Component {
     return(
       <div className="search-card-results">
         <Card>
+        <div className="search-card-inner">
         <CardTitle
         avatar={icon}
         title={issueTypeName}
@@ -91,6 +92,7 @@ class SearchResults extends Component {
         <CardTitle>
         <IssueButton />
         </CardTitle>
+        </div>
         </Card>
       </div>
     )
