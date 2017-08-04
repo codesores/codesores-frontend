@@ -8,6 +8,16 @@ const scope = 'user:email'
 
 class LoginButton extends Component {
   render() {
+    if(this.props.token) {
+      return (
+        <Button
+            raised
+            accent
+          >
+          Start searching!
+        </Button>
+      )
+    } else {
     return (
       <Button
           raised
@@ -18,7 +28,7 @@ class LoginButton extends Component {
         {' '}
         Sign in with GitHub
       </Button>
-    );
+    )};
   }
 }
 
