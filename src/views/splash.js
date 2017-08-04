@@ -70,7 +70,7 @@ class Splash extends React.Component {
       <div >
       <h2 id='subtitle'>Help out your favorite open source projects and become a better developer while doing it.</h2>
       <br />
-      <h5>Want to contribute, but not sure where to start? Easily find the right issue that suits your interests and level with CodeSores.</h5>
+      <h5 id="splash">Want to contribute, but not sure where to start? Easily find the right issue that suits your interests and level with CodeSores.</h5>
       </div>
       <br />
       <br />
