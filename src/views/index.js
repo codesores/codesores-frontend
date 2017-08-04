@@ -41,12 +41,12 @@ class Index extends React.Component {
     console.log(this.state.sortByDescending)
     let sortedArray = []
     let sortBy = toggleValue
-    if(sortBy && this.state.sortByDescending) {
+    if(sortBy && !this.state.sortByDescending) {
       sortedArray = this.state.resultsPurgatory.sort(function(a, b){
         return a[sortBy] - b[sortBy]
       })
     }
-    else if(sortBy && !this.state.sortByDescending) {
+    else if(sortBy && this.state.sortByDescending) {
       sortedArray = this.state.resultsPurgatory.sort(function(a, b){
         return b[sortBy] - a[sortBy]
       })

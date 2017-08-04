@@ -7,7 +7,8 @@ class DonutChart extends React.Component {
       this.createDonutChart = this.createDonutChart.bind(this)
    }
 
-   componentDidMount() {
+   componentDidUpdate() {
+     console.log(this.props.value)
       this.createDonutChart(this.props.value, this.props.lowerLimit, this.props.upperLimit, this.props.delay, this.props.diameter)
    }
 
