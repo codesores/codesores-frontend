@@ -1,5 +1,4 @@
 body {
-  color: white !important;
 
 }
 #main-menu {
@@ -114,6 +113,10 @@ body {
   padding-right: 10px;
 }
 
+.card-icon-large {
+  margin-right: 20px;
+}
+
 .stats-container {
   display: flex;
   justify-content: space-between;
@@ -138,4 +141,9 @@ body {
   position: relative;
   display: flex;
   justify-content: center;
+}
+
+.search-card-results {
+  width: 80%;
+  padding: 10px;
 }
